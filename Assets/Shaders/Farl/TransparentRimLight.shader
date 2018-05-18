@@ -1,4 +1,4 @@
-﻿Shader "Farl/TransparentRimLight" {
+﻿Shader "Custom/Farl/TransparentRimLight" {
 	Properties{
 		_Color("Main Color", Color) = (1,1,1,1)
 		_MainTex("Base (RGB) Trans (A)", 2D) = "white" {}
@@ -17,7 +17,7 @@
 		//Tags{ "Queue" = "Transparent" }
 		//Tags{ "Queue" = "Overlay" }
 
-		Offset 0, 1
+		//Offset 0, 1
 		Pass
 		{
 			Name "ShaderCaster"
@@ -29,7 +29,7 @@
 			Lighting Off
 		}
 		
-		Offset 0, 0
+		//Offset 0, 0
 
 		Pass
 		{
@@ -38,8 +38,7 @@
 			ZWrite Off
 			ZTest LEqual
 			ColorMask RGBA
-			//Blend SrcAlpha OneMinusSrcAlpha
-			Blend One One
+			Blend SrcAlpha OneMinusSrcAlpha
 			Lighting Off
 
 			CGPROGRAM
@@ -51,20 +50,14 @@
 				fixed4 _Color;
 				fixed4 _RimColor;
 				fixed _RimPower;
-
-				struct appdata {
-					fixed4 vertex : POSITION;
-					fixed3 normal : NORMAL;
-					fixed2 uv : TEXCOORD0;
-				};
-
+				
 				struct v2f {
 					float2 uv : TEXCOORD0;
 					fixed4 vertex : SV_POSITION;
 					fixed4 color : COLOR;
 				};
 
-				v2f vert(appdata v) {
+				v2f vert(appdata_full v) {
 					v2f o;
 					o.vertex = UnityObjectToClipPos(v.vertex);
 
@@ -77,17 +70,15 @@
 					// smoothstep用法同lerp, 但其曲線在頭尾都會趨緩
 
 					fixed rimFactor = pow((1 - smoothstep(0.5, 1, dotProduct)), _RimPower);
-					o.color = _RimColor * rimFactor;
-					o.color.a = rimFactor;
-					o.uv = v.uv;
+					o.color = _RimColor * rimFactor * v.color;
+					o.color.a = rimFactor * v.color.a;
+					o.uv = v.texcoord;
 					return o;
 				}
 
 				fixed4 frag(v2f i) : SV_Target{
-					//fixed4 col = _Color * tex2D(_MainTex, i.uv);
-					fixed4 col = (1,1,1,1);
-					col = col * i.color;
-					return col;
+					fixed4 col = _Color * tex2D(_MainTex, i.uv);
+					return col * i.color;
 				}
 			ENDCG
 		}
