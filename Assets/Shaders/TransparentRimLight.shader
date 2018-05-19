@@ -10,10 +10,10 @@
 		//Tags{ "Queue" = "Background" }
 		//Tags{ "Queue" = "Geometry" }
 
-		//Tags{ "Queue" = "AlphaTest-1" }
+		Tags{ "Queue" = "AlphaTest-1" }
 		//Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
 
-		Tags{ "Queue" = "AlphaTest" }
+		//Tags{ "Queue" = "AlphaTest" }
 		//Tags{ "Queue" = "Transparent" }
 		//Tags{ "Queue" = "Overlay" }
 
