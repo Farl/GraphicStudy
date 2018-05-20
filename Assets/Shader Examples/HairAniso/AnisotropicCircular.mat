@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: AnisotropicCircular
+  m_Shader: {fileID: 4800000, guid: 247f4749def7e9143a8c0e3d8b7f9ba4, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlbedoRGBOpacityA:
+        m_Texture: {fileID: 2800000, guid: 61ee572e89ec0bb428a27ae25c12dd48, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AnisotropyMask:
+        m_Texture: {fileID: 2800000, guid: 74e56033fe2b17845a4c094667511eb0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 2800000, guid: 74e56033fe2b17845a4c094667511eb0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: e36807a1aeb234a45bae70c88ccd5fc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Specular:
+        m_Texture: {fileID: 2800000, guid: 43a4069e5be635e42aacce6f0e64fb5a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: e36807a1aeb234a45bae70c88ccd5fc8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaCutout: 0.59
+    - _AnisotropyFalloff: 109
+    - _AnisotropyOffset: -0.2
+    - _Bump: 0.7
+    - _Falloff: 30
+    - _Float0: 1
+    - _Float3: 1.01
+    - _Glossiness: 30
+    - _NormalAmount: 1.87
+    - _Offset: -0.2
+    - _Smoothness: 0
+    - __dirty: 0
+    m_Colors:
+    - _AlbedoTint: {r: 0.32352942, g: 0.2737639, b: 0.23552941, a: 1}
+    - _SpecularTint: {r: 0.6544118, g: 0.59614027, b: 0.485997, a: 1}
+    - _Tint: {r: 0.32352942, g: 0.2737639, b: 0.23552941, a: 1}
