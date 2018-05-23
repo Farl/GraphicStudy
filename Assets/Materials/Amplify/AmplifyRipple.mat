@@ -9,7 +9,7 @@ Material:
   m_Name: AmplifyRipple
   m_Shader: {fileID: 4800000, guid: fc4071e1772c246d9979217f2011db8c, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -57,36 +57,38 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _Debug: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeLength: 27.8
     - _Float0: 0.55
     - _Float1: 0.01
-    - _FrequencyMutiplier: 10
+    - _FrequencyMutiplier: 2.12
     - _Gloss: 0.7
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _MaxDistance: 3.69
+    - _MaxDistance: 3.83
     - _Metallic: 0.7
     - _MetallicInt: 0.7
-    - _MetallicValue: 0.53
+    - _MetallicValue: 0.82
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.45
+    - _Offset: 0
     - _Parallax: 0.02
-    - _Smoothness: 0.85
+    - _SmoothFactor: 0
+    - _Smoothness: 0.77
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Test: 0.7
-    - _TimeOffset: 0.1
-    - _Timescale: -1
+    - _Test: 0.83601785
+    - _TimeOffset: 0
+    - _Timescale: -0.3
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.30147058, g: 0.8843813, b: 1, a: 1}
+    - _Color: {r: 0.5661764, g: 0.73073024, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.75294125, g: 0.7137255, b: 1, a: 1}
     - _WorldPosition: {r: 0, g: 0, b: 0, a: 0}
