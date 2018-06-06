@@ -171,7 +171,7 @@ Shader "Custom/Farl/DitherOpacity"
 }
 /*ASEBEGIN
 Version=15001
--2;231;1666;974;1915.194;614.322;2.391628;True;True
+4;434;1440;375;862.2535;-137.8157;1;True;False
 Node;AmplifyShaderEditor.ScreenParams;22;-1890.804,-117.9828;Float;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ScreenPosInputsNode;14;-1921.935,-330.9346;Float;True;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;27;-1546.501,-189.3828;Float;False;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
@@ -208,4 +208,4 @@ WireConnection;4;3;43;1
 WireConnection;4;4;43;2
 WireConnection;4;10;7;0
 ASEEND*/
-//CHKSM=0DB85B9CA1BEBD72A5690746FB69A11BEBDD2AA2
+//CHKSM=B667423C3DDCEBD76F036550863F0AF8C3A6CAE7
