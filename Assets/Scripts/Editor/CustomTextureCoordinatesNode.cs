@@ -25,7 +25,8 @@ namespace AmplifyShaderEditor
 		private const string OffsetStr = "Offset";
 		private const string TexCoordStr = "texcoord_";
 
-		public string m_overrideID = string.Empty;
+        [SerializeField]
+        private string m_overrideID = string.Empty;
 
 		[SerializeField]
 		private int m_referenceArrayId = -1;
@@ -286,6 +287,8 @@ namespace AmplifyShaderEditor
 				m_texcoordSize = Convert.ToInt32( GetCurrentParam( ref nodeParams ) );
 				UpdateOutput();
 			}
+
+            m_overrideID = GetCurrentParam(ref nodeParams);
 		}
 
 
@@ -346,8 +349,9 @@ namespace AmplifyShaderEditor
 			base.WriteToString( ref nodeInfo, ref connectionsInfo );
 			IOUtils.AddFieldValueToString( ref nodeInfo, m_textureCoordChannel );
 			IOUtils.AddFieldValueToString( ref nodeInfo, ( ( m_referenceNode != null ) ? m_referenceNode.UniqueId : -1 ) );
-			IOUtils.AddFieldValueToString( ref nodeInfo, m_texcoordSize );
-		}
+            IOUtils.AddFieldValueToString(ref nodeInfo, m_texcoordSize);
+            IOUtils.AddFieldValueToString(ref nodeInfo, m_overrideID);
+        }
 
 		string GetValidPropertyName()
 		{

@@ -91,13 +91,13 @@ Shader "Custom/Farl/Amplify/AmplifyScreenDistortion"
 				half4 finalColor;
 
 				// ase common template code
-				float2 uv4 = i.uv.xy * float2( 1,1 ) + float2( 0,0 );
+				float2 uv_MainTex = i.uv.xy * _MainTex_ST.xy + _MainTex_ST.zw;
 				float2 temp_cast_1 = (_Speed).xx;
 				float2 uv_BumpTex = i.uv.xy * _BumpTex_ST.xy + _BumpTex_ST.zw;
 				float2 panner9 = ( uv_BumpTex + 1 * _Time.y * temp_cast_1);
 				
 
-				finalColor = tex2D( _MainTex, ( float3( uv4 ,  0.0 ) + ( _NormalScale * UnpackNormal( tex2D( _BumpTex, panner9 ) ) ) ).xy );
+				finalColor = tex2D( _MainTex, ( float3( uv_MainTex ,  0.0 ) + ( _NormalScale * UnpackNormal( tex2D( _BumpTex, panner9 ) ) ) ).xy );
 
 				return finalColor;
 			} 
@@ -108,13 +108,13 @@ Shader "Custom/Farl/Amplify/AmplifyScreenDistortion"
 }
 /*ASEBEGIN
 Version=15001
-2;401;1440;409;1939.832;609.566;3.100962;True;False
+392;117;1010;692;647.0178;524.9276;1.098948;True;False
 Node;AmplifyShaderEditor.TextureCoordinatesNode;5;-1011.976,-264.7418;Float;False;0;6;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;8;-975.1522,-138.8025;Float;False;Property;_Speed;Speed;2;0;Create;True;0;0;False;0;0;0.1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.PannerNode;9;-763.2355,-236.8319;Float;False;3;0;FLOAT2;0,0;False;2;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.RangedFloatNode;7;-304.5101,-299.077;Float;False;Property;_NormalScale;NormalScale;1;0;Create;True;0;0;False;0;1;1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SamplerNode;6;-601.7739,-249.8732;Float;True;Property;_BumpTex;BumpTex;0;0;Create;True;0;0;False;0;None;40d39758794c3de40866e615c192191d;True;0;True;bump;Auto;True;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.CustomTextureCoordinatesNode;4;-330.4496,-466.847;Float;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;7;-304.5101,-299.077;Float;False;Property;_NormalScale;NormalScale;1;0;Create;True;0;0;False;0;1;0.01;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SamplerNode;6;-601.7739,-249.8732;Float;True;Property;_BumpTex;BumpTex;0;0;Create;True;0;0;False;0;None;bac772f6b98f2df438d2e27aaa3aa158;True;0;True;bump;Auto;True;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.CustomTextureCoordinatesNode;4;-330.4496,-466.847;Float;False;0;-1;2;_MainTex;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;10;-114.0549,-267.8881;Float;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.TemplateShaderPropertyNode;2;-172,-74.5;Float;False;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleAddOpNode;11;96.94507,-306.8881;Float;False;2;2;0;FLOAT2;0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
@@ -131,4 +131,4 @@ WireConnection;3;0;2;0
 WireConnection;3;1;11;0
 WireConnection;1;0;3;0
 ASEEND*/
-//CHKSM=AC1F53A4656BF030CAB47FAE60543081AFA6D013
+//CHKSM=EBF8B1E4A4A2AB1F7DE022D4C07378C310FC5C02
