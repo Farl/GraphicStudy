@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: GaussianBlur
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15001\n432;311;1010;692;2044.901;202.6737;1.646566;True;False\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;40;-1858.002,215.8269;Float;False;3;3;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionNode;59;-546.2092,155.9085;Float;False;Gaussian
+    Blur 2D;-1;;171;a124a256111673e4a8c38a493d3e6f8a;0;5;86;FLOAT2;256,256;False;29;FLOAT2;1,0;False;27;FLOAT;0;False;1;SAMPLER2D;;False;5;FLOAT2;0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.NoiseGeneratorNode;29;-1732.14,214.0421;Float;False;Simplex2D;1;0;FLOAT2;256,256;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;44;-1926.453,186.2751;Float;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.WireNode;42;-1973.425,223.1331;Float;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionNode;60;-575.1025,-363.6313;Float;False;Gaussian
+    Blur 2D;-1;;179;a124a256111673e4a8c38a493d3e6f8a;0;5;86;FLOAT2;256,256;False;29;FLOAT2;1,0;False;27;FLOAT;0;False;1;SAMPLER2D;;False;5;FLOAT2;0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.RangedFloatNode;45;-1862.117,327.9052;Float;False;Constant;_Float0;Float
+    0;0;0;Create;True;0;0;False;0;10;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;49;-1542.325,214.6017;Float;False;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;90;False;1;FLOAT;0\nNode;AmplifyShaderEditor.WireNode;41;-1856.881,-298.4062;Float;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RotateAboutAxisNode;54;-1016.738,342.2097;Float;False;False;4;0;FLOAT3;0,0,1;False;1;FLOAT;90;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WireNode;43;-1876.694,-60.67271;Float;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.Vector2Node;52;-1173.613,88.77723;Float;False;Constant;_Vector0;Vector
+    0;0;0;Create;True;0;0;False;0;1,0;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.FunctionInput;4;-981.7886,-16.67826;Float;False;UV;2;3;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.RangedFloatNode;16;-322.6441,-7.531619;Float;False;Constant;_GaussianBlurHalf;GaussianBlurHalf;0;0;Create;True;0;0;False;0;0.5;0;0;0;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;3;-969.2512,-126.9861;Float;False;Tex;9;2;False;1;0;SAMPLER2D;0;False;1;SAMPLER2D;0\nNode;AmplifyShaderEditor.RotateAboutAxisNode;51;-1007.306,194.186;Float;False;False;4;0;FLOAT3;0,0,1;False;1;FLOAT;90;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;55;-1147.937,395.0096;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;90;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;2;-908.7106,-253.2053;Float;False;Radius;1;1;False;1;0;FLOAT;2;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;13;-259.9801,-106.4748;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionInput;1;-853.6509,-364.5051;Float;False;Resolution;2;0;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;15;-108.2672,-85.03712;Float;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0\nNode;AmplifyShaderEditor.FunctionOutput;0;129,-8;Float;False;True;Output;0;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nWireConnection;40;0;44;0\nWireConnection;40;1;42;0\nWireConnection;40;2;45;0\nWireConnection;59;86;1;0\nWireConnection;59;29;54;0\nWireConnection;59;27;2;0\nWireConnection;59;1;3;0\nWireConnection;59;5;4;0\nWireConnection;29;0;40;0\nWireConnection;44;0;43;0\nWireConnection;42;0;41;0\nWireConnection;60;86;1;0\nWireConnection;60;29;51;0\nWireConnection;60;27;2;0\nWireConnection;60;1;3;0\nWireConnection;60;5;4;0\nWireConnection;49;0;29;0\nWireConnection;41;0;1;0\nWireConnection;54;1;49;0\nWireConnection;54;3;52;0\nWireConnection;43;0;4;0\nWireConnection;51;1;49;0\nWireConnection;51;3;52;0\nWireConnection;13;0;60;0\nWireConnection;13;1;59;0\nWireConnection;15;0;13;0\nWireConnection;15;1;16;0\nWireConnection;0;0;15;0\nASEEND*/\n//CHKSM=BF6AD1D6474A0B34A125868003EA423D1BE8E7D5"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 3
+  m_customNodeCategory: 
+  m_previewPosition: 0

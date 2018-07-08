@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: GaussianKernel
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15001\n432;311;1010;692;1312.194;311.0851;1;True;False\nNode;AmplifyShaderEditor.SimpleDivideOpNode;8;-818.509,-176.68;Float;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;11;-1100.865,-212.6677;Float;False;Position;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-701.194,-174.0851;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;10;-949.6655,-116.1677;Float;False;Radius;1;1;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.AbsOpNode;12;-957.1943,-204.0851;Float;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-565.1652,-99.3585;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ExpOpNode;1;-424.865,-100.7585;Float;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;9;-691.7532,-36.76138;Float;False;Factor;1;2;False;1;0;FLOAT;-0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-301,-100;Float;False;True;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;8;0;12;0\nWireConnection;8;1;10;0\nWireConnection;13;0;8;0\nWireConnection;13;1;8;0\nWireConnection;12;0;11;0\nWireConnection;4;0;13;0\nWireConnection;4;1;9;0\nWireConnection;1;0;4;0\nWireConnection;0;0;1;0\nASEEND*/\n//CHKSM=9AA4A4B068EC81421F2230833F23C6A1C5B2C701"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 3
+  m_customNodeCategory: 
+  m_previewPosition: 0
