@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AmplifyFold
+  m_Name: AmplifyFold 1
   m_Shader: {fileID: 4800000, guid: e231f3f2d8edb4c1e8f0858c5e931e96, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -23,7 +23,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 80ab37a9e4f49c842903bb43bdd7bcd2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 45ea98975d00f49d4a37af20347af491, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:
@@ -44,5 +44,5 @@ Material:
     - __dirty: 0
     m_Colors:
     - _MainColor: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
-    - _RotateXPivot: {r: 0, g: 0, b: 5, a: 0}
+    - _RotateXPivot: {r: -5, g: 0, b: 10.83, a: 0}
     - _Vector0: {r: 0, g: 4, b: 0, a: 0}
