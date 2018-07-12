@@ -38,11 +38,11 @@ Material:
     - _Angle: 45
     - _AngleX: 0
     - _AngleY: 0
-    - _AngleZ: -30
+    - _AngleZ: -27
     - _BumpScale: 1
     - _Cutoff: 0.5
     - __dirty: 0
     m_Colors:
     - _MainColor: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
-    - _RotateXPivot: {r: -5, g: 0, b: 10.83, a: 0}
+    - _RotateXPivot: {r: -7.4, g: 0, b: 10.6, a: 0}
     - _Vector0: {r: 0, g: 4, b: 0, a: 0}
