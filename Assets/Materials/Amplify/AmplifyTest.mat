@@ -8,7 +8,9 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: AmplifyTest
   m_Shader: {fileID: 4800000, guid: 40f6481ae77cc4fcd9423a449507b907, type: 3}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP _TOGGLEBLUR_ON
+  m_ShaderKeywords: _EMISSION _EMISSION_ON _GLOSSYREFLECTIONS_OFF _HASMETALLICGLOSSMAP_ON
+    _KEYWORD1_ON _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP _SMOOTHNESSTEXTURECHANNEL_KEY0
+    _SMOOTHNESSTEXTURECHANNEL_METALLICALPHA _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -43,11 +45,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d5bc70618862cb04b8e4366956d3e13d, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb38422b66a8def4e88f1d06cb13180e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 7500c8a43fbd6b344affb592fa314394, type: 3}
+        m_Texture: {fileID: 2800000, guid: 380d8cba402d8d4449e8f6e04c1183a9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -65,16 +67,19 @@ Material:
     m_Floats:
     - '': 0
     - _BumpScale: 1
-    - _Cutoff: 0
+    - _Cutoff: 0.32
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Emission: 0
+    - _Emission: 1
     - _Float0: 2
     - _Float2: 0
-    - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 1
+    - _HasMetallicGlossMap: 1
+    - _Keyword0: 0
+    - _Keyword1: 1
+    - _Metallic: 0.03
     - _MetallicGlossMap: 0
     - _Mode: 0
     - _OcclusionStrength: 0.37
