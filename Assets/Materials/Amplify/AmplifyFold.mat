@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpTex:
-        m_Texture: {fileID: 2800000, guid: 066f29fd0fc3d0341b96857dcf2cede3, type: 3}
+        m_Texture: {fileID: 2800000, guid: ad2443593befc4a15b0ba0a8f624ec86, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -38,11 +38,12 @@ Material:
     - _Angle: 45
     - _AngleX: 0
     - _AngleY: 0
-    - _AngleZ: -30
-    - _BumpScale: 1
+    - _AngleZ: -10
+    - _BumpScale: 0.8
     - _Cutoff: 0.5
+    - _LowPoly: 0.68
     - __dirty: 0
     m_Colors:
-    - _MainColor: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _RotateXPivot: {r: 0, g: 0, b: 5, a: 0}
     - _Vector0: {r: 0, g: 4, b: 0, a: 0}
