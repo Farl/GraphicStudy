@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AmplifyUIStandard
+  m_Name: AmplifyUIStandardText
   m_Shader: {fileID: 4800000, guid: 745a5f67ab5294d1e97c46a643ec97be, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
-    _SMOOTHNESSTEXTURECHANNEL_METALLICALPHA
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _EMISSION _EMISSION_ON _METALLICGLOSSMAP _NORMALMAP
+    _PARALLAXMAP _SMOOTHNESSTEXTURECHANNEL_METALLICALPHA
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 00e0021f9f2d77a4fb3d5957267488e7, type: 3}
+        m_Texture: {fileID: 2800000, guid: e9742c575b8f4644fb9379e7347ff62e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -36,23 +36,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 5fbdaf48b197ed344836d84221322837, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2741be98b31d56c43ad9cfbcaf99a799, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 37e6f91f3efb0954cbdce254638862ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: ecd84d608ef693546b70a9f04f88ff0a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: ecd84d608ef693546b70a9f04f88ff0a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: e28dc97a9541e3642a48c0e3886688c5, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -60,17 +60,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BumpScale: 2.06
+    - _BumpScale: 0.3
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Emission: 0
+    - _Emission: 1
     - _Float2: 1
-    - _GlossMapScale: 0.66
-    - _Glossiness: 0.73
+    - _GlossMapScale: 0
+    - _Glossiness: 1
     - _GlossyReflections: 1
     - _HasMetallicGlossMap: 0
-    - _Metallic: 0.44
+    - _Metallic: 0.51
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -82,4 +82,4 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.4191176, g: 0.27735722, b: 0.27735722, a: 1}
+    - _EmissionColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 1}
