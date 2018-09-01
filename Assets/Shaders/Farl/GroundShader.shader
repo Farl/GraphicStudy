@@ -1,6 +1,6 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Custom/GroundShader" {
+Shader "Custom/Farl/GroundShader" {
 	Properties{
 		_MainTex("Albedo (RGB)", 2D) = "white" {}
 	}

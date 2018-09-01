@@ -1,4 +1,4 @@
-﻿Shader "Custom/DoubleSided" {
+﻿Shader "Custom/Farl/DoubleSided" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
 	}

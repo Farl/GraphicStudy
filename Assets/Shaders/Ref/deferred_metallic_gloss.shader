@@ -1,7 +1,7 @@
 //Written by Przemyslaw Zaworski
 //https://github.com/przemyslawzaworski
 
-Shader "Deferred (Metallic Gloss)"
+Shader "Custom/Ref/Deferred (Metallic Gloss)"
 {
 	Properties
 	{

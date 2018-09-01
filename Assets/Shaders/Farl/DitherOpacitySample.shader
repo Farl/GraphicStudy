@@ -1,4 +1,4 @@
-﻿Shader "Farl/Unlit/AlphaGrid"
+﻿Shader "Custom/Farl/Unlit/AlphaGrid"
 {
 	Properties
 	{

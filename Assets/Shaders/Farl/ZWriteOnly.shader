@@ -1,4 +1,4 @@
-Shader "Farl/ZWriteOnly" {
+Shader "Custom/Farl/ZWriteOnly" {
 	Properties{
 	}
 
