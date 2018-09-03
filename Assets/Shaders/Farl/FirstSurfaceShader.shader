@@ -1,4 +1,4 @@
-﻿Shader "Example/Diffuse Simple" {
+﻿Shader "Custom/Farl/Diffuse Simple" {
 	SubShader{
 		Tags{ "RenderType" = "Opaque" }
 		CGPROGRAM

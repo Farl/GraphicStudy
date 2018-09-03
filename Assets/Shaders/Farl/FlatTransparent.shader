@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Custom/FlatTransparent" {
+Shader "Custom/Farl/FlatTransparent" {
      Properties {
          _Color("Main Color", Color) = (1,1,1,1)
          _MainTex("Base (RGB) Trans (A)", 2D) = "white" {}

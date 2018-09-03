@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Unity Answers/Solid Transparency Color"
+Shader "Custom/Unity Answers/Solid Transparency Color"
 {
 	Properties
 	{

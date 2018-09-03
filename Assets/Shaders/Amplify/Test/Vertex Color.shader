@@ -1,6 +1,6 @@
 // Made with Amplify Shader Editor
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "Test/Vertex Color"
+Shader "Custom/Farl/Amplify/Test/Vertex Color"
 {
 	Properties
 	{
@@ -77,9 +77,9 @@ Shader "Test/Vertex Color"
 }
 /*ASEBEGIN
 Version=15001
-457;116;794;591;695;261.5;1;True;False
+119;149;1010;692;695;261.5;1;True;False
 Node;AmplifyShaderEditor.VertexColorNode;2;-358,-116.5;Float;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;2;Float;ASEMaterialInspector;0;2;Test/Vertex Color;6e114a916ca3e4b4bb51972669d463bf;0;0;SubShader 0 Pass 0;2;False;False;True;Off;False;False;False;False;False;True;1;RenderType=Opaque;False;0;0;0;False;False;False;False;False;False;False;False;False;True;2;0;0;0;2;0;FLOAT4;0,0,0,0;False;1;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;2;Float;ASEMaterialInspector;0;2;Custom/Farl/Amplify/Test/Vertex Color;6e114a916ca3e4b4bb51972669d463bf;0;0;SubShader 0 Pass 0;2;False;False;True;Off;False;False;False;False;False;True;1;RenderType=Opaque;False;0;0;0;False;False;False;False;False;False;False;False;False;True;2;0;0;0;2;0;FLOAT4;0,0,0,0;False;1;FLOAT3;0,0,0;False;0
 WireConnection;1;0;2;0
 ASEEND*/
-//CHKSM=8E8E6A1CF2DF149831C516C3BA674D5404108929
+//CHKSM=281DB21065A3FF5E810A7BC8FA6F8BC6D20F1B4C

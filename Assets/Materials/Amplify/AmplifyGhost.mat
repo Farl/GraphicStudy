@@ -36,14 +36,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _FadeDistance: 34.19
-    - _FadeLength: 12.57
-    - _FadeOffset: -9.7
-    - _Float0: 8.16
-    - _NormalScale: 0.67
+    - _FadeLength: 22.37
+    - _FadeOffset: 18.8
+    - _Float0: 3.93
+    - _MoreTransparent: -4.41
+    - _NormalScale: 1.1
     - _Speed: 0.04
     - _Strength: 0.06
     - __dirty: 0
     m_Colors:
-    - FresnelParam: {r: -0.12, g: 3.02, b: 2.29, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - FresnelParam: {r: 0.74, g: 1.27, b: 3.8, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
     - _Color0: {r: 0, g: 0, b: 0, a: 0}

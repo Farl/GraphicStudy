@@ -37,7 +37,7 @@ Material:
     m_Floats:
     - _BumpScale: 0.149
     - _Cutoff: 0.5
-    - _Distance: -0.56
+    - _Distance: 1
     - _FadeMethod: 1
     - _Float0: 0.595
     - _Length: 61.22
