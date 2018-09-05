@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Standard_rimlight
+  m_Name: AimeeRimLight
   m_Shader: {fileID: 4800000, guid: dbd264935fd574f2b90e8b629196c282, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
