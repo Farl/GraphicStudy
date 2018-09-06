@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: ApplySineWave
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15001\n161;81;1107;850;577.4816;809.324;1;True;False\nNode;AmplifyShaderEditor.TauNode;4;-456.0834,-571.1436;Float;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;14;-288.7965,-366.61;Float;False;Time
+    Scale;1;2;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;17;-117.4816,-575.324;Float;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;16;-299.5356,-486.133;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;1E-09;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;13;-665.6005,-470.2672;Float;False;Phase
+    Length;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.AbsOpNode;15;-460.1196,-468.8226;Float;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleTimeNode;8;-91.40282,-444.0597;Float;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;12;444.9748,-603.0488;Float;False;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;1;-460.5794,-672.0424;Float;False;Input;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SinOpNode;11;253.5645,-572.9459;Float;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;10;75.26675,-550.1551;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;6;-266.6237,-617.9878;Float;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;673.2723,-600.3705;Float;False;True;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;17;0;6;0\nWireConnection;17;1;16;0\nWireConnection;16;0;15;0\nWireConnection;15;0;13;0\nWireConnection;8;0;14;0\nWireConnection;12;0;11;0\nWireConnection;11;0;10;0\nWireConnection;10;0;17;0\nWireConnection;10;1;8;0\nWireConnection;6;0;1;0\nWireConnection;6;1;4;0\nWireConnection;0;0;12;0\nASEEND*/\n//CHKSM=B5C90CF0D5700F5C3F3B8C5DB01B6C6D1131B549"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 3
+  m_customNodeCategory: 
+  m_previewPosition: 0
