@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Gost_01
+  m_Name: Ghost_01
   m_Shader: {fileID: 4800000, guid: b73acdfd63b7b416ba4c4c1a6df988dc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -17,10 +17,18 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Bias: 0
+    - _BumpScale: 0
     - _Power: 5
     - _Scale: 1.62
+    - _Speed: 0
     - __dirty: 0
+    - _frequency: 2
+    - _length: 0
     m_Colors: []

@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AmplifyGhost
-  m_Shader: {fileID: 4800000, guid: 7b0d1b3d8d42b419f8ce8cdb12415b85, type: 3}
+  m_Name: AmplifyUVScale
+  m_Shader: {fileID: 4800000, guid: 6214e0ae0d0964171b3349f5b39e1268, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -18,16 +18,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: dd2fd2df93418444c8e280f1d34deeb5, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 80ab37a9e4f49c842903bb43bdd7bcd2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7500c8a43fbd6b344affb592fa314394, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -35,16 +31,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _FadeDistance: 34.19
-    - _FadeLength: 22.37
-    - _FadeOffset: 18.8
-    - _Float0: 3.93
-    - _MoreTransparent: -4.41
-    - _NormalScale: 1.1
-    - _Speed: 0.04
-    - _Strength: 0.06
-    - __dirty: 1
-    m_Colors:
-    - FresnelParam: {r: 0.74, g: 1.27, b: 3.8, a: 0}
-    - _Color: {r: 0, g: 0, b: 0, a: 0}
-    - _Color0: {r: 0, g: 0, b: 0, a: 0}
+    - _Float0: 0
+    - _Float1: 0
+    - _Float2: 1
+    - __dirty: 0
+    m_Colors: []
