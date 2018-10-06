@@ -29,7 +29,7 @@ Material:
     m_Floats:
     - _Float0: 97.71
     - _Scale: 3
-    - __dirty: 0
+    - __dirty: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Vector0: {r: 0, g: 0, b: 0, a: 0}
