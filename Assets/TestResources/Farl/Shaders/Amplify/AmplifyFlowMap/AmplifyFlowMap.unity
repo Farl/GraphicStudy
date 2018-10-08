@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18356141, g: 0.22909144, b: 0.3055379, a: 1}
+  m_IndirectSpecularColor: {r: 0.1835619, g: 0.2290922, b: 0.3055392, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ Prefab:
     - target: {fileID: 2391912, guid: 82af4827fee368e4c83d72a25f533a4e, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0957d97a5ee6b4edf98807905f83ce8c, type: 2}
+      objectReference: {fileID: 2100000, guid: da2c233b59617744588b18235eda5f56, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82af4827fee368e4c83d72a25f533a4e, type: 2}
   m_IsPrefabParent: 0
@@ -503,7 +503,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 20772268
+  randomSeed: -612498485
   InitialModule:
     serializedVersion: 3
     enabled: 1
