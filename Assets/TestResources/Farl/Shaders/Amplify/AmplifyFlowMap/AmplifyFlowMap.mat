@@ -19,8 +19,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpTex:
-        m_Texture: {fileID: 2800000, guid: f53512d44b91e954dae7bf028209df1a, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Texture: {fileID: 2800000, guid: 7ddcba51d9fc0894d98b4ba77fbdfbd7, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FlowMap:
         m_Texture: {fileID: 8400000, guid: 7a0a5980402c8dc4883451cecaab01de, type: 2}
@@ -48,15 +48,15 @@ Material:
     - _Float5: 1.28
     - _Float6: 0.84
     - _Float7: 1.46
-    - _FlowStrength: -0.13
+    - _FlowStrength: -0.4
     - _Keyword0: 0
     - _Keyword1: 0
     - _Keyword2: 1
-    - _Metallic: 1
+    - _Metallic: 0.872
     - _NormalCreateOffset: 0.3
     - _NormalCreateStrength: -0.86
-    - _Smoothness: 0.56
-    - _TimeScale: 0.41
+    - _Smoothness: 0.723
+    - _TimeScale: 0.1
     - _TimeScale2: 0.5
     - _UseHeightMap: 0
     - __dirty: 0
