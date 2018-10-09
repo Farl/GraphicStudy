@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: AmplifyWater
+  m_Shader: {fileID: 4800000, guid: 8d5af46d32b844f02ac859508178bafd, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Distortion:
+        m_Texture: {fileID: 2800000, guid: dd2fd2df93418444c8e280f1d34deeb5, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _Foam:
+        m_Texture: {fileID: 2800000, guid: 9fbef4b79ca3b784ba023cb1331520d5, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: bac772f6b98f2df438d2e27aaa3aa158, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaPower: 0.79
+    - _ColorPower: 1.9
+    - _Distance: 1.17
+    - _DistortionScale: 0.22
+    - _FoamPower: 1.04
+    - _GrabPower: -0.48
+    - _Metallic: 0.701
+    - _NormalScale: 0.28
+    - _Smoothness: 0.44
+    - _TimeScale: 1.47
+    - __dirty: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorDeep: {r: 0.07293459, g: 0.52205884, b: 0.37338316, a: 1}
+    - _ColorShallow: {r: 0.36029392, g: 1, b: 0.86764705, a: 0.066}
+    - _PannerSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
