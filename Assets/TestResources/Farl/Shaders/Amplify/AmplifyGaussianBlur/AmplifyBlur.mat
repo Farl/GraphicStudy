@@ -27,7 +27,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BlurRadius: 17.7
+    - _BlurRadius: 4.5
     - _Factor: -3.67
     - _Float4: 3
     - _Radius: 0.5

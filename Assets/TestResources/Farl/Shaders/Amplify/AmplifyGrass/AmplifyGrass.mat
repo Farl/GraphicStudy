@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AmplifyEase
-  m_Shader: {fileID: 4800000, guid: 37e639c15f9f14e5f88f85f9d99d2ada, type: 3}
+  m_Name: AmplifyGrass
+  m_Shader: {fileID: 4800000, guid: 22b9ab243afcd4a11af716cb4e8ca7c3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -17,13 +17,7 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _texcoord:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Floats:
-    - _Method: 1
-    - _Power: 0.37
     - __dirty: 0
     m_Colors: []
