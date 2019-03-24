@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: VolumetricNoiseShadow
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15001\n31;161;962;700;1710.002;276.7618;1.592923;True;False\nNode;AmplifyShaderEditor.FunctionInput;16;-1515.786,-60.59352;Float;False;Position;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ScaleNode;21;-1481.541,206.0202;Float;False;3;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;18;-1776.067,-51.501;Float;False;Light
+    Step;3;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;8;-1276.569,-153.3569;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;19;-1269.074,180.5659;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;62;-550.3539,11.55728;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RangedFloatNode;63;-722.3896,213.8585;Float;False;Property;_ShadowInt;Shadow
+    Int;3;0;Create;True;0;0;False;0;0.5;0;0;1;0;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;7;-1281.292,24.58466;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SaturateNode;28;-391.2588,13.163;Float;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;60;-1140.355,180.6599;Float;False;VolumetricNoise;0;;223;1260022429ccf4d7a9522e4d3cdf3548;0;1;2;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;24;-900.0552,173.1414;Float;False;0.1;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;13;-704.5712,8.360647;Float;False;3;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;61;-1148.355,22.61577;Float;False;VolumetricNoise;0;;222;1260022429ccf4d7a9522e4d3cdf3548;0;1;2;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;22;-907.9051,-152.8891;Float;False;0.6;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ScaleNode;6;-1517.332,44.49252;Float;False;2;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ScaleNode;4;-1500.885,-169.368;Float;False;1;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ScaleNode;23;-911.1484,31.70505;Float;False;0.3;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;59;-1139.4,-152.7946;Float;False;VolumetricNoise;0;;224;1260022429ccf4d7a9522e4d3cdf3548;0;1;2;FLOAT3;0,0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;-250.2586,14.50525;Float;False;True;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;21;0;18;0\nWireConnection;8;0;16;0\nWireConnection;8;1;4;0\nWireConnection;19;0;16;0\nWireConnection;19;1;21;0\nWireConnection;62;0;13;0\nWireConnection;62;1;63;0\nWireConnection;7;0;16;0\nWireConnection;7;1;6;0\nWireConnection;28;0;62;0\nWireConnection;60;2;19;0\nWireConnection;24;0;60;0\nWireConnection;13;0;22;0\nWireConnection;13;1;23;0\nWireConnection;13;2;24;0\nWireConnection;61;2;7;0\nWireConnection;22;0;59;0\nWireConnection;6;0;18;0\nWireConnection;4;0;18;0\nWireConnection;23;0;61;0\nWireConnection;59;2;8;0\nWireConnection;0;0;28;0\nASEEND*/\n//CHKSM=B715907337BB79E8D12B3BE84C9335C91E9A1377"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 3
+  m_customNodeCategory: 
+  m_previewPosition: 0
