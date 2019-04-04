@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 [AddComponentMenu("Noise/Compute Texture")]
@@ -81,7 +83,9 @@ public class ComputeTexture : MonoBehaviour {
 	}
 	
 	public virtual void SaveAsset(){
+		#if UNITY_EDITOR
 		Texture2D output = ConvertFromRenderTexture(rwTexture.rt);
 		AssetDatabase.CreateAsset(output, "Assets/Noise/" + assetName + ".asset");
+		#endif
 	}
 }

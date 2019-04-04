@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 [AddComponentMenu("Noise/Compute Texture 3D")]
@@ -47,6 +49,7 @@ public class ComputeTexture3D : ComputeTexture {
     }
    
     public override void SaveAsset(){
+		#if UNITY_EDITOR
         //for readability
         int dim = squareResolution;
         //Slice 3D Render Texture to individual layers
@@ -74,5 +77,6 @@ public class ComputeTexture3D : ComputeTexture {
         output.Apply();
 
         AssetDatabase.CreateAsset(output, "Assets/Noise/" + assetName + ".asset");
+		#endif
     }
 }

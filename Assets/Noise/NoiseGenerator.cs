@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic; //For list functionality
-using UnityEditor;
 using UnityEngine;
 
 [AddComponentMenu("Noise/Noise Generator")]
