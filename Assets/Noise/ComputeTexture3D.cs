@@ -60,8 +60,15 @@ public class ComputeTexture3D : ComputeTexture {
         Texture2D[] finalSlices = new Texture2D[squareResolution];
         for(int i = 0; i < squareResolution; i++)
             finalSlices[i] = ConvertFromRenderTexture(layers[i]);
+		
         //Build 3D Texture from 2D slices
-        Texture3D output = new Texture3D(dim, dim, dim, TextureFormat.ARGB32, true);
+		bool loaded = true;
+		Texture3D output = AssetDatabase.LoadAssetAtPath<Texture3D>("Assets/Noise/" + assetName + ".asset");
+		if (output == null)
+		{
+        	output = new Texture3D(dim, dim, dim, TextureFormat.ARGB32, true);
+			loaded = false;
+		}
         output.filterMode = FilterMode.Trilinear;
         Color[] outputPixels = output.GetPixels();
         for(int k = 0; k < dim; k++){
@@ -76,7 +83,12 @@ public class ComputeTexture3D : ComputeTexture {
         output.SetPixels(outputPixels);
         output.Apply();
 
-        AssetDatabase.CreateAsset(output, "Assets/Noise/" + assetName + ".asset");
+		if (loaded)
+			AssetDatabase.SaveAssets();
+		else
+        	AssetDatabase.CreateAsset(output, "Assets/Noise/" + assetName + ".asset");
+		
+		AssetDatabase.Refresh();
 		#endif
     }
 }
