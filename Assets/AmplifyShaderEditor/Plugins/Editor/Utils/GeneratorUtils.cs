@@ -264,14 +264,14 @@ namespace AmplifyShaderEditor
 				{
 					dataCollector.UsingHigherSizeTexcoords = true;
 					dataCollector.AddToLocalVariables( dataCollector.PortCategory, uniqueId, PrecisionType.Float, size, "uv" + propertyName, result );
-					dataCollector.AddToLocalVariables( dataCollector.PortCategory, uniqueId, "uv" + propertyName + ".xy = " + result + ".xy * " + propertyName + "_ST.xy + " + propertyName + "_ST.zw;" );
+					dataCollector.AddToLocalVariables( dataCollector.PortCategory, uniqueId, "uv" + indexStr + propertyName + ".xy = " + result + ".xy * " + propertyName + "_ST.xy + " + propertyName + "_ST.zw;" );
 				}
 				else
 				{
-					dataCollector.AddToLocalVariables( dataCollector.PortCategory, uniqueId, PrecisionType.Float, size, "uv" + propertyName, result + " * " + propertyName + "_ST.xy + " + propertyName + "_ST.zw" );
+					dataCollector.AddToLocalVariables( dataCollector.PortCategory, uniqueId, PrecisionType.Float, size, "uv" + indexStr + propertyName, result + " * " + propertyName + "_ST.xy + " + propertyName + "_ST.zw" );
 				}
 
-				result = "uv" + propertyName;
+				result = "uv" + indexStr + propertyName;
 			}
 			else if( !string.IsNullOrEmpty( scale ) && !string.IsNullOrEmpty( offset ) )
 			{

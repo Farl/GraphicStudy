@@ -27,18 +27,18 @@ Material:
     - _DepthStep: 0.5
     - _LightStep: 0.51
     - _Opacity: 0.44
-    - _Radius: 2.02
-    - _RadiusFalloff: 0.64
+    - _Radius: 1.97
+    - _RadiusFalloff: 1.04
     - _RadiusMax: 1
     - _RadiusMin: 0.9
     - _RadiusOut: 5
-    - _Scale: 0.2
+    - _Scale: 0.33
     - _ShadowInt: 0.693
     - __dirty: 0
     m_Colors:
     - _Center: {r: 0, g: 5, b: 0, a: 0}
     - _Color: {r: 0.9191176, g: 0.9364097, b: 1, a: 1}
     - _Coor: {r: 1, g: 1, b: 1, a: 1}
-    - _DensityBiasScalePower: {r: -1.18, g: 2.72, b: 2.25, a: 0}
+    - _DensityBiasScalePower: {r: -1.18, g: 2.03, b: 2.69, a: 0}
     - _SunDir: {r: 0, g: -1, b: 1, a: 0}
     - _WindDir: {r: 0, g: -0.04, b: 0, a: 0}
