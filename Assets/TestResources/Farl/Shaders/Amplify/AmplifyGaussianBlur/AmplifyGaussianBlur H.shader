@@ -118,12 +118,12 @@ Shader "Custom/Farl/Amplify/AmplifyGaussianBlur H"
 }
 /*ASEBEGIN
 Version=15001
-255;417;940;435;1302.935;399.3765;1.363429;True;False
+0;45;831;855;910.2675;748.4142;1.363429;True;False
 Node;AmplifyShaderEditor.TemplateShaderPropertyNode;3;-812.9439,-64.3427;Float;False;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.Vector4Node;8;-705.7526,-243.9456;Half;False;Property;_BlurOffsets;BlurOffsets;1;0;Create;True;0;0;False;0;0,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.CustomTextureCoordinatesNode;4;-685.2154,117.8274;Float;False;0;-1;2;;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;6;-565.8627,21.50754;Float;False;Property;_Radius;Radius;0;0;Create;True;0;0;False;0;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ScreenParams;7;-555.3494,-378.9013;Float;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.Vector4Node;8;-705.7526,-243.9456;Half;False;Property;_BlurOffsets;BlurOffsets;1;0;Create;True;0;0;False;0;0,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.FunctionNode;2;-307,-70.5;Float;False;Gaussian Blur 2D;-1;;1;a124a256111673e4a8c38a493d3e6f8a;0;5;86;FLOAT2;256,256;False;29;FLOAT2;1,0;False;27;FLOAT;0;False;1;SAMPLER2D;;False;5;FLOAT2;0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;2;Float;ASEMaterialInspector;0;1;Custom/Farl/Amplify/AmplifyGaussianBlur H;c71b220b631b6344493ea3cf87110c93;0;0;SubShader 0 Pass 0;1;False;False;True;Off;False;False;True;2;True;7;False;True;0;False;0;0;0;False;False;False;False;False;False;False;False;False;True;2;0;0;0;1;0;FLOAT4;0,0,0,0;False;0
 WireConnection;4;2;3;0
@@ -134,4 +134,4 @@ WireConnection;2;1;3;0
 WireConnection;2;5;4;0
 WireConnection;1;0;2;0
 ASEEND*/
-//CHKSM=B5EEADDFD4103135B310C68380C09E8D9EE77B70
+//CHKSM=A78044FABF99DC01C008A38DB808E79CF7139E8D

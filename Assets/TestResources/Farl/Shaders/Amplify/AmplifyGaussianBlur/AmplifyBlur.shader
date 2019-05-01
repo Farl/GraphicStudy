@@ -187,11 +187,11 @@ Shader "Custom/Farl/Amplify/AmplifyBlur"
 }
 /*ASEBEGIN
 Version=15001
-432;311;1010;692;553.0769;487.9616;1.335159;True;False
-Node;AmplifyShaderEditor.RangedFloatNode;29;22.5371,-124.3547;Float;False;Property;_BlurRadius;Blur Radius;0;0;Create;True;0;0;False;0;2;17.7;0;0;0;1;FLOAT;0
+0;45;831;855;224.6278;570.7414;1.335159;True;False
+Node;AmplifyShaderEditor.RangedFloatNode;29;22.5371,-124.3547;Float;False;Property;_BlurRadius;Blur Radius;0;0;Create;True;0;0;False;0;2;4.5;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.TemplateShaderPropertyNode;2;204.131,-65.37553;Float;False;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ScreenParams;26;195.2529,-251.0805;Float;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.CustomTextureCoordinatesNode;6;52.70612,14.23163;Float;False;0;-1;2;_MainTex;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateShaderPropertyNode;2;204.131,-65.37553;Float;False;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.FunctionNode;83;399.942,-147.5987;Float;False;GaussianBlur;-1;;282;c6de34130b3467b4ca3bbe312526f8a6;0;4;1;FLOAT2;0,0;False;2;FLOAT;2;False;3;SAMPLER2D;0;False;4;FLOAT2;0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;654.3329,-153.7018;Float;False;True;2;Float;ASEMaterialInspector;0;1;Custom/Farl/Amplify/AmplifyBlur;c71b220b631b6344493ea3cf87110c93;0;0;SubShader 0 Pass 0;1;False;False;True;Off;False;False;True;2;True;7;False;True;0;False;0;0;0;False;False;False;False;False;False;False;False;False;True;2;0;0;0;1;0;FLOAT4;0,0,0,0;False;0
 WireConnection;83;1;26;0
@@ -200,4 +200,4 @@ WireConnection;83;3;2;0
 WireConnection;83;4;6;0
 WireConnection;1;0;83;0
 ASEEND*/
-//CHKSM=2E4477FEC233DDF6B20EC1E7B31FD92B090634EB
+//CHKSM=A2538E3566B32A0347571D42A6FB53718FC73BF9

@@ -113,6 +113,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!84 &37475241
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 128
+  m_Height: 128
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 3
+  m_VolumeDepth: 128
 --- !u!1 &542844275
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +153,6 @@ GameObject:
   m_Component:
   - component: {fileID: 542844281}
   - component: {fileID: 542844280}
-  - component: {fileID: 542844279}
   - component: {fileID: 542844278}
   - component: {fileID: 542844277}
   - component: {fileID: 542844276}
@@ -148,13 +178,26 @@ MonoBehaviour:
   kernelName: Noise3D1Gen
   rwTexture:
     name: Noise3D1
-    rt: {fileID: 1428448335}
+    rt: {fileID: 37475241}
   squareResolution: 128
   parameters:
   - name: Tex3D1Res
     value: 128
   - name: perlinToWorleyRatio
-    value: 0
+    value: 0.5
+  vecParameters:
+  - name: perlinParameter
+    value: {x: 4, y: 4, z: 4, w: 4}
+  - name: worleyParameter
+    value: {x: 4, y: 4, z: 4, w: 4}
+  - name: perlinHigh
+    value: {x: 1.25, y: 1.25, z: 1.25, w: 1.25}
+  - name: perlinLow
+    value: {x: 0.6, y: 0.6, z: 0.6, w: 0.6}
+  - name: worleyHigh
+    value: {x: 1, y: 1, z: 1, w: 1}
+  - name: worleyLow
+    value: {x: -1, y: -1, z: -1, w: -1}
   computeThreads:
     x: 8
     y: 8
@@ -209,19 +252,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &542844279
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 542844275}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &542844280
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -251,7 +281,6 @@ GameObject:
   m_Component:
   - component: {fileID: 957098279}
   - component: {fileID: 957098278}
-  - component: {fileID: 957098277}
   - component: {fileID: 957098276}
   m_Layer: 0
   m_Name: Debug2
@@ -294,19 +323,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &957098277
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 957098275}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &957098278
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -473,34 +489,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!84 &1428448335
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 128
-  m_Height: 128
-  m_AntiAliasing: 1
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 3
-  m_VolumeDepth: 128

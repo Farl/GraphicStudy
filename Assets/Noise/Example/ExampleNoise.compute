@@ -13,7 +13,13 @@ float Tex3D1Res;
 float Tex3D2Res;
 float Tex2DRes;
 
-float perlinToWorleyRatio = -1;
+float perlinToWorleyRatio = 0.5;
+float4 perlinParameter = float4(4, 4, 4, 4);
+float4 worleyParameter = float4(4, 4, 4, 4);
+float4 perlinLow = float4(-1, -1, -1, -1);
+float4 perlinHigh = float4(1, 1, 1, 1);
+float4 worleyLow = float4(-1, -1, -1, -1);
+float4 worleyHigh = float4(1, 1, 1, 1);
 
 //---------------------------------------------------------------------------------------------------------
 // Math Functions
@@ -248,40 +254,33 @@ float worley3(float3 p, float s){
 [numthreads(8,8,8)]
 void Noise3D1Gen (uint3 id : SV_DispatchThreadID)
 {
-	if (perlinToWorleyRatio < 0)
-		perlinToWorleyRatio = 0.3;
-
-	float tex1RPerlinLow 	=  -1;
-	float tex1RPerlinHigh 	=  1;
-	float tex1RWorleyLow 	= -0.3;
-	float tex1RWorleyHigh 	=  1.3;
-	float tex1GBAWorleyLow	= -0.4;
-	float tex1GBAWorleyHigh =  1.0;
+	//float perlinToWorleyRatio = 0.3;
+	//float tex1RPerlinLow 	=  -1;
+	//float tex1RPerlinHigh 	=  1;
+	//float tex1RWorleyLow 	= -0.3;
+	//float tex1RWorleyHigh 	=  1.3;
+	//float tex1GBAWorleyLow	= -0.4;
+	//float tex1GBAWorleyHigh =  1.0;
 
 	float3 xyz = (float3)id.xyz/Tex3D1Res;
 
-	float perlinR = perlin7(xyz, 4.0);
-	float worleyR = worley3(xyz, 6.0);
-	float worleyG = worley3(xyz, 6.0);
-	float worleyB = worley3(xyz, 12.0);
-	float worleyA = worley3(xyz, 24.0);
+	//float perlinR = perlin7(xyz, 4.0);
+	//float worleyR = worley3(xyz, 6.0);
+	//float worleyG = worley3(xyz, 6.0);
+	//float worleyB = worley3(xyz, 12.0);
+	//float worleyA = worley3(xyz, 24.0);
 
-	perlinR = setRange(perlinR, tex1RPerlinLow, tex1RPerlinHigh);
-	worleyR = setRange(worleyR, tex1RWorleyLow, tex1RWorleyHigh);
-	worleyG = setRange(worleyG, tex1GBAWorleyLow, tex1GBAWorleyHigh);
-	worleyB = setRange(worleyB, tex1GBAWorleyLow, tex1GBAWorleyHigh);
-	worleyA = setRange(worleyA, tex1GBAWorleyLow, tex1GBAWorleyHigh);
+	//perlinR = setRange(perlinR, tex1RPerlinLow, tex1RPerlinHigh);
+	//worleyR = setRange(worleyR, tex1RWorleyLow, tex1RWorleyHigh);
+	//worleyG = setRange(worleyG, tex1GBAWorleyLow, tex1GBAWorleyHigh);
+	//worleyB = setRange(worleyB, tex1GBAWorleyLow, tex1GBAWorleyHigh);
+	//worleyA = setRange(worleyA, tex1GBAWorleyLow, tex1GBAWorleyHigh);
 
-	float worleyPerlin = dilatePerlinWorley(perlinR, worleyR, perlinToWorleyRatio);
+	//float worleyPerlin = dilatePerlinWorley(perlinR, worleyR, perlinToWorleyRatio);
 
 	//float v = perlin5(xyz, false);
 	//float v = curlNoise(xyz);
 	//float v = perlin(xyz, 5, true);
-	Noise3D1[id.xyz] = float4(
-		dilatePerlinWorley(perlin7(xyz, 1), worley3(xyz, 1), perlinToWorleyRatio),
-		dilatePerlinWorley(perlin7(xyz, 2), worley3(xyz, 2), perlinToWorleyRatio),
-		dilatePerlinWorley(perlin7(xyz, 3), worley3(xyz, 3), perlinToWorleyRatio),
-		dilatePerlinWorley(perlin7(xyz, 4), worley3(xyz, 4), perlinToWorleyRatio));
 
 	// Example
 	//Noise3D1[id.xyz] = float4(worleyPerlin, 1.0-worleyG, 1.0-worleyB, 1.0-worleyA);
@@ -291,6 +290,15 @@ void Noise3D1Gen (uint3 id : SV_DispatchThreadID)
 	//Noise3D1[id.xyz] = float4(1.0-worleyG, 1.0-worleyG, 1.0-worleyG, 1.0);
 	//Noise3D1[id.xyz] = float4(1.0-worleyB, 1.0-worleyB, 1.0-worleyB, 1.0);
 	//Noise3D1[id.xyz] = float4(1.0-worleyA, 1.0-worleyA, 1.0-worleyA, 1.0);
+
+	float4 noise = float4(1, 1, 1, 1);
+	for (int i = 0; i < 4; i++)
+	{
+		noise[i] = dilatePerlinWorley(setRange(perlin7(xyz, perlinParameter[i]), perlinLow[i], perlinHigh[i]),
+		setRange(worley3(xyz, worleyParameter[i]), worleyLow[i], worleyHigh[i]), perlinToWorleyRatio);
+	}
+
+	Noise3D1[id.xyz] = noise;
 }
 
 //Needs to be passed in to the C# script via the inspector

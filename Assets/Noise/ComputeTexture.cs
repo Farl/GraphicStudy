@@ -20,6 +20,9 @@ public class ComputeTexture : MonoBehaviour {
 	public struct ComputeParameterFloat{ public string name; public float value; }
 
 	[System.Serializable]
+	public struct ComputeParameterVector{ public string name; public Vector4 value; }
+
+	[System.Serializable]
 	public struct ComputeRWTexture{ 
 		public string name;
 		[HideInInspector] 
@@ -32,8 +35,9 @@ public class ComputeTexture : MonoBehaviour {
 	public string assetName;
     public string kernelName;
 	public ComputeRWTexture rwTexture;
-    public int squareResolution;
+	public int squareResolution;
 	public ComputeParameterFloat[] parameters;
+	public ComputeParameterVector[] vecParameters;
 	public IntVector3 computeThreads;
 	public ComputeShader computeShader;
 
@@ -64,6 +68,8 @@ public class ComputeTexture : MonoBehaviour {
 		**editor window could allow for more modularity.*/
 		foreach(ComputeParameterFloat param in parameters)
 			computeShader.SetFloat(param.name, param.value);
+		foreach(ComputeParameterVector param in vecParameters)
+			computeShader.SetVector(param.name, param.value);
 	}
 
 	public void SetTexture(){
