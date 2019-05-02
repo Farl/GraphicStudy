@@ -83,7 +83,7 @@ public class TargetCommandBufferBlur : MonoBehaviour
 		int rtID = Shader.PropertyToID ("_MaskRT");
 		buf.GetTemporaryRT (blurredID, -2, -2, 0, FilterMode.Bilinear);
 		buf.GetTemporaryRT (blurredID2, -2, -2, 0, FilterMode.Bilinear);
-		buf.GetTemporaryRT (rtID, -2, -2, 0, FilterMode.Bilinear);
+		buf.GetTemporaryRT (rtID, -2, -2, 1, FilterMode.Bilinear);
 		
 		// downsample screen copy into smaller RT, release screen RT
 		buf.Blit (screenCopyID, blurredID);
