@@ -10,7 +10,9 @@ public class TargetCommandBufferBlur : MonoBehaviour
 	public Renderer[] targetRenderers;
 	public Material maskMaterial;
 
-	private Material m_Material;
+    static private CameraEvent cameraEvent = CameraEvent.BeforeImageEffects;
+
+    private Material m_Material;
 
 
 	private Camera m_Cam;
@@ -26,7 +28,7 @@ public class TargetCommandBufferBlur : MonoBehaviour
 		{
 			if (cam.Key)
 			{
-				cam.Key.RemoveCommandBuffer (CameraEvent.AfterSkybox, cam.Value);
+				cam.Key.RemoveCommandBuffer (cameraEvent, cam.Value);
 			}
 		}
 		m_Cameras.Clear();
@@ -74,41 +76,46 @@ public class TargetCommandBufferBlur : MonoBehaviour
 
 		// copy screen into temporary RT
 		int screenCopyID = Shader.PropertyToID("_ScreenCopyTexture");
-		buf.GetTemporaryRT (screenCopyID, -1, -1, 0, FilterMode.Bilinear);
-		buf.Blit (BuiltinRenderTextureType.CurrentActive, screenCopyID);
-		
-		// get two smaller RTs
-		int blurredID = Shader.PropertyToID("_Temp1");
+        int maskID = Shader.PropertyToID("_MaskRT");
+        int maskID2 = Shader.PropertyToID("_MaskRT2");
+
+        buf.GetTemporaryRT (screenCopyID, -1, -1, 0, FilterMode.Bilinear);
+        buf.GetTemporaryRT(maskID, -1, -1, 32, FilterMode.Bilinear, RenderTextureFormat.ARGBHalf);
+        buf.GetTemporaryRT(maskID2, -1, -1, 0, FilterMode.Bilinear);
+
+        buf.Blit(BuiltinRenderTextureType.CurrentActive, screenCopyID);
+        buf.Blit(BuiltinRenderTextureType.CurrentActive, maskID);
+
+        // get two smaller RTs
+        int blurredID = Shader.PropertyToID("_Temp1");
 		int blurredID2 = Shader.PropertyToID("_Temp2");
-		int rtID = Shader.PropertyToID ("_MaskRT");
 		buf.GetTemporaryRT (blurredID, -2, -2, 0, FilterMode.Bilinear);
 		buf.GetTemporaryRT (blurredID2, -2, -2, 0, FilterMode.Bilinear);
-		buf.GetTemporaryRT (rtID, -2, -2, 1, FilterMode.Bilinear);
 		
 		// downsample screen copy into smaller RT, release screen RT
 		buf.Blit (screenCopyID, blurredID);
-		buf.Blit (screenCopyID, rtID);
-
 		buf.ReleaseTemporaryRT (screenCopyID); 
 		
 		// horizontal blur
-		buf.SetGlobalVector("offsets", new Vector4(2.0f/Screen.width,0,0,0));
+		buf.SetGlobalVector("offsets", new Vector4(2,0,0,0));
 		buf.Blit (blurredID, blurredID2, m_Material);
 		// vertical blur
-		buf.SetGlobalVector("offsets", new Vector4(0,2.0f/Screen.height,0,0));
+		buf.SetGlobalVector("offsets", new Vector4(0,2,0,0));
 		buf.Blit (blurredID2, blurredID, m_Material);
 		// horizontal blur
-		buf.SetGlobalVector("offsets", new Vector4(4.0f/Screen.width,0,0,0));
+		buf.SetGlobalVector("offsets", new Vector4(4,0,0,0));
 		buf.Blit (blurredID, blurredID2, m_Material);
 		// vertical blur
-		buf.SetGlobalVector("offsets", new Vector4(0,4.0f/Screen.height,0,0));
+		buf.SetGlobalVector("offsets", new Vector4(0,4,0,0));
 		buf.Blit (blurredID2, blurredID, m_Material);
 
 		buf.SetGlobalTexture("_GrabBlurTexture", blurredID);
 
-		// Draw mask
+        buf.ReleaseTemporaryRT(blurredID2);
 
-		buf.SetRenderTarget (rtID);
+        // Draw mask
+
+        buf.SetRenderTarget (maskID);
 
 		// clear render texture before drawing to it each frame!!
 		buf.ClearRenderTarget(false, true, new Color(0, 0, 0, 0));
@@ -116,12 +123,14 @@ public class TargetCommandBufferBlur : MonoBehaviour
 		foreach (Renderer r in targetRenderers) {
 			buf.DrawRenderer (r, maskMaterial);
 		}
-		buf.SetGlobalVector("offsets", new Vector4(4.0f/Screen.width,0,0,0));
-		buf.Blit (rtID, blurredID2, m_Material);
-		buf.SetGlobalVector("offsets", new Vector4(0,4.0f/Screen.height,0,0));
-		buf.Blit (blurredID2, rtID, m_Material);
-		buf.SetGlobalTexture("_MaskTex", rtID);
+		buf.SetGlobalVector("offsets", new Vector4(4,0,0,0));
+		buf.Blit (maskID, maskID2, m_Material);
+		buf.SetGlobalVector("offsets", new Vector4(0,4,0,0));
+		buf.Blit (maskID2, maskID, m_Material);
+		buf.SetGlobalTexture("_MaskTex", maskID);
 
-		cam.AddCommandBuffer (CameraEvent.AfterSkybox, buf);
+        buf.ReleaseTemporaryRT(maskID2);
+
+        cam.AddCommandBuffer (cameraEvent, buf);
 	}	
 }
