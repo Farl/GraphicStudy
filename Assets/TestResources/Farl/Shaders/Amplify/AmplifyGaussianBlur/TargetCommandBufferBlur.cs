@@ -4,75 +4,35 @@ using System.Collections.Generic;
 
 // See _ReadMe.txt for an overview
 [ExecuteInEditMode]
-public class TargetCommandBufferBlur : MonoBehaviour
+public class TargetCommandBufferBlur : CommandBufferSetup
 {
-	public Shader m_BlurShader;
-	public Renderer[] targetRenderers;
+	public Shader blurShader;
+	private Material blurMaterial;
+
 	public Material maskMaterial;
 
-    static private CameraEvent cameraEvent = CameraEvent.BeforeImageEffects;
-
-    private Material m_Material;
-
-
-	private Camera m_Cam;
-
-	// We'll want to add a command buffer on any camera that renders us,
-	// so have a dictionary of them.
-	private Dictionary<Camera,CommandBuffer> m_Cameras = new Dictionary<Camera,CommandBuffer>();
-
 	// Remove command buffers from all cameras we added into
-	private void Cleanup()
+	public override void Cleanup()
 	{
-		foreach (var cam in m_Cameras)
-		{
-			if (cam.Key)
-			{
-				cam.Key.RemoveCommandBuffer (cameraEvent, cam.Value);
-			}
-		}
-		m_Cameras.Clear();
-		Object.DestroyImmediate (m_Material);
-	}
-
-	public void OnEnable()
-	{
-		Cleanup();
-	}
-
-	public void OnDisable()
-	{
-		Cleanup();
+		base.Cleanup ();
+		Object.DestroyImmediate (blurMaterial);
 	}
 
 	// Whenever any camera will render us, add a command buffer to do the work on it
-	public void OnWillRenderObject()
+	protected override void SetupCommandBuffer(CommandBuffer buf)
 	{
-		var act = gameObject.activeInHierarchy && enabled;
-		if (!act)
+		if (!blurMaterial && blurShader)
 		{
-			Cleanup();
-			return;
-		}
-		
-		var cam = Camera.current;
-		if (!cam)
-			return;
-
-		CommandBuffer buf = null;
-		// Did we already add the command buffer on this camera? Nothing to do then.
-		if (m_Cameras.ContainsKey(cam))
-			return;
-
-		if (!m_Material)
-		{
-			m_Material = new Material(m_BlurShader);
-			m_Material.hideFlags = HideFlags.HideAndDontSave;
+			blurMaterial = new Material(blurShader);
+			blurMaterial.hideFlags = HideFlags.HideAndDontSave;
 		}
 
-		buf = new CommandBuffer();
-		buf.name = "Grab screen and blur";
-		m_Cameras[cam] = buf;
+		List<Renderer> rendererList = CollectRenderer ();
+
+		if (!blurMaterial)
+			return;
+		if (!maskMaterial)
+			return;
 
 		// copy screen into temporary RT
 		int screenCopyID = Shader.PropertyToID("_ScreenCopyTexture");
@@ -98,16 +58,16 @@ public class TargetCommandBufferBlur : MonoBehaviour
 		
 		// horizontal blur
 		buf.SetGlobalVector("offsets", new Vector4(2,0,0,0));
-		buf.Blit (blurredID, blurredID2, m_Material);
+		buf.Blit (blurredID, blurredID2, blurMaterial);
 		// vertical blur
 		buf.SetGlobalVector("offsets", new Vector4(0,2,0,0));
-		buf.Blit (blurredID2, blurredID, m_Material);
+		buf.Blit (blurredID2, blurredID, blurMaterial);
 		// horizontal blur
 		buf.SetGlobalVector("offsets", new Vector4(4,0,0,0));
-		buf.Blit (blurredID, blurredID2, m_Material);
+		buf.Blit (blurredID, blurredID2, blurMaterial);
 		// vertical blur
 		buf.SetGlobalVector("offsets", new Vector4(0,4,0,0));
-		buf.Blit (blurredID2, blurredID, m_Material);
+		buf.Blit (blurredID2, blurredID, blurMaterial);
 
 		buf.SetGlobalTexture("_GrabBlurTexture", blurredID);
 
@@ -120,17 +80,20 @@ public class TargetCommandBufferBlur : MonoBehaviour
 		// clear render texture before drawing to it each frame!!
 		buf.ClearRenderTarget(false, true, new Color(0, 0, 0, 0));
 
-		foreach (Renderer r in targetRenderers) {
-			buf.DrawRenderer (r, maskMaterial);
+		foreach (Renderer r in rendererList) {
+			int i = 0;
+			foreach (Material m in r.sharedMaterials) {
+				buf.DrawRenderer (r, maskMaterial, i, -1);
+				i++;
+			}
 		}
+
 		buf.SetGlobalVector("offsets", new Vector4(4,0,0,0));
-		buf.Blit (maskID, maskID2, m_Material);
+		buf.Blit (maskID, maskID2, blurMaterial);
 		buf.SetGlobalVector("offsets", new Vector4(0,4,0,0));
-		buf.Blit (maskID2, maskID, m_Material);
+		buf.Blit (maskID2, maskID, blurMaterial);
 		buf.SetGlobalTexture("_MaskTex", maskID);
 
         buf.ReleaseTemporaryRT(maskID2);
-
-        cam.AddCommandBuffer (cameraEvent, buf);
 	}	
 }

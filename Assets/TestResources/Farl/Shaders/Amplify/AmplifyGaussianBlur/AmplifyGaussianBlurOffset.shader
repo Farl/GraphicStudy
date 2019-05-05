@@ -7,7 +7,7 @@ Shader "Custom/Farl/Amplify/AmplifyGaussianBlurOffset"
 	Properties
 	{
 		_MainTex ( "Screen", 2D ) = "black" {}
-		_Radius("Radius", Float) = 4
+		_Radius("Radius", Float) = 2
 	}
 
 	SubShader
@@ -117,12 +117,12 @@ Shader "Custom/Farl/Amplify/AmplifyGaussianBlurOffset"
 }
 /*ASEBEGIN
 Version=15001
-2122;374;1620;736;1156.685;349.7319;1;True;True
-Node;AmplifyShaderEditor.Vector4Node;8;-666.7897,-200.5531;Half;False;Global;offsets;offsets;1;1;[HideInInspector];Create;True;0;0;True;0;0,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.CustomTextureCoordinatesNode;11;-692.8605,141.7771;Float;False;0;-1;2;_MainTex;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;6;-645.5881,-22.59573;Float;False;Property;_Radius;Radius;0;0;Create;True;0;0;False;0;4;1;0;0;0;1;FLOAT;0
+483;45;831;855;1156.685;349.7319;1;True;False
 Node;AmplifyShaderEditor.TemplateShaderPropertyNode;3;-631.25,50.11591;Float;False;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ScreenParams;7;-653.7335,-373.8124;Float;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;6;-645.5881,-22.59573;Float;False;Property;_Radius;Radius;0;0;Create;True;0;0;False;0;2;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.Vector4Node;8;-666.7897,-200.5531;Half;False;Global;offsets;offsets;1;1;[HideInInspector];Create;True;0;0;True;0;0,1,0,0;0,0,0,0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.CustomTextureCoordinatesNode;11;-692.8605,141.7771;Float;False;0;-1;2;_MainTex;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.FunctionNode;2;-307,-70.5;Float;False;Gaussian Blur 2D;-1;;1;a124a256111673e4a8c38a493d3e6f8a;0;5;86;FLOAT2;256,256;False;29;FLOAT2;1,0;False;27;FLOAT;0;False;1;SAMPLER2D;;False;5;FLOAT2;0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;2;Float;ASEMaterialInspector;0;1;Custom/Farl/Amplify/AmplifyGaussianBlurOffset;c71b220b631b6344493ea3cf87110c93;0;0;SubShader 0 Pass 0;1;False;False;True;Off;False;False;True;2;True;7;False;True;0;False;0;0;0;False;False;False;False;False;False;False;False;False;True;2;0;0;0;1;0;FLOAT4;0,0,0,0;False;0
 WireConnection;2;86;7;0
@@ -132,4 +132,4 @@ WireConnection;2;1;3;0
 WireConnection;2;5;11;0
 WireConnection;1;0;2;0
 ASEEND*/
-//CHKSM=60460D84D5C89D304300FEFAB6EDC2B3C1CA7D8F
+//CHKSM=9AA9B2075B3D052DAEFC8C19EC03F61900CD31B1
