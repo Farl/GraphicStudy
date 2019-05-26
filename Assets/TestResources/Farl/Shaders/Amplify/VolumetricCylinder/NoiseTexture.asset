@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: NoiseTexture
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15001\n0;454;1440;446;3796.715;684.1926;3.651383;True;False\nNode;AmplifyShaderEditor.FunctionInput;34;-2375.205,-253.0514;Float;False;Curl
+    Noise Panner;3;4;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;9;-2104.721,-234.5165;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleTimeNode;1;-2339.693,-21.18343;Float;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;23;-1695.982,459.1452;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RelayNode;6;-2097.937,383.1659;Float;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.ViewMatrixNode;16;-1467.467,-647.6856;Float;False;0;1;FLOAT4x4;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;10;-1935.53,-16.11699;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-522.5766,-61.64233;Float;False;3;3;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;44;-2279.51,383.3628;Float;False;World
+    Pos;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.WorldPosInputsNode;45;-2506.295,383.3627;Float;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.ViewDirInputsCoordNode;17;-1242.242,-455.8085;Float;False;World;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3\nNode;AmplifyShaderEditor.FunctionInput;35;-2340.47,210.0761;Float;False;Noise
+    Panner;3;3;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;22;-1895.687,280.0455;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.VectorFromMatrixNode;18;-1311.467,-652.6856;Float;False;Row;0;1;0;FLOAT4x4;1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SimpleAddOpNode;25;-374.5069,435.7682;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.BreakToComponentsNode;41;-42.08511,636.5518;Float;False;FLOAT3;1;0;FLOAT3;0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15\nNode;AmplifyShaderEditor.FunctionInput;38;-353.2465,636.5519;Float;False;Desity
+    (Bias, Scale, Power);3;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.CrossProductOpNode;19;-1025.545,-580.1336;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.RotateAboutAxisNode;3;-835.2295,-460.863;Float;False;True;4;0;FLOAT3;1,1,1;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;1,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;2;-1202.132,-281.3948;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;3.1415;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;39;-755.7076,37.85004;Float;False;Curl
+    Scale;1;6;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;43;618.366,437.1781;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;11;-2115.724,193.1543;Float;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;14;-1684.464,-37.10222;Float;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.PowerNode;29;434.7886,433.1955;Float;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;42;259.4777,435.5973;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;37;-1920.76,476.2396;Float;False;Noise
+    Scale;1;2;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;36;-1904.842,-131.4804;Float;False;Curl
+    Noise Scale;1;5;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SamplerNode;47;-252.5057,408.3701;Float;True;Property;_TextureSample0;Texture
+    Sample 0;0;1;[NoScaleOffset];Create;False;0;0;False;0;None;None;True;0;False;white;LockedToTexture3D;False;Instance;46;Auto;Texture3D;6;0;SAMPLER2D;;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SamplerNode;46;-1499.025,-51.87019;Float;True;Property;_3DNoise;3D
+    Noise;0;1;[NoScaleOffset];Create;False;0;0;False;0;None;None;True;0;False;white;LockedToTexture3D;False;Object;-1;Auto;Texture3D;6;0;SAMPLER2D;;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionOutput;0;780.4423,433.6781;Float;False;True;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;9;0;34;0\nWireConnection;9;1;1;0\nWireConnection;23;0;22;0\nWireConnection;23;1;37;0\nWireConnection;6;0;44;0\nWireConnection;10;0;9;0\nWireConnection;10;1;6;0\nWireConnection;4;0;3;0\nWireConnection;4;1;46;1\nWireConnection;4;2;39;0\nWireConnection;44;0;45;0\nWireConnection;22;0;11;0\nWireConnection;22;1;6;0\nWireConnection;18;0;16;0\nWireConnection;25;0;4;0\nWireConnection;25;1;23;0\nWireConnection;41;0;38;0\nWireConnection;19;0;18;0\nWireConnection;19;1;17;0\nWireConnection;3;0;17;0\nWireConnection;3;1;2;0\nWireConnection;3;3;19;0\nWireConnection;2;0;46;1\nWireConnection;43;0;29;0\nWireConnection;43;1;41;0\nWireConnection;11;0;1;0\nWireConnection;11;1;35;0\nWireConnection;14;0;36;0\nWireConnection;14;1;10;0\nWireConnection;29;0;42;0\nWireConnection;29;1;41;2\nWireConnection;42;0;47;1\nWireConnection;42;1;41;1\nWireConnection;47;1;25;0\nWireConnection;46;1;14;0\nWireConnection;0;0;43;0\nASEEND*/\n//CHKSM=BF3F00C4877DF70A6571C1CF5BCBE289696AF0C4"
+  m_functionName: 
+  m_description: Noise Texture
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 0
+  m_customNodeCategory: Farl
+  m_previewPosition: 0
