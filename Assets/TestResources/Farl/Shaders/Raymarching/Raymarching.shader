@@ -40,7 +40,7 @@ Shader "Custom/Farl/Raymarching"
 
 		Pass
 		{
-			Cull Back
+			Cull Off
 			Name "Test"
 			ZWrite On
 
