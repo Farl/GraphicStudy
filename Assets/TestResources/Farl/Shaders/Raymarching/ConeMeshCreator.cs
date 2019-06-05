@@ -38,19 +38,19 @@ public class ConeMeshCreator : MonoBehaviour {
 			for (int j = 0; j < segment; j++) {
 
 				for (int i = 0; i < slice; i++) {
-					Vector3 pos0 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, j * height / segment), (j+0) * height / segment, 0);
+					Vector3 pos0 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, j * height / (segment - 1)), (j+0) * height / segment, 0);
 					pos0 = Quaternion.Euler (new Vector3 (0, (i+0) * 360.0f / slice, 0)) * pos0;
 					vertices.Add (pos0);
 					indices.Add (indices.Count);
-					Vector3 pos1 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, j * height / segment), (j+0) * height / segment, 0);
+					Vector3 pos1 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, j * height / (segment - 1)), (j+0) * height / segment, 0);
 					pos1 = Quaternion.Euler (new Vector3 (0, ((i+1) % slice) * 360.0f / slice, 0)) * pos1;
 					vertices.Add (pos1);
 					indices.Add (indices.Count);
-					Vector3 pos2 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, ((j+1) % segment) * height / segment), ((j+1) % segment) * height / segment, 0);
+					Vector3 pos2 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, ((j+1) % segment) * height / (segment - 1)), ((j+1) % segment) * height / segment, 0);
 					pos2 = Quaternion.Euler (new Vector3 (0, ((i+1) % slice) * 360.0f / slice, 0)) * pos2;
 					vertices.Add (pos2);
 					indices.Add (indices.Count);
-					Vector3 pos3 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, ((j+1) % segment) * height / segment), ((j+1) % segment) * height / segment, 0);
+					Vector3 pos3 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, ((j+1) % segment) * height / (segment - 1)), ((j+1) % segment) * height / segment, 0);
 					pos3 = Quaternion.Euler (new Vector3 (0, (i+0) * 360.0f / slice, 0)) * pos3;
 					vertices.Add (pos3);
 					indices.Add (indices.Count);
