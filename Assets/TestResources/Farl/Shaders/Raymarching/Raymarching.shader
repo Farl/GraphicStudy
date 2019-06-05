@@ -119,6 +119,19 @@ Shader "Custom/Farl/Raymarching"
 				return length(p.xz - c.xy) - c.z;
 			}
 
+			float sdf_cappedCone(float3 p, float3 c, float h, float r1, float r2 )
+			{
+				p = p - c;
+			    float2 q = float2( length(p.xz), p.y );
+			    
+			    float2 k1 = float2(r2,h);
+			    float2 k2 = float2(r2-r1,2.0*h);
+			    float2 ca = float2(q.x-min(q.x,(q.y < 0.0)?r1:r2), abs(q.y)-h);
+			    float2 cb = q - k1 + k2*clamp( dot(k1-q,k2)/dot(k2, k2), 0.0, 1.0 );
+			    float s = (cb.x < 0.0 && ca.y < 0.0) ? -1.0 : 1.0;
+			    return s*sqrt( min(dot(ca,ca),dot(cb,cb)) );
+			}
+
 			float sdf_cone( float3 p, float3 c, float3 s )
 			{
 			    float2 q = float2( length(p.xz - c.xz), p.y - c.y );
@@ -156,7 +169,7 @@ Shader "Custom/Farl/Raymarching"
 
 				float v2 = sdf_lerp(
 				sdf_sphere(worldPos, _Center2, _Size2.x),
-				sdf_cone(worldPos, _Center2, _Size2),
+				sdf_cappedCone(worldPos, _Center2, _Size2.z, _Size2.x, _Size2.y),
 				((sin(_Time * 20) + 1) * 0.5));
 
 				return sdf_union(v1, v2);
