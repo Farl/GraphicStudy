@@ -1,4 +1,7 @@
-﻿// http://matthias-mueller-fischer.ch/talks/GDC2008.pdf
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// http://matthias-mueller-fischer.ch/talks/GDC2008.pdf
 
 Shader "Hidden/Farl/RTClick"
 {
@@ -19,14 +22,33 @@ Shader "Hidden/Farl/RTClick"
 		sampler2D _PositionBuffer;
 		uniform float4 _PositionBuffer_TexelSize;
 		sampler2D _VelocityBuffer;
+		float4 _ClickList[6];
 
-		float4 updatePosition(v2f_img i) : SV_Target
+		struct v2f 
+		{
+			float4 pos  : POSITION;
+			float2 uv   : TEXCOORD0;
+			float3 wpos : TEXCOORD1;
+			float3 vpos : TEXCOORD2;
+		};
+
+		float4 updatePosition(v2f i) : SV_Target
 		{
    			float4 p = tex2D(_PositionBuffer, i.uv);
    			float4 v = tex2D(_VelocityBuffer, i.uv) * (2 * 10) - 10;
 			float dt = 1 / 60.0;
 
 			p.xyz = p.xyz + v.xyz * dt;
+
+			for (int j = 0; j < 6; j++)
+			{
+				if (_ClickList[j].w >= 1)
+				{
+					float f = saturate(0.005 - length(_ClickList[j].xy - i.uv));
+					if (f > 0)
+						p.y = min(p.y, f);
+				}
+			}
 
    			if (_Click.w >= 1)
    			{
@@ -84,6 +106,7 @@ Shader "Hidden/Farl/RTClick"
             #pragma target 3.0
 			#pragma vertex vert_img
 			#pragma fragment updatePosition
+
 			ENDCG
 		}
 		Pass

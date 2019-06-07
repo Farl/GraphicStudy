@@ -21,6 +21,14 @@ public class RTClick : MonoBehaviour {
 	private RenderTexture velocityTexture1;
 	private RenderTexture velocityTexture2;
 
+	private List<Vector3> clickList = new List<Vector3> ();
+	private List<Vector4> clickVecArray = new List<Vector4> ();
+
+	public void SetClickTexCoord(Vector3 texcoord)
+	{
+		clickList.Add (texcoord);
+	}
+
 	RenderTexture CreateTexture()
 	{
 		RenderTexture rt = new RenderTexture (256, 256, 0, RenderTextureFormat.ARGBFloat);
@@ -30,7 +38,7 @@ public class RTClick : MonoBehaviour {
 		return rt;
 	}
 
-	void Init()
+	void _Init()
 	{
 
 		if (positionTexture1 == null) {
@@ -52,40 +60,76 @@ public class RTClick : MonoBehaviour {
 
 		if (kernelMaterial == null && kernel != null) {
 			kernelMaterial = new Material (kernel);
+			kernelMaterial.hideFlags = HideFlags.DontSave;
+
 			kernelMaterial.SetTexture ("_PositionBuffer", positionTexture1);
 			kernelMaterial.SetTexture ("_VelocityBuffer", velocityTexture1);
 		}
 	}
+
+	void _CleanUp()
+	{
+		if (kernelMaterial)
+			Object.DestroyImmediate (kernelMaterial);
+		if (positionTexture1)
+			Object.DestroyImmediate (positionTexture1);
+		if (velocityTexture1)
+			Object.DestroyImmediate (velocityTexture1);
+		if (positionTexture2)
+			Object.DestroyImmediate (positionTexture2);
+		if (velocityTexture2)
+			Object.DestroyImmediate (velocityTexture2);
+	}
+
 	void OnEnable () {
-		Init ();
+		_CleanUp ();
+		_Init ();
 	}
 
 	void OnDisable()
 	{
-		Object.DestroyImmediate (kernelMaterial);
-		Object.DestroyImmediate (positionTexture1);
-		Object.DestroyImmediate (velocityTexture1);
-		Object.DestroyImmediate (positionTexture2);
-		Object.DestroyImmediate (velocityTexture2);
+		_CleanUp ();
 	}
 
 	void UpdateInput()
 	{
+		
 		bool click = false;
+		Vector3 texcoord = Vector3.zero;
 		if (kernelMaterial) {
 			if (Input.GetMouseButton (0)) {
-				click = true;
+				Vector3 sPos = Input.mousePosition;
+				Ray ray = Camera.main.ScreenPointToRay (sPos);
+				RaycastHit hitInfo;
+				if (Physics.Raycast (ray, out hitInfo, 100)) {
+					texcoord = hitInfo.textureCoord;
+					click = true;
+
+					SetClickTexCoord (texcoord);
+				}
 			}
+			// kernelMaterial.SetVector ("_Click", new Vector4 (texcoord.x, texcoord.y, texcoord.z, click? 1: 0));
 		}
 
-		if (kernelMaterial)
-			kernelMaterial.SetVector ("_Click", new Vector4 ((float)Input.mousePosition.x / Screen.width, (float)Input.mousePosition.y / Screen.height, Input.mousePosition.z,
-			click? 1: 0));
+		int count = 6;
+		clickVecArray.Clear ();
+		while (count > 0) {
+			if (clickList.Count > 0) {
+				clickVecArray.Add(new Vector4(clickList[0].x, clickList[0].y, clickList[0].z, 1));
+				clickList.RemoveAt (0);
+			} else {
+				clickVecArray.Add(new Vector4 (0, 0, 0, 0));
+			}
+			count--;
+		}
+		clickList.Clear ();
+
+		kernelMaterial.SetVectorArray ("_ClickList", clickVecArray); 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Init ();
+		_Init ();
 
 		UpdateInput ();
 
