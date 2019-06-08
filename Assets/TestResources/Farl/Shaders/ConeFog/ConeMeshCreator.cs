@@ -14,56 +14,101 @@ public class ConeMeshCreator : MonoBehaviour {
 	public int slice = 12;
 	public int segment = 4;
 
+	public Gradient gradient;
+
 	public List<Vector3> vertices = new List<Vector3> ();
-	public List<int> indices = new List<int> ();
+	public List<int> indicesB = new List<int> ();
+	public List<int> indicesF = new List<int> ();
+	public List<Vector2> uvs = new List<Vector2>();
+	public List<Color> colors = new List<Color> ();
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		CreateMesh ();
 	}
 
 	void OnValidate()
 	{
+		segment = Mathf.Max (1, segment);
+		slice = Mathf.Max (3, slice);
 		CreateMesh ();
 	}
 
 	void CreateMesh()
 	{
+		if (mesh) {
+			Object.DestroyImmediate (mesh);
+		}
 		if (mesh == null) {
 			mesh = new Mesh ();
+			mesh.name = name;
+			mesh.hideFlags = HideFlags.DontSave;
 		}
+
 		if (mesh) {
 			vertices.Clear ();
-			indices.Clear ();
-			for (int j = 0; j < segment; j++) {
+			indicesB.Clear ();
+			indicesF.Clear ();
+			uvs.Clear ();
+			colors.Clear ();
+
+			int verticesCount = slice * (segment + 1);
+
+			for (int j = 0; j <= segment; j++) {
 
 				for (int i = 0; i < slice; i++) {
-					Vector3 pos0 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, j * height / (segment - 1)), (j+0) * height / segment, 0);
-					pos0 = Quaternion.Euler (new Vector3 (0, (i+0) * 360.0f / slice, 0)) * pos0;
-					vertices.Add (pos0);
-					indices.Add (indices.Count);
-					Vector3 pos1 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, j * height / (segment - 1)), (j+0) * height / segment, 0);
-					pos1 = Quaternion.Euler (new Vector3 (0, ((i+1) % slice) * 360.0f / slice, 0)) * pos1;
-					vertices.Add (pos1);
-					indices.Add (indices.Count);
-					Vector3 pos2 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, ((j+1) % segment) * height / (segment - 1)), ((j+1) % segment) * height / segment, 0);
-					pos2 = Quaternion.Euler (new Vector3 (0, ((i+1) % slice) * 360.0f / slice, 0)) * pos2;
-					vertices.Add (pos2);
-					indices.Add (indices.Count);
-					Vector3 pos3 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, ((j+1) % segment) * height / (segment - 1)), ((j+1) % segment) * height / segment, 0);
-					pos3 = Quaternion.Euler (new Vector3 (0, (i+0) * 360.0f / slice, 0)) * pos3;
-					vertices.Add (pos3);
-					indices.Add (indices.Count);
-				}
+					float h = (float)j / segment;
 
+					Vector3 pos0 = new Vector3 (Mathf.Lerp(topRadius, bottomRadius, h), -height * h, 0);
+					pos0 = Quaternion.Euler (new Vector3 (0, i * 360.0f / slice, 0)) * pos0;
+					vertices.Add (pos0); // Front
+					uvs.Add (new Vector2((float)i / (slice - 1), h));
+					if (gradient != null)
+						colors.Add (gradient.Evaluate (h));
+
+					if (j < segment) {
+						// Back Face
+						indicesB.Add (((i + 0) % slice) + (j + 0) * slice);
+						indicesB.Add (((i + 1) % slice) + (j + 0) * slice);
+						indicesB.Add (((i + 1) % slice) + (j + 1) * slice);
+
+						indicesB.Add (((i + 0) % slice) + (j + 0) * slice);
+						indicesB.Add (((i + 1) % slice) + (j + 1) * slice);
+						indicesB.Add (((i + 0) % slice) + (j + 1) * slice);
+
+						// Front Face
+						indicesF.Add (verticesCount + ((i + 0) % slice) + (j + 0) * slice);
+						indicesF.Add (verticesCount + ((i + 1) % slice) + (j + 1) * slice);
+						indicesF.Add (verticesCount + ((i + 1) % slice) + (j + 0) * slice);
+
+						indicesF.Add (verticesCount + ((i + 0) % slice) + (j + 0) * slice);
+						indicesF.Add (verticesCount + ((i + 0) % slice) + (j + 1) * slice);
+						indicesF.Add (verticesCount + ((i + 1) % slice) + (j + 1) * slice);
+					}
+				}
 			}
-			mesh.SetVertices (vertices);
-			mesh.SetIndices (indices.ToArray(), MeshTopology.Quads, submesh:0);
+
+			vertices.AddRange (vertices);
+			uvs.AddRange (uvs);
+			colors.AddRange (colors);
+
+			mesh.subMeshCount = 2;
+			mesh.vertices = vertices.ToArray ();
+			mesh.SetTriangles (indicesB.ToArray (), 0);
+			mesh.SetTriangles (indicesF.ToArray (), 1);
+			mesh.uv = uvs.ToArray ();
+			if (gradient != null)
+				mesh.colors = colors.ToArray ();
 
 			mesh.RecalculateNormals ();
-			mesh.UploadMeshData (false);
 
 			meshFilter = GetComponent<MeshFilter> ();
+			if (!meshFilter)
+				meshFilter = gameObject.AddComponent<MeshFilter> ();
+
+			if (!GetComponent<MeshRenderer> ())
+				gameObject.AddComponent<MeshRenderer> ();
+			
 			if (meshFilter && meshFilter.sharedMesh != mesh) {
 				meshFilter.sharedMesh = mesh;
 			}
