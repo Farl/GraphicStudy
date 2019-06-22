@@ -32,7 +32,7 @@ public class GPUParticle : MonoBehaviour {
 
 	RenderTexture CreateBuffer(string id = "")
 	{
-		RenderTexture rt = new RenderTexture (count, count, 0);
+		RenderTexture rt = new RenderTexture (count, count, 0, RenderTextureFormat.ARGBFloat);
 		rt.hideFlags = HideFlags.DontSave;
 		rt.name = id;
 		rt.filterMode = FilterMode.Point;
@@ -68,6 +68,14 @@ public class GPUParticle : MonoBehaviour {
 		}
 		if (velocityBuffer2 == null) {
 			velocityBuffer2 = CreateBuffer ("Vel2");
+		}
+
+		if (kernelMaterial) {
+
+			Graphics.Blit (null, positionBuffer1, kernelMaterial, 2);
+			Graphics.Blit (null, positionBuffer2, kernelMaterial, 2);
+			Graphics.Blit (null, velocityBuffer1, kernelMaterial, 3);
+			Graphics.Blit (null, velocityBuffer2, kernelMaterial, 3);
 		}
 
 		if (mesh == null) {
@@ -107,6 +115,8 @@ public class GPUParticle : MonoBehaviour {
 			mesh.uv = uv1;
 			mesh.uv2 = uv2;
 
+			mesh.bounds = new Bounds(Vector3.zero, Vector3.one * 2);
+
 			MeshFilter mf = GetComponent<MeshFilter> ();
 			if (mf == null) {
 				mf = gameObject.AddComponent<MeshFilter> ();
@@ -121,11 +131,11 @@ public class GPUParticle : MonoBehaviour {
 		}
 
 		if (debugRenderers != null) {
-			if (debugRenderers.Length > 0 && debugRenderers [0]) {
-				debugRenderers [0].material.mainTexture = positionBuffer1;
+			if (debugRenderers.Length > 0 && debugRenderers [0] && debugRenderers[0].sharedMaterial) {
+				debugRenderers [0].sharedMaterial.mainTexture = positionBuffer1;
 			}
-			if (debugRenderers.Length > 1 && debugRenderers [1]) {
-				debugRenderers [1].material.mainTexture = velocityBuffer1;
+			if (debugRenderers.Length > 1 && debugRenderers [1] && debugRenderers[1].sharedMaterial) {
+				debugRenderers [1].sharedMaterial.mainTexture = velocityBuffer1;
 			}
 		}
 	}

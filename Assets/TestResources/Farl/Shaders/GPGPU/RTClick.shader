@@ -32,7 +32,7 @@ Shader "Hidden/Farl/RTClick"
 			float3 vpos : TEXCOORD2;
 		};
 
-		float4 updatePosition(v2f i) : SV_Target
+		float4 updatePosition(v2f_img i) : SV_Target
 		{
    			float4 p = tex2D(_PositionBuffer, i.uv);
    			float4 v = tex2D(_VelocityBuffer, i.uv) * (2 * 10) - 10;
