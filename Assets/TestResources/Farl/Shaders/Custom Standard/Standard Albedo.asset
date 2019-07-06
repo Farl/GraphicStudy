@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: Standard Albedo
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=15001\n638;94;801;780;621.9376;286.5942;1.029873;True;False\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;3;-77.13458,14.12871;Float;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0\nNode;AmplifyShaderEditor.ColorNode;4;-331.5134,176.8486;Float;False;Property;_Color;Color;0;0;Create;True;0;0;False;0;1,1,1,1;1,1,1,1;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.SamplerNode;1;-400,-40;Float;True;Property;_TextureSample0;Texture
+    Sample 0;0;0;Create;True;0;0;False;0;None;None;True;0;False;white;Auto;False;Instance;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.FunctionInput;2;-605.065,-42.59666;Float;False;Input;9;0;False;1;0;SAMPLER2D;;False;1;SAMPLER2D;0\nNode;AmplifyShaderEditor.FunctionOutput;0;86.50932,-4.119492;Float;False;True;Albedo;0;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0\nWireConnection;3;0;1;0\nWireConnection;3;1;4;0\nWireConnection;1;0;2;0\nWireConnection;0;0;3;0\nASEEND*/\n//CHKSM=849A77DF95E9A98DB07324122F1523A439A20DD1"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_nodeCategory: 3
+  m_customNodeCategory: 
+  m_previewPosition: 0

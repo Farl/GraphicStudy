@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 using System.IO;
 
 public class CreateShaders : EditorWindow {
-    [MenuItem("Tool/Create Shaders")]
+    [MenuItem("Tools/Create Shaders")]
     public static void CreateWindow()
     {
         CreateShaders w = EditorWindow.GetWindow<CreateShaders>();
