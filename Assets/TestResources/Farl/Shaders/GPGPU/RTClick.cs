@@ -5,9 +5,21 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class RTClick : MonoBehaviour {
 
+	public enum OutputType
+	{
+		Position,
+		Velocity
+	}
+
+	[System.Serializable]
+	public class OutputMaterial
+	{
+		public Material material;
+		public OutputType type;
+		public string propertyName;
+	}
+
 	public Shader kernel;
-	public Material material;
-	public Material material2;
 	public Material kernelMaterial;
 
 	public float waveDensity = 0.01f;
@@ -24,6 +36,16 @@ public class RTClick : MonoBehaviour {
 	private List<Vector3> clickList = new List<Vector3> ();
 	private List<Vector4> clickVecArray = new List<Vector4> ();
 
+	[Header("Outpu")]
+	public OutputMaterial[] outputMaterials;
+
+	[Header("Render Texture")]
+	public int rtWidth = 256;
+	public int rtHeight = 256;
+	public RenderTextureFormat rtFormat = RenderTextureFormat.ARGB32;
+	public TextureWrapMode rtWrap = TextureWrapMode.Repeat;
+	public FilterMode rtFilter = FilterMode.Bilinear;
+
 	public void SetClickTexCoord(Vector3 texcoord)
 	{
 		clickList.Add (texcoord);
@@ -31,10 +53,12 @@ public class RTClick : MonoBehaviour {
 
 	RenderTexture CreateTexture()
 	{
-		RenderTexture rt = new RenderTexture (256, 256, 0, RenderTextureFormat.ARGBFloat);
+		rtWidth = Mathf.Max (1, rtWidth);
+		rtHeight = Mathf.Max (1, rtHeight);
+		RenderTexture rt = new RenderTexture (rtWidth, rtHeight, 0, rtFormat);
 		rt.hideFlags = HideFlags.DontSave;
-		rt.filterMode = FilterMode.Bilinear;
-		rt.wrapMode = TextureWrapMode.Repeat;
+		rt.filterMode = rtFilter;
+		rt.wrapMode = rtWrap;
 		return rt;
 	}
 
@@ -51,11 +75,29 @@ public class RTClick : MonoBehaviour {
 			velocityTexture2 = CreateTexture();
 		}
 
-		if (material && positionTexture1) {
-			material.mainTexture = positionTexture1;
-		}
-		if (material2 && velocityTexture1) {
-			material2.mainTexture = velocityTexture1;
+		// Output prepare
+		if (outputMaterials != null) {
+			foreach (OutputMaterial om in outputMaterials) {
+				Texture tex = null;
+				switch (om.type) {
+				case OutputType.Velocity:
+					tex = velocityTexture1;
+					break;
+				case OutputType.Position:
+					tex = positionTexture1;
+					break;
+				}
+				if (tex && om.material)
+				{
+					if (!string.IsNullOrEmpty (om.propertyName) && om.material.HasProperty (om.propertyName)) {
+						om.material.SetTexture (om.propertyName, tex);
+					}
+					else
+					{
+						om.material.mainTexture = tex;
+					}
+				}		
+			}
 		}
 
 		if (kernelMaterial == null && kernel != null) {
