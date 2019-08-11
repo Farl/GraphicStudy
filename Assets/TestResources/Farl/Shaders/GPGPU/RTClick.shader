@@ -24,6 +24,16 @@ Shader "Hidden/Farl/RTClick"
 		sampler2D _VelocityBuffer;
 		float4 _ClickList[6];
 
+		float4 encode01(float4 input, float maximum)
+		{
+			return (clamp(input, -maximum, maximum) + maximum) / (2 * maximum);
+		}
+
+		float4 decode01(float4 input, float maximum)
+		{
+			return input * (2 * maximum) - maximum;
+		}
+
 		struct v2f 
 		{
 			float4 pos  : POSITION;
@@ -34,8 +44,9 @@ Shader "Hidden/Farl/RTClick"
 
 		float4 updatePosition(v2f_img i) : SV_Target
 		{
-   			float4 p = tex2D(_PositionBuffer, i.uv);
-   			float4 v = tex2D(_VelocityBuffer, i.uv) * (2 * 10) - 10;
+   			float4 p = decode01(tex2D(_PositionBuffer, i.uv), 1);
+   			float4 v = decode01(tex2D(_VelocityBuffer, i.uv), 10);
+
 			float dt = 1 / 60.0;
 
 			p.xyz = p.xyz + v.xyz * dt;
@@ -44,31 +55,36 @@ Shader "Hidden/Farl/RTClick"
 			{
 				if (_ClickList[j].w >= 1)
 				{
-					float f = saturate(0.005 - length(_ClickList[j].xy - i.uv));
+					float radius = 0.005;
+					float f = 1 * saturate((radius - length(_ClickList[j].xy - i.uv)) / radius);
 					if (f > 0)
-						p.y = min(p.y, f);
+						p.y = min(p.y, -f);
 				}
 			}
 
    			if (_Click.w >= 1)
    			{
-				float f = saturate(0.1 - length(_Click.xy - i.uv));
+   				float radius = 0.005;
+				float f = 1 * saturate((radius - length(_Click.xy - i.uv)) / radius);
 				if (f > 0)
-					p.y = min(p.y, f);
+					p.y = min(p.y, -f);
    			}
 
-   			p = clamp(p, 0, 1);
+   			p = encode01(p, 1);
 
 			return p;
 		}
 
+		float4 defaultPosition(v2f_img i) : SV_Target
+		{
+			return float4(0.5, 0.5, 0.5, 0.5);
+		}
+
 		float4 updateVelocity(v2f_img i) : SV_Target
 		{
-   			float4 v = tex2D(_VelocityBuffer, i.uv) * (2 * 10) - 10;
+   			float4 v = decode01(tex2D(_VelocityBuffer, i.uv), 10);
+
 			float dt = 1 / 60.0;
-
-
-   			int r = 1;
 
    			float h = _WaveParam.x + 1e-9;
    			float c = _WaveParam.z * (h / dt);
@@ -76,24 +92,31 @@ Shader "Hidden/Farl/RTClick"
    			float k = _WaveParam.y;
 
    			float4 p = tex2D(_PositionBuffer, i.uv);
-			float4 f = tex2D(_PositionBuffer, saturate(i.uv + float2(1, 0) * _PositionBuffer_TexelSize.xy));
-			f += tex2D(_PositionBuffer, saturate(i.uv + float2(-1, 0) * _PositionBuffer_TexelSize.xy));
-			f += tex2D(_PositionBuffer, saturate(i.uv + float2(0, 1) * _PositionBuffer_TexelSize.xy));
-			f += tex2D(_PositionBuffer, saturate(i.uv + float2(0, -1) * _PositionBuffer_TexelSize.xy));
-			f -= 4 * p;
+   			float2 uvOffset = _PositionBuffer_TexelSize.xy;
+			float f = tex2D(_PositionBuffer, i.uv + float2(uvOffset.x, 0)).y;
+			f += tex2D(_PositionBuffer, i.uv + float2(-uvOffset.x, 0)).y;
+			f += tex2D(_PositionBuffer, i.uv + float2(0, uvOffset.y)).y;
+			f += tex2D(_PositionBuffer, i.uv + float2(0, -uvOffset.y)).y;
+			f -= 4 * p.y;
+			p = decode01(p, 1);
+			f = f * 2 * 1;	// scale with no offset
 
-   			float3 acc = ((0.5 - p) * k) + (pow(c, 2) * f / pow(h, 2));
+			float3 acc = float3(0, ((0 - p.y) * k) + (pow(c, 2) * f / pow(h, 2)), 0);
 
    			float drag = _WaveParam.w;
-   			v *= drag;
 
    			v.xyz = v.xyz + acc * dt;
 
+   			v *= drag;
 
-   			v = clamp(v, -10, 10);
-   			v = (v + 10) / (2 * 10);
+   			v = encode01(v, 10);
 
 			return v;
+		}
+
+		float4 defaultVelocity(v2f_img i) : SV_Target
+		{
+			return float4(0.5, 0.5, 0.5, 0.5);
 		}
 
 	ENDCG
@@ -115,6 +138,22 @@ Shader "Hidden/Farl/RTClick"
             #pragma target 3.0
 			#pragma vertex vert_img
 			#pragma fragment updateVelocity
+			ENDCG
+		}
+		Pass
+		{
+            CGPROGRAM
+            #pragma target 3.0
+			#pragma vertex vert_img
+			#pragma fragment defaultPosition
+			ENDCG
+		}
+		Pass
+		{
+            CGPROGRAM
+            #pragma target 3.0
+			#pragma vertex vert_img
+			#pragma fragment defaultVelocity
 			ENDCG
 		}
 	}

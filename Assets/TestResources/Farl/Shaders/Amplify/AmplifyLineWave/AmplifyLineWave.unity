@@ -130,19 +130,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kernel: {fileID: 4800000, guid: 86babd6de740646b4b6bf54a2d829fbb, type: 3}
   kernelMaterial: {fileID: 0}
-  waveDensity: 0.01
-  waveDampingForce: 25
-  waveSpeed: 0.5
-  waveDamping: 0.9
+  waveDensity: 1
+  waveDampingForce: 100
+  waveSpeed: 0.6
+  waveDamping: 0.99
   outputMaterials:
   - material: {fileID: 2100000, guid: 6f2a4570f1b474c8c80c8277312705bf, type: 2}
     type: 0
     propertyName: _DynamicRipple
-  rtWidth: 256
-  rtHeight: 256
-  rtFormat: 0
-  rtWrap: 0
-  rtFilter: 1
+  - material: {fileID: 2100000, guid: 254ea9fcfe42a45a5af91854a0b38c51, type: 2}
+    type: 0
+    propertyName: 
+  - material: {fileID: 2100000, guid: 7241411853a16445891ee76ec803e021, type: 2}
+    type: 1
+    propertyName: 
+  rtWidth: 512
+  rtHeight: 1
+  rtFormat: 2
+  rtWrap: 1
+  rtFilter: 2
 --- !u!1001 &2120468183
 Prefab:
   m_ObjectHideFlags: 0
@@ -186,6 +192,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6f2a4570f1b474c8c80c8277312705bf, type: 2}
+    - target: {fileID: 2391912, guid: 82af4827fee368e4c83d72a25f533a4e, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 254ea9fcfe42a45a5af91854a0b38c51, type: 2}
+    - target: {fileID: 2304408, guid: 82af4827fee368e4c83d72a25f533a4e, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7241411853a16445891ee76ec803e021, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82af4827fee368e4c83d72a25f533a4e, type: 2}
   m_IsPrefabParent: 0

@@ -64,40 +64,17 @@ public class RTClick : MonoBehaviour {
 
 	void _Init()
 	{
-
+		bool doInit = false;
 		if (positionTexture1 == null) {
 			positionTexture1 = CreateTexture();
 			positionTexture2 = CreateTexture();
+			doInit = true;
 		}
 
 		if (velocityTexture1 == null) {
 			velocityTexture1 = CreateTexture();
 			velocityTexture2 = CreateTexture();
-		}
-
-		// Output prepare
-		if (outputMaterials != null) {
-			foreach (OutputMaterial om in outputMaterials) {
-				Texture tex = null;
-				switch (om.type) {
-				case OutputType.Velocity:
-					tex = velocityTexture1;
-					break;
-				case OutputType.Position:
-					tex = positionTexture1;
-					break;
-				}
-				if (tex && om.material)
-				{
-					if (!string.IsNullOrEmpty (om.propertyName) && om.material.HasProperty (om.propertyName)) {
-						om.material.SetTexture (om.propertyName, tex);
-					}
-					else
-					{
-						om.material.mainTexture = tex;
-					}
-				}		
-			}
+			doInit = true;
 		}
 
 		if (kernelMaterial == null && kernel != null) {
@@ -106,6 +83,46 @@ public class RTClick : MonoBehaviour {
 
 			kernelMaterial.SetTexture ("_PositionBuffer", positionTexture1);
 			kernelMaterial.SetTexture ("_VelocityBuffer", velocityTexture1);
+
+			// Output prepare
+			if (outputMaterials != null) {
+				foreach (OutputMaterial om in outputMaterials) {
+					Texture tex = null;
+					switch (om.type) {
+					case OutputType.Velocity:
+						tex = velocityTexture1;
+						break;
+					case OutputType.Position:
+						tex = positionTexture1;
+						break;
+					}
+					if (tex && om.material)
+					{
+						if (!string.IsNullOrEmpty (om.propertyName) && om.material.HasProperty (om.propertyName)) {
+							om.material.SetTexture (om.propertyName, tex);
+						}
+						else
+						{
+							om.material.mainTexture = tex;
+						}
+					}		
+				}
+			}
+
+			// Initialize
+
+			if (kernelMaterial != null) {
+				if (positionTexture1)
+					Graphics.Blit (null, positionTexture1, kernelMaterial, 2);
+				if (positionTexture2)
+					Graphics.Blit (null, positionTexture2, kernelMaterial, 2);
+				if (velocityTexture1)
+					Graphics.Blit (null, velocityTexture1, kernelMaterial, 3);
+				if (velocityTexture2)
+					Graphics.Blit (null, velocityTexture2, kernelMaterial, 3);
+			}
+
+			doInit = true;
 		}
 	}
 

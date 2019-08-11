@@ -193,7 +193,7 @@ MonoBehaviour:
   kernel: {fileID: 4800000, guid: 86babd6de740646b4b6bf54a2d829fbb, type: 3}
   kernelMaterial: {fileID: 0}
   waveDensity: 0.005
-  waveDampingForce: 40
+  waveDampingForce: 100
   waveSpeed: 0.6
   waveDamping: 0.95
   outputMaterials:
@@ -205,9 +205,9 @@ MonoBehaviour:
     propertyName: 
   rtWidth: 256
   rtHeight: 256
-  rtFormat: 0
-  rtWrap: 0
-  rtFilter: 1
+  rtFormat: 2
+  rtWrap: 1
+  rtFilter: 2
 --- !u!23 &1164876741
 MeshRenderer:
   m_ObjectHideFlags: 0
