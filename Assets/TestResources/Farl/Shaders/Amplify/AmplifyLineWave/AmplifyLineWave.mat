@@ -27,8 +27,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _LineParam: 70
-    - _LinePower: 0.4
+    - _LineParam: 10
+    - _LinePower: 0.2
+    - _RippleScale: 1
+    - _SineInput: 90
+    - _SineScale: 0.1
+    - _TimeScale: 10
     - _WaveScale: 0.2
     - __dirty: 0
     m_Colors: []
