@@ -55,20 +55,12 @@ Shader "Hidden/Farl/RTClick"
 			{
 				if (_ClickList[j].w >= 1)
 				{
-					float radius = 0.005;
-					float f = 1 * saturate((radius - length(_ClickList[j].xy - i.uv)) / radius);
+					float radius = 0.1;
+					float f = 1 * smoothstep(0, 0.5, saturate((radius - length(_ClickList[j].xy - i.uv)) / radius));
 					if (f > 0)
 						p.y = min(p.y, -f);
 				}
 			}
-
-   			if (_Click.w >= 1)
-   			{
-   				float radius = 0.005;
-				float f = 1 * saturate((radius - length(_Click.xy - i.uv)) / radius);
-				if (f > 0)
-					p.y = min(p.y, -f);
-   			}
 
    			p = encode01(p, 1);
 

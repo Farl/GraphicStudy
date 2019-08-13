@@ -29,9 +29,9 @@ Material:
     m_Floats:
     - _LineParam: 10
     - _LinePower: 0.2
-    - _RippleScale: 1
+    - _RippleScale: 0.4
     - _SineInput: 90
-    - _SineScale: 0.1
+    - _SineScale: 0.05
     - _TimeScale: 10
     - _WaveScale: 0.2
     - __dirty: 0
