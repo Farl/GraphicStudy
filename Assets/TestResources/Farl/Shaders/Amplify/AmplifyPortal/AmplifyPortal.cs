@@ -101,4 +101,14 @@ public class AmplifyPortal : MonoBehaviour {
 
         }
     }
+
+    public void Teleport(Transform target)
+    {
+        if (target && _targetTransform)
+        {
+            _offsetMatrix = Matrix4x4.Inverse(_transform.localToWorldMatrix) * target.localToWorldMatrix;
+            Matrix4x4 m = _targetTransform.localToWorldMatrix * _offsetMatrix;
+            target.SetPositionAndRotation(m.MultiplyPoint3x4(Vector3.zero), m.rotation);
+        }
+    }
 }

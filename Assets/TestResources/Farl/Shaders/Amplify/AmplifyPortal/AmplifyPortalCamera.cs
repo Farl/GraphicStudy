@@ -6,8 +6,17 @@ using UnityEngine.Rendering;
 public class AmplifyPortalCamera : CommandBufferBehaviour {
     
     private AmplifyPortal[] _portals;
+    private Transform _transform;
     private Material _maskMaterial;
     public Material _postFXMaterial;
+    protected AmplifyPortalPlayer _player;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _transform = transform;
+        _player = GetComponentInParent<AmplifyPortalPlayer>();
+    }
 
     protected override void OnCreateCommandBuffer(CommandBufferSet cbs, int index)
     {
@@ -69,5 +78,23 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
     protected virtual void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         Graphics.Blit(source, destination, _postFXMaterial);
+    }
+
+    private Vector3 lastPosition;
+
+    private void Update()
+    {
+        Vector3 currPosition = transform.position;
+        Ray ray = new Ray(lastPosition, currPosition - lastPosition);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, Vector3.Distance(currPosition, lastPosition)))
+        {
+            AmplifyPortal portal = hitInfo.collider.GetComponent<AmplifyPortal>();
+            if (portal)
+            {
+                portal.Teleport(_player.transform);
+            }
+        }
+        lastPosition = _transform.position;
     }
 }
