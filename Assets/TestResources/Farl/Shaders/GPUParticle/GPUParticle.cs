@@ -32,7 +32,7 @@ public class GPUParticle : MonoBehaviour {
 
 	RenderTexture CreateBuffer(string id = "")
 	{
-		RenderTexture rt = new RenderTexture (count, count, 0, RenderTextureFormat.ARGBFloat);
+		RenderTexture rt = new RenderTexture (count, count, 0, RenderTextureFormat.ARGB64);
 		rt.hideFlags = HideFlags.DontSave;
 		rt.name = id;
 		rt.filterMode = FilterMode.Point;
@@ -174,15 +174,38 @@ public class GPUParticle : MonoBehaviour {
 	}
 
 	void UpdateInput()
-	{
-		RaycastHit hitInfo;
-		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-		if (Physics.Raycast (ray, out hitInfo, 100)) {
-			if (kernelMaterial) {
-				kernelMaterial.SetVector ("_Click", new Vector4 ((float)hitInfo.textureCoord.x, (float)hitInfo.textureCoord.y, 0, Input.GetMouseButton(0)?1:0));
-				return;
-			}
-		}
+    {
+        RaycastHit hitInfo;
+        /*
+        if (Input.touchCount > 0)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.GetTouch(i);
+                Ray rayTouch = Camera.main.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(rayTouch, out hitInfo, 100))
+                {
+                    if (kernelMaterial)
+                    {
+                        kernelMaterial.SetVector("_Click", new Vector4((float)hitInfo.textureCoord.x, (float)hitInfo.textureCoord.y, 0, Input.GetMouseButton(0) ? 1 : 0));
+                        return;
+                    }
+                }
+            }
+        }
+        else
+        */
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hitInfo, 100))
+            {
+                if (kernelMaterial)
+                {
+                    kernelMaterial.SetVector("_Click", new Vector4((float)hitInfo.textureCoord.x, (float)hitInfo.textureCoord.y, 0, Input.GetMouseButton(0) ? 1 : 0));
+                    return;
+                }
+            }
+        }
 
 		if (kernelMaterial) {
 			kernelMaterial.SetVector ("_Click", new Vector4 (0, 0, 0, 0));
