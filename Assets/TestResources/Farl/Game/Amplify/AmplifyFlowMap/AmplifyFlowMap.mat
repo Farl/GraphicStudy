@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: AmplifyFlowMap
   m_Shader: {fileID: 4800000, guid: 0c7e2170743063143bcfdf8a0623eb39, type: 3}
   m_ShaderKeywords: _KEYWORD2_ON
@@ -27,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3a297851b46b70d4ca55deef759f1af8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture0:
@@ -48,15 +49,15 @@ Material:
     - _Float5: 1.28
     - _Float6: 0.84
     - _Float7: 1.46
-    - _FlowStrength: -0.4
+    - _FlowStrength: -0.5
     - _Keyword0: 0
     - _Keyword1: 0
     - _Keyword2: 1
-    - _Metallic: 0.872
+    - _Metallic: 0.42
     - _NormalCreateOffset: 0.3
     - _NormalCreateStrength: -0.86
-    - _Smoothness: 0.723
-    - _TimeScale: 0.1
+    - _Smoothness: 0.8
+    - _TimeScale: 0.5
     - _TimeScale2: 0.5
     - _UseHeightMap: 0
     - __dirty: 0

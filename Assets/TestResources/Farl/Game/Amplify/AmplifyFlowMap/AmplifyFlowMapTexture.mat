@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: AmplifyFlowMapTexture
   m_Shader: {fileID: 4800000, guid: 27b1cceb8b86445178a63e31d3cd3923, type: 3}
   m_ShaderKeywords: 
@@ -88,7 +89,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Power: 1
+    - _Power: 0.86
     - _Radius: 2.95
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

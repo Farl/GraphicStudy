@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: VolumetricFog
   m_Shader: {fileID: 4800000, guid: f9dba9c132de844759e9198164dffe4d, type: 3}
   m_ShaderKeywords: 
@@ -23,22 +24,22 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _CurlScale: 0.03
-    - _DepthStep: 0.5
+    - _CurlScale: 0.15
+    - _DepthStep: 0.52
     - _LightStep: 0.5
     - _Opacity: 0.44
-    - _Radius: 1.9
-    - _RadiusFalloff: 0.54
+    - _Radius: 1.96
+    - _RadiusFalloff: 1.28
     - _RadiusMax: 1
     - _RadiusMin: 0.9
     - _RadiusOut: 5
-    - _Scale: 0.27
-    - _ShadowInt: 0.693
+    - _Scale: 0.32
+    - _ShadowInt: 0.78
     - __dirty: 0
     m_Colors:
     - _Center: {r: 0, g: 5, b: 0, a: 0}
     - _Color: {r: 0.9191176, g: 0.9364097, b: 1, a: 1}
     - _Coor: {r: 1, g: 1, b: 1, a: 1}
-    - _DensityBiasScalePower: {r: 0.16, g: 1.7, b: 3.78, a: 0}
+    - _DensityBiasScalePower: {r: -0.89, g: 2.62, b: 1.99, a: 0}
     - _SunDir: {r: 0, g: -1, b: 1, a: 0}
     - _WindDir: {r: 0.1, g: -0.1, b: 0, a: 0}

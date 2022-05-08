@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Standard Blend Cheap
   m_Shader: {fileID: 4800000, guid: 99d5ba9c6fa714eaab69d8cbec55e285, type: 3}
   m_ShaderKeywords: 
@@ -53,6 +54,6 @@ Material:
     m_Floats:
     - __dirty: 0
     m_Colors:
-    - _NoiseBiasScalePower: {r: 0.01, g: 1.25, b: 9.67, a: 0}
+    - _NoiseBiasScalePower: {r: -0.04, g: 1.32, b: 5.85, a: 0}
     - _NoiseOffset: {r: 0, g: 0, b: 0, a: 0}
     - _NoiseScale: {r: 0.05, g: 0.05, b: 0.05, a: 0}
