@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: AnisotropicCircular
   m_Shader: {fileID: 4800000, guid: 247f4749def7e9143a8c0e3d8b7f9ba4, type: 3}
   m_ShaderKeywords: 
@@ -44,18 +45,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaCutout: 0.59
-    - _AnisotropyFalloff: 109
-    - _AnisotropyOffset: -0.32
+    - _AnisotropyFalloff: 256
+    - _AnisotropyOffset: -0.29
     - _Bump: 0.7
     - _Falloff: 30
     - _Float0: 1
     - _Float3: 1.01
     - _Glossiness: 30
-    - _NormalAmount: 1.29
+    - _NormalAmount: 0.5
     - _Offset: -0.2
     - _Smoothness: 0
     - __dirty: 0
     m_Colors:
-    - _AlbedoTint: {r: 0.32352942, g: 0.2737639, b: 0.23552941, a: 1}
-    - _SpecularTint: {r: 0.70689654, g: 0.6433003, b: 0.5717546, a: 1}
+    - _AlbedoTint: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    - _SpecularTint: {r: 1, g: 0.7914926, b: 0, a: 1}
     - _Tint: {r: 0.32352942, g: 0.2737639, b: 0.23552941, a: 1}
