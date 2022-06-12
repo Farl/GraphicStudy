@@ -3,7 +3,6 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-/[Ll]og/
 /[Ll]ogs/
 /[Uu]serSettings/
 /Assets/AssetStoreTools*
@@ -36,4 +35,3 @@ sysinfo.txt
 # Builds
 *.apk
 #*.unitypackage
-UserSettings/EditorUserSettings.asset
