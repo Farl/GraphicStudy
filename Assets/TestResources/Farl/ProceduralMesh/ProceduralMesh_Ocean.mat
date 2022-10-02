@@ -110,9 +110,9 @@ Material:
     - _DistortionSpeed: {r: 0.1, g: -0.1, b: 0, a: 0.1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _WaveAxis: {r: 0.9915463, g: 0.017790925, b: 0.12852827, a: 0}
-    - _WaveDir: {r: -0.10056345, g: 0.73132116, b: 0.67457867, a: 0}
+    - _WaveAxis: {r: 1, g: 0, b: 0, a: 0}
+    - _WaveDir: {r: 0, g: 0.731318, b: 0.68203664, a: 0}
     - _WavePos: {r: -1.02, g: 2.95, b: 3.45, a: 0}
     - _WaveSpeed: {r: -0.25, g: 0, b: 0.25, a: 0}
-    - _WaveUV: {r: 0.4796, g: 0.569, b: 0, a: 0}
+    - _WaveUV: {r: 0.4796, g: 0.65, b: 0, a: 0}
   m_BuildTextureStacks: []

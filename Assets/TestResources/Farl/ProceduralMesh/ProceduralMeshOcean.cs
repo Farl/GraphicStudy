@@ -20,12 +20,14 @@ namespace SS
         int gridSegmentV = 1;
 
         [Space]
-        [SerializeField, Range(0f, 1f)]
+        [SerializeField, Range(0f, 2f)]
         float t = 0.5f;
         [SerializeField]
         private float divide = 0.1f;
         [SerializeField]
         private float pow = 1f;
+        [SerializeField]
+        private float anglePow = 1f;
         [SerializeField]
         Transform waveDummy;
 
@@ -154,7 +156,7 @@ namespace SS
             var diff = t * waveDiff;
             var pureF = Mathf.Exp(-(diff * diff));
 
-            var offset = Quaternion.AngleAxis(waveAngle * pureF, waveAxis) *
+            var offset = Quaternion.AngleAxis(waveAngle * Mathf.Pow(pureF, anglePow), waveAxis) *
                 Vector3.up * waveHeight * pureF;
             
             var factor = (divide <= 0)? 1: Mathf.Min(1.0f, Mathf.Abs(sdf) / divide);

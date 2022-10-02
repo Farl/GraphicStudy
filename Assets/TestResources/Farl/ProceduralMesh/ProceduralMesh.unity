@@ -345,14 +345,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266687835}
-  m_LocalRotation: {x: -0.3984866, y: -0.06260247, z: -0.01754439, w: 0.914867}
+  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -1.02, y: 2.95, z: 3.45}
-  m_LocalScale: {x: 39.082375, y: 8.455352, z: 10.727273}
+  m_LocalScale: {x: 40, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1845681236}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -46.997, y: -8.479, z: 1.495}
+  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
 --- !u!114 &266687840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266687835}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d4f6e23cd5709e4da83f59ad3cce084, type: 3}
   m_Name: 
@@ -542,14 +542,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672894230}
-  m_LocalRotation: {x: -0, y: -0.34883514, z: -0, w: 0.93718415}
+  m_LocalRotation: {x: 0.103926465, y: -0.34668368, z: 0.03868313, w: 0.931404}
   m_LocalPosition: {x: 10.72, y: 1, z: -5.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -40.832, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.734, y: -40.832, z: 0}
 --- !u!1 &1845681232
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,11 +635,12 @@ MonoBehaviour:
   alwaysCreateNewMesh: 0
   showDebugInfo: 0
   gridSize: 50
-  gridSegmentU: 200
-  gridSegmentV: 200
-  t: 1
-  divide: 0.12
-  pow: 0.38
+  gridSegmentU: 50
+  gridSegmentV: 500
+  t: 0.98
+  divide: 0.2
+  pow: 0.07
+  anglePow: 1.7
   waveDummy: {fileID: 266687839}
   material: {fileID: 2100000, guid: d446f026b0989d24890d9c3442b8ca8e, type: 2}
   axisProperty: _WaveAxis
