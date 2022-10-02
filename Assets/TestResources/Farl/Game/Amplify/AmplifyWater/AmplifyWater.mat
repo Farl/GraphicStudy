@@ -51,7 +51,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorDeep: {r: 0.07293456, g: 0.52205884, b: 0.3733831, a: 1}
-    - _ColorShallow: {r: 0.36029387, g: 1, b: 0.86764705, a: 0.066}
+    - _ColorDeep: {r: 0.072934546, g: 0.52205884, b: 0.37338307, a: 1}
+    - _ColorShallow: {r: 0.36029384, g: 1, b: 0.86764705, a: 0.066}
     - _PannerSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -11,6 +11,8 @@ namespace SS
     public class ProceduralMeshOcean : ProceduralMesh
     {
         [SerializeField]
+        bool showDebugInfo = false;
+        [SerializeField]
         float gridSize = 10;
         [SerializeField]
         int gridSegmentU = 1;
@@ -18,14 +20,22 @@ namespace SS
         int gridSegmentV = 1;
 
         [Space]
-        [SerializeField]
-        float z;
-        [SerializeField]
-        float h = 90f;
         [SerializeField, Range(0f, 1f)]
-        float t = 1f;
+        float t = 0.5f;
         [SerializeField]
-        float angle = 90f;
+        private float divide = 0.1f;
+        [SerializeField]
+        private float pow = 1f;
+        [SerializeField]
+        Transform waveDummy;
+
+        [Space]
+        [SerializeField]
+        private Material material;
+        [SerializeField]
+        private string axisProperty = "_WaveAxis";
+        [SerializeField]
+        private string uvProperty = "_WaveUV";
 
         protected override void OnCalculateVertices()
         {
@@ -77,22 +87,79 @@ namespace SS
             mesh.uv = uvs.ToArray();
             mesh.SetTriangles(indices.ToArray(), 0);
             mesh.RecalculateNormals();
+
+            if (material && waveDummy)
+            {
+                var localAxis = cachedTransform.InverseTransformDirection(waveDummy.right);
+
+                material.SetVector(axisProperty, localAxis);
+
+                var localUVW = cachedTransform.InverseTransformPoint(waveDummy.position) / gridSize;
+                var localUV = new Vector2(localUVW.x, localUVW.z) + new Vector2(0.5f, 0.5f);
+                material.SetVector(uvProperty, localUV);
+            }
         }
+
+        Vector3 Vector3Abs(Vector3 p)
+        {
+            return new Vector3(Mathf.Abs(p.x), Mathf.Abs(p.y), Mathf.Abs(p.z));
+        }
+
+        #region SDF
+        float sdBox(Vector3 p, Vector3 b)
+        {
+            Vector3 d = Vector3Abs(p) - b;
+            return Mathf.Min( Mathf.Max(d.x, d.y, d.z), 0.0f ) + Vector3.Max(d, Vector3.zero).magnitude;
+        }
+        float sdSphere(Vector3 p, float s)
+        {
+            return (p).magnitude - s;
+        }
+
+        #endregion
 
         protected virtual Vector3 OnModifyMesh(int i, int j, Vector3 vPos)
         {
-            var axis = new Vector3(1, 0, 0);
+            if (waveDummy == null)
+                return vPos;
+
+            // World position
+            var wPos = cachedTransform.TransformPoint(vPos);
+
+            var waveLocalPos = waveDummy.InverseTransformPoint(wPos);
+            //var sdf = sdSphere(waveLocalPos, 1f);
+            var sdf = sdBox(waveLocalPos, Vector3.one * 0.5f);
+            if (sdf > 0)
+                return vPos;
+
+            var waveHeight = waveDummy.position.y - cachedTransform.position.y;
+            var waveAxis = waveDummy.right;
+            var wavePos = waveDummy.position;
+            var waveAngle = waveDummy.localEulerAngles.x;
+
+            // Fix angles
+            while (waveAngle > 180)
+                waveAngle -= 360f;
+
+            // Remove y axis
+            wavePos.y = wPos.y;
+            waveAxis.y = 0;
+
+            var waveRay = new Ray(wavePos, waveAxis);
+            var d = Vector3.Dot(wPos - waveRay.origin, waveRay.direction.normalized);
+            var waveDiff = (waveRay.GetPoint(d) - wPos).magnitude;
 
             var newPos = vPos;
 
-            var wPos = cachedTransform.TransformPoint(vPos);
+            var diff = t * waveDiff;
+            var pureF = Mathf.Exp(-(diff * diff));
 
-            var pureF = Mathf.Exp(-(t * (wPos.z - z)) * (t * (wPos.z - z)));
-
-            var nh = h;
-
-            var offset = Quaternion.AngleAxis(angle * pureF, axis) * new Vector3(0, nh * pureF, 0);
-            newPos += offset;
+            var offset = Quaternion.AngleAxis(waveAngle * pureF, waveAxis) *
+                Vector3.up * waveHeight * pureF;
+            
+            var factor = (divide <= 0)? 1: Mathf.Min(1.0f, Mathf.Abs(sdf) / divide);
+            factor = Mathf.Pow(factor, pow);
+            newPos += offset * factor;
 
             return newPos;
         }
