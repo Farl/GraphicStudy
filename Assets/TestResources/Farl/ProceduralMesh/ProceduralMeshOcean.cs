@@ -54,6 +54,22 @@ namespace SS
                 for (int i = 0; i <= slice; i++)
                 {
                     var factor = new Vector2((float)i, (float)j);
+                    if (waveDummy)
+                    {
+                        var waveLocalPos = cachedTransform.InverseTransformPoint(waveDummy.position);
+                        waveLocalPos /= gridSize;
+                        waveLocalPos.x += 0.5f;
+                        waveLocalPos.z += 0.5f;
+                        var tmp = new Vector2(waveLocalPos.x * slice, waveLocalPos.z * segment);
+
+                        for (var k = 0; k < 2; k++)
+                        {
+                            if (Mathf.Abs(tmp[k] - factor[k]) < 0.5f)
+                            {
+                                factor[k] = tmp[k];
+                            }
+                        }
+                    }
                     var uv = new Vector2(factor.x / slice, factor.y / segment);
 
                     var vPos = new Vector3(
