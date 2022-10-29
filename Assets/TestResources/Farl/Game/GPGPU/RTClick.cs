@@ -33,10 +33,10 @@ public class RTClick : MonoBehaviour {
 	private RenderTexture velocityTexture1;
 	private RenderTexture velocityTexture2;
 
-	private List<Vector3> clickList = new List<Vector3> ();
+	private List<Vector4> clickList = new List<Vector4> ();
 	private List<Vector4> clickVecArray = new List<Vector4> ();
 
-	[Header("Outpu")]
+	[Header("Output")]
 	public OutputMaterial[] outputMaterials;
 
 	[Header("Render Texture")]
@@ -45,10 +45,16 @@ public class RTClick : MonoBehaviour {
 	public RenderTextureFormat rtFormat = RenderTextureFormat.ARGB32;
 	public TextureWrapMode rtWrap = TextureWrapMode.Repeat;
 	public FilterMode rtFilter = FilterMode.Bilinear;
+	[Header("Parameters")]
+	[SerializeField]
+	private float clickRadius = 0.05f;
 
-	public void SetClickTexCoord(Vector3 texcoord)
+    private bool doInit = false;	// Already initialized
+    private bool click = false;	// Is clicking
+
+    public void SetClickTexCoord(Vector3 texcoord, float radius)
 	{
-		clickList.Add (texcoord);
+		clickList.Add (new Vector4(texcoord.x, texcoord.y, texcoord.z, radius));
 	}
 
 	RenderTexture CreateTexture()
@@ -64,7 +70,6 @@ public class RTClick : MonoBehaviour {
 
 	void _Init()
 	{
-		bool doInit = false;
 		if (positionTexture1 == null) {
 			positionTexture1 = CreateTexture();
 			positionTexture2 = CreateTexture();
@@ -152,8 +157,7 @@ public class RTClick : MonoBehaviour {
 
 	void UpdateInput()
 	{
-		
-		bool click = false;
+		click = false;
 		Vector3 texcoord = Vector3.zero;
 		if (kernelMaterial) {
 			if (Input.GetMouseButton (0)) {
@@ -164,17 +168,16 @@ public class RTClick : MonoBehaviour {
 					texcoord = hitInfo.textureCoord;
 					click = true;
 
-					SetClickTexCoord (texcoord);
+					SetClickTexCoord (texcoord, clickRadius);
 				}
 			}
-			// kernelMaterial.SetVector ("_Click", new Vector4 (texcoord.x, texcoord.y, texcoord.z, click? 1: 0));
 		}
 
 		int count = 6;
 		clickVecArray.Clear ();
 		while (count > 0) {
 			if (clickList.Count > 0) {
-				clickVecArray.Add(new Vector4(clickList[0].x, clickList[0].y, clickList[0].z, 1));
+				clickVecArray.Add(clickList[0]);
 				clickList.RemoveAt (0);
 			} else {
 				clickVecArray.Add(new Vector4 (0, 0, 0, 0));
@@ -205,6 +208,7 @@ public class RTClick : MonoBehaviour {
 
 			if (positionTexture1 && positionTexture2 && velocityTexture1 && velocityTexture2) {
 				kernelMaterial.SetVector ("_WaveParam", new Vector4 (waveDensity, waveDampingForce, waveSpeed, waveDamping));
+				kernelMaterial.SetVector ("_SimulationParameter", new Vector4(Time.deltaTime, 0, 0, 0));
 
 				kernelMaterial.SetTexture ("_PositionBuffer", positionTexture1);
 				kernelMaterial.SetTexture ("_VelocityBuffer", velocityTexture1);

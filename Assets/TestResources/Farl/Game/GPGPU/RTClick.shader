@@ -7,7 +7,6 @@ Shader "Hidden/Farl/RTClick"
 {
 	Properties
 	{
-		_Click ("Click", Vector) = (0, 0, 0, 0)
 		_WaveParam ("Wave (Density, Damping Force, Speed, Damping", Vector) = (0, 0, 0, 0)
         _PositionBuffer ("-", 2D) = "gray"
         _VelocityBuffer ("-", 2D) = "gray"
@@ -17,12 +16,13 @@ Shader "Hidden/Farl/RTClick"
 			
 		#include "UnityCG.cginc"
 
-		float4 _Click;
-		float4 _WaveParam;
 		sampler2D _PositionBuffer;
 		uniform float4 _PositionBuffer_TexelSize;
 		sampler2D _VelocityBuffer;
+
+		float4 _WaveParam;
 		float4 _ClickList[6];
+		float4 _SimulationParameter;
 
 		float4 encode01(float4 input, float maximum)
 		{
@@ -47,15 +47,15 @@ Shader "Hidden/Farl/RTClick"
    			float4 p = decode01(tex2D(_PositionBuffer, i.uv), 1);
    			float4 v = decode01(tex2D(_VelocityBuffer, i.uv), 10);
 
-			float dt = 1 / 60.0;
+			float dt = _SimulationParameter.x;	//1 / 60.0;
 
 			p.xyz = p.xyz + v.xyz * dt;
 
 			for (int j = 0; j < 6; j++)
 			{
-				if (_ClickList[j].w >= 1)
+				if (_ClickList[j].w > 0)
 				{
-					float radius = 0.1;
+					float radius = _ClickList[j].w;
 					float f = 1 * smoothstep(0, 0.5, saturate((radius - length(_ClickList[j].xy - i.uv)) / radius));
 					if (f > 0)
 						p.y = min(p.y, -f);
@@ -76,7 +76,7 @@ Shader "Hidden/Farl/RTClick"
 		{
    			float4 v = decode01(tex2D(_VelocityBuffer, i.uv), 10);
 
-			float dt = 1 / 60.0;
+			float dt = _SimulationParameter.x;	//1 / 60.0;
 
    			float h = _WaveParam.x + 1e-9;
    			float c = _WaveParam.z * (h / dt);
