@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.prototyper.packagehelper": {
+      "version": "git+ssh://git@github.com/Farl/SSCore2017.git?path=/Packages/com.prototyper.packagehelper#packagehelper-v0.2.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
+      },
+      "hash": "728a7a750ba6ae9a5bfea1ad037c884644794792"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -78,7 +87,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.0.2",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.prototyper.packagehelper": "git+ssh://git@github.com/Farl/SSCore2017.git?path=/Packages/com.prototyper.packagehelper#packagehelper-v0.2.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.analytics": "3.6.12",
