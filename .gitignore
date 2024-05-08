@@ -36,3 +36,7 @@ sysinfo.txt
 *.apk
 #*.unitypackage
 .DS_Store
+Assets/3rdParty/AmplifyShaderEditor
+Assets/3rdParty/AmplifyShaderEditor.meta
+Assets/3rdParty/AmplifyShaderPack
+Assets/3rdParty/AmplifyShaderPack.meta
