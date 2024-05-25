@@ -1,0 +1,18 @@
+{
+    "name": "ss.tech-art.tools.editor",
+    "rootNamespace": "SS",
+    "references": [
+        "GUID:45fa0eb2e623a4e499adeef4eae001a4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

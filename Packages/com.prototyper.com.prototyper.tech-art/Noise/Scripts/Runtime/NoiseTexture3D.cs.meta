@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: e36b01af4279f4e57ab79491e9721f94
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - computeShader: {fileID: 7200000, guid: a838e4e5dc268774a8f088cb635657ec, type: 3}
+  - texture3DSlicer: {fileID: 7200000, guid: ba07511e08796b546a18c27994f9a4eb, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

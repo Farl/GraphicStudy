@@ -15,17 +15,11 @@ EditorBuildSettings:
     path: Assets/TestResources/Farl/Game/GPUParticle/GPUParticle.unity
     guid: 2b087b9602f5b492f8e3ea78e661c101
   - enabled: 0
-    path: Assets/3rdParty/AmplifyShaderEditor/Examples/Built-In/VertexNormalReconstruction/VertexNormalReconstruction.unity
-    guid: 0f17b7ece2afcc34a8757a9f22e9a432
-  - enabled: 0
     path: Assets/TestResources/Farl/Game/Amplify/AmplifyGhost/AmplifyGhost.unity
     guid: 5815d6769235c42408dae49fce4f6285
   - enabled: 0
     path: Assets/TestResources/Farl/Game/Amplify/AmplifyScreenDistortion/AmplifyScreenDistortion.unity
     guid: 99a573dfb15c442d2ada10e7e75e2a47
-  - enabled: 1
-    path: Assets/TestResources/Farl/Game/ConeFog/ConeFog.unity
-    guid: 9c58bd1e15ee44d0daf9a36913ee29e4
   - enabled: 1
     path: Assets/TestResources/Farl/Game/Raymarching/Raymarching.unity
     guid: 2ffd6bfb6a9fc4104ac9977d0672e6ac

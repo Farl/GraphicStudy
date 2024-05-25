@@ -9,6 +9,12 @@
       },
       "hash": "728a7a750ba6ae9a5bfea1ad037c884644794792"
     },
+    "com.prototyper.tech-art": {
+      "version": "file:com.prototyper.com.prototyper.tech-art",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -63,7 +69,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.17",
+      "version": "2.0.22",
       "depth": 0,
       "source": "registry",
       "dependencies": {
