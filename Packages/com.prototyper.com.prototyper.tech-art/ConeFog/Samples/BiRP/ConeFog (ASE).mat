@@ -2,13 +2,15 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: AmplifyConeFog
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ConeFog (ASE)
   m_Shader: {fileID: 4800000, guid: 67cf66a5a7e354f74b2a690d3b5e0ecb, type: 3}
-  m_ShaderKeywords: 
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -66,6 +68,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -92,6 +95,7 @@ Material:
     - _FresnelOpacity: {r: -0.06, g: 1.45, b: 0.6, a: 0}
     - _NoiseParam: {r: 0.01, g: 0.61, b: 0.6, a: 0}
     - _NoiseSpeed: {r: 0, g: 0.1, b: 0, a: 0}
-    - _Offset: {r: 0, g: -0.5, b: 0, a: 0}
-    - _Scale: {r: 1, g: 0, b: 0.5, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Scale: {r: 1, g: 1, b: 1, a: 0}
     - _Size: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
