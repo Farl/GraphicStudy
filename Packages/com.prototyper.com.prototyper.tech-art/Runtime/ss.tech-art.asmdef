@@ -1,7 +1,10 @@
 {
     "name": "ss.tech-art",
-    "rootNamespace": "",
-    "references": [],
+    "rootNamespace": "SS",
+    "references": [
+        "GUID:f3e8c68dd857e4f2589485b218d291f2",
+        "GUID:0239906b6ccdb844199b3a9e107b61ea"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
