@@ -117,6 +117,7 @@ namespace SS
 #endif
         }
 
+#if UNITY_EDITOR
         protected T AddOrReplaceAsset<T>(T obj) where T : UnityEngine.Object
         {
             if (obj == null) return null;
@@ -150,5 +151,6 @@ namespace SS
             }
             return result;
         }
+#endif
     }
 }
