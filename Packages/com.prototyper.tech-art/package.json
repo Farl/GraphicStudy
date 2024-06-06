@@ -1,7 +1,21 @@
 {
   "name": "com.prototyper.tech-art",
+  "version": "0.2.2",
   "displayName": "SS Tech Art",
-  "version": "0.2.1",
   "description": "Technical artist utility",
-  "hideInEditor": false
+  "unity": "",
+  "unityRelease": "",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "dependencies": {},
+  "keywords": [],
+  "author": {
+    "name": "Farl Lee",
+    "email": "spring_snow@hotmail.com",
+    "url": ""
+  },
+  "hideInEditor": false,
+  "license": "",
+  "hideFlags": 0
 }
