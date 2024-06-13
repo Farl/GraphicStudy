@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace SS
 {
     public class FaceCamera : MonoBehaviour
     {
-        [SerializeField] private bool useAxis;
+        #region Enums / Classes
+
         public enum Axis
         {
             X,
@@ -16,11 +18,27 @@ namespace SS
             MINUS_Y,
             MINUS_Z
         }
+
+        public enum UpdateMethod
+        {
+            Update,
+            LateUpdate,
+            FixedUpdate,
+            Manual
+        }
+
+        #endregion
+
+        #region Insepctor
+        [SerializeField] private bool useAxis;
         [SerializeField] public Transform axisTransform;
         [SerializeField] public Axis axis = Axis.Y;
         [SerializeField] private bool rotateByAxis = false;
-        
-        private Transform _cachedTransform;
+        [SerializeField] private UpdateMethod updateMethod = UpdateMethod.Update;
+
+        #endregion
+
+        #region Public
         public Transform cachedTransform
         {
             get
@@ -32,7 +50,6 @@ namespace SS
                 return _cachedTransform;
             }
         }
-        private Transform _cameraTransform;
         public Transform cameraTransform
         {
             get
@@ -46,7 +63,7 @@ namespace SS
             }
         }
 
-        public virtual void Update()
+        public virtual void DoFace()
         {
             if (cachedTransform == null || cameraTransform == null)
             {
@@ -118,5 +135,37 @@ namespace SS
                 cachedTransform.LookAt(lookAtPos, axisVec);
             }
         }
+        #endregion
+
+        #region Private / Protected
+        private Transform _cachedTransform;
+        private Transform _cameraTransform;
+        protected void Update()
+        {
+            if (updateMethod != UpdateMethod.Update)
+            {
+                return;
+            }
+            DoFace();
+        }
+        protected void LateUpdate()
+        {
+            if (updateMethod != UpdateMethod.LateUpdate)
+            {
+                return;
+            }
+            DoFace();
+        }
+        protected void FixedUpdate()
+        {
+            if (updateMethod != UpdateMethod.FixedUpdate)
+            {
+                return;
+            }
+            DoFace();
+        }
+        #endregion
+
+
     }
 }

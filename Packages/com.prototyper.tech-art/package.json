@@ -1,10 +1,10 @@
 {
   "name": "com.prototyper.tech-art",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "displayName": "SS Tech Art",
   "description": "Technical artist utility",
-  "unity": "",
-  "unityRelease": "",
+  "unity": null,
+  "unityRelease": null,
   "documentationUrl": "",
   "changelogUrl": "",
   "licensesUrl": "",
@@ -17,5 +17,11 @@
   },
   "hideInEditor": false,
   "license": "",
+  "samples": [],
+  "repository": {
+    "type": "git",
+    "url": "",
+    "revision": ""
+  },
   "hideFlags": 0
 }
