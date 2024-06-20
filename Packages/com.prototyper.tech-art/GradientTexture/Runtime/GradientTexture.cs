@@ -85,6 +85,12 @@ namespace SS
             Radial,
             FourCorners
         }
+        public enum TextureType
+        {
+            Default,
+            NormalMap,
+            Sprite
+        }
 
         [Header("Gradient Settings")]
         public Mode mode = Mode.HorizontalAndVertical;
@@ -103,8 +109,10 @@ namespace SS
         public bool linear = true;
 
         [Header("Output")]
-        public Texture2D texutre2D;
+        public Texture2D texture2D;
+        public Sprite sprite;
         public bool outputFile = false;
+        public TextureType textureType = TextureType.Default;
         public string outputPath;
     }
 }

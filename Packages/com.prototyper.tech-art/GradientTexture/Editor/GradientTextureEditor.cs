@@ -86,10 +86,20 @@ namespace SS
             gt.targetHeight = Mathf.Max(1, gt.targetHeight);
             TextureFormat textureFormat = Enum.TryParse<TextureFormat>(gt.textureFormat.ToString(), out textureFormat) ? textureFormat : TextureFormat.RGBA32;
 
-            Texture2D texture2D = new Texture2D(gt.targetWidth, gt.targetHeight, textureFormat, gt.generateMipMaps, gt.linear);
-            texture2D.name = gt.name;
+            Texture2D texture2D = new Texture2D(gt.targetWidth, gt.targetHeight, textureFormat, gt.generateMipMaps, gt.linear)
+            {
+                name = gt.name
+            };
             GenerateGradient(gt, texture2D);
             texture2D.Apply();
+
+            // Sprite
+            Sprite sprite = null;
+            if (gt.textureType == GradientTexture.TextureType.Sprite)
+            {
+                sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.one * 0.5f);
+                sprite.name = gt.name;
+            }
 
             if (gt.outputFile)
             {
@@ -109,23 +119,48 @@ namespace SS
             else
             {
                 // Try replace into GradientTexture object
+                bool replaced = false;
                 var assets = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(gt));
                 foreach (var asset in assets)
                 {
-                    if (asset is Texture2D)
+                    switch (gt.textureType)
                     {
-                        EditorUtility.CopySerialized(texture2D, asset);
-                        EditorUtility.SetDirty(asset);
-                        gt.texutre2D = asset as Texture2D;
-                        break;
+                        case GradientTexture.TextureType.Sprite:
+                            if (asset is Sprite)
+                            {
+                                EditorUtility.CopySerialized(sprite, asset);
+                                EditorUtility.SetDirty(asset);
+                                gt.sprite = asset as Sprite;
+                                replaced = true;
+                            }
+                            break;
+                        default:
+                            if (asset is Texture2D)
+                            {
+                                EditorUtility.CopySerialized(texture2D, asset);
+                                EditorUtility.SetDirty(asset);
+                                gt.texture2D = asset as Texture2D;
+                                replaced = true;
+                            }
+                            break;
                     }
+                    if (replaced)
+                        break;
                 }
 
-                if (gt.texutre2D == null)
+                if (!replaced)
                 {
-                    // Add when not found
-                    AssetDatabase.AddObjectToAsset(texture2D, gt);
-                    gt.texutre2D = texture2D;
+                    switch (gt.textureType)
+                    {
+                        case GradientTexture.TextureType.Sprite:
+                            gt.sprite = sprite;
+                            AssetDatabase.AddObjectToAsset(gt.sprite, gt);
+                            break;
+                        default:
+                            gt.texture2D = texture2D;
+                            AssetDatabase.AddObjectToAsset(texture2D, gt);
+                            break;
+                    }
                 }
 
                 gt.outputPath = string.Empty;
@@ -196,14 +231,34 @@ namespace SS
                         var importer = AssetImporter.GetAtPath(path) as TextureImporter;
                         if (importer != null)
                         {
+                            switch (gt.textureType)
+                            {
+                                case GradientTexture.TextureType.NormalMap:
+                                    importer.textureType = TextureImporterType.NormalMap;
+                                    break;
+                                case GradientTexture.TextureType.Sprite:
+                                    importer.textureType = TextureImporterType.Sprite;
+                                    break;
+                                default:
+                                    importer.textureType = TextureImporterType.Default;
+                                    break;
+                            }
                             importer.isReadable = true;
                             importer.wrapMode = TextureWrapMode.Clamp;
                             var settings = importer.GetDefaultPlatformTextureSettings();
                             if (settings != null)
                             {
                                 settings.overridden = true;
-                                settings.format = TextureImporterFormat.RGB16;
-                                settings.maxTextureSize = 128;
+                                switch (gt.textureType)
+                                {
+                                    default:
+                                        settings.format = TextureImporterFormat.RGB16;
+                                        break;
+                                    case GradientTexture.TextureType.NormalMap:
+                                        settings.format = TextureImporterFormat.RGBA32;
+                                        break;
+                                }
+                                //settings.maxTextureSize = 128;
                             }
                             importer.SetPlatformTextureSettings(settings);
                         }
@@ -211,7 +266,7 @@ namespace SS
                         {
                             Debug.LogError($"Failed to get TextureImporter at {path}");
                         }
-                        gt.texutre2D = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+                        gt.texture2D = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
                     }
                     EditorUtility.SetDirty(gt);
                     AssetDatabase.SaveAssetIfDirty(gt);
@@ -219,16 +274,16 @@ namespace SS
                 AssetDatabase.Refresh();
             }
 
-            if (GUILayout.Button("Clear Embeded Texture2D"))
+            if (GUILayout.Button("Clear embeded isolated assets"))
             {
                 // Prompt to delete
-                var result = EditorUtility.DisplayDialog("Clear Embeded Texture2D", "Are you sure to clear embeded Texture2D?", "Yes", "No");
+                var result = EditorUtility.DisplayDialog("Clear Embeded Assets", "Are you sure to clear embeded isolated assets?", "Yes", "No");
                 if (result)
                 {
                     foreach (GradientTexture gt in targets)
                     {
-                        DestroyAssetsInside<Texture2D>(gt);
-                        gt.texutre2D = null;
+                        DestroyAssetsInside<Texture2D>(gt, gt.texture2D);
+                        DestroyAssetsInside<Sprite>(gt, gt.sprite);
                         gt.outputPath = string.Empty;
                         EditorUtility.SetDirty(gt);
                         AssetDatabase.SaveAssetIfDirty(gt);
