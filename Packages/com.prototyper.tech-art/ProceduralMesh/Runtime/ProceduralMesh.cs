@@ -3,6 +3,9 @@ namespace SS
 	using System.Collections;
 	using System.Collections.Generic;
 	using UnityEngine;
+#if UNITY_EDITOR
+	using UnityEditor;
+#endif
 
 	/// <summary>
 	/// by Farl
@@ -20,8 +23,21 @@ namespace SS
 			}
 		}
 
+		public void ForceUpdate()
+		{
+			Update();
+		}
+
+		public void InjectCollider(MeshCollider collider)
+		{
+			meshCollider = collider;
+		}
+
+		[InspectorButton("Save Mesh", "SaveMesh")]
 		[SerializeField]
 		private bool alwaysCreateNewMesh = false;
+
+		[SerializeField] private MeshCollider meshCollider;
 
 		//[SerializeField]
 		private Mesh mesh;
@@ -52,10 +68,19 @@ namespace SS
 
 		protected void DestroyMesh()
 		{
-			Object.DestroyImmediate(mesh);
+			if (mesh == null)
+				return;
+			if (mesh.hideFlags != HideFlags.None)
+			{
+				Object.DestroyImmediate(mesh);
+			}
+			else
+			{
+				mesh = null;
+			}
 		}
 
-		protected void OnValidate()
+		protected virtual void OnValidate()
 		{
 			isDirty = true;
 		}
@@ -87,15 +112,18 @@ namespace SS
 		protected void CreateMesh()
 		{
 			var backupVerticesLength = vertices.Count;
+			//Debug.Log(vertices.Count);
 
 			vertices.Clear();
 			indices.Clear();
 			uvs.Clear();
 			colors.Clear();
 
+			CheckComponent();
 			OnCalculateVertices();
 
 			// Destroy old mesh
+			//Debug.Log(vertices.Count);
 			if (mesh && (alwaysCreateNewMesh || backupVerticesLength != vertices.Count))
 			{
 				DestroyMesh();
@@ -112,29 +140,59 @@ namespace SS
 			{
 				OnSetupMesh(mesh);
 
-				// Check components
-				if (!meshFilter)
-				{
-					meshFilter = GetComponent<MeshFilter>();
-					if (!meshFilter)
-						meshFilter = gameObject.AddComponent<MeshFilter>();
-				}
-
-				if (!meshRenderer && meshFilter)
-				{
-					meshRenderer = meshFilter.GetComponent<MeshRenderer>();
-					if (!meshRenderer)
-						meshRenderer = meshFilter.gameObject.AddComponent<MeshRenderer>();
-				}
-
 				// Assing new mesh
 				if (meshFilter && meshFilter.sharedMesh != mesh)
 				{
 					meshFilter.sharedMesh = mesh;
 				}
+
+				if (meshCollider && meshCollider.sharedMesh != mesh)
+				{
+					meshCollider.sharedMesh = mesh;
+				}
 			}
 			isDirty = false;
 		}
+
+		protected virtual void CheckComponent()
+		{
+			if (!meshFilter)
+			{
+				meshFilter = GetComponent<MeshFilter>();
+				if (!meshFilter)
+					meshFilter = gameObject.AddComponent<MeshFilter>();
+			}
+
+			if (!meshRenderer && meshFilter)
+			{
+				meshRenderer = meshFilter.GetComponent<MeshRenderer>();
+				if (!meshRenderer)
+					meshRenderer = meshFilter.gameObject.AddComponent<MeshRenderer>();
+			}
+		}
+
+#if UNITY_EDITOR
+		[ContextMenu("Save Mesh")]
+		public virtual void SaveMesh()
+		{
+			if (mesh)
+			{
+				var path = UnityEditor.EditorUtility.SaveFilePanelInProject("Save Mesh", mesh.name, "asset", "Save Mesh");
+				if (!string.IsNullOrEmpty(path))
+				{
+					enabled = false;
+					Mesh newMesh = new Mesh();
+					newMesh.name = name;
+					OnSetupMesh(newMesh);
+					UnityEditor.AssetDatabase.CreateAsset(newMesh, path);
+					UnityEditor.AssetDatabase.SaveAssets();
+					AssetDatabase.Refresh();
+					if (meshFilter)
+						meshFilter.sharedMesh = newMesh;
+				}
+			}
+		}
+#endif
 	}
 
 }

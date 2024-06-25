@@ -13,6 +13,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.prototyper.essential",
+            "expression": "",
+            "define": "USE_SS_ESSENTIAL"
+        }
+    ],
     "noEngineReferences": false
 }

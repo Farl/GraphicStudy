@@ -1,11 +1,14 @@
 {
   "name": "com.prototyper.tech-art",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "displayName": "SS Tech Art",
   "description": "Technical artist utility",
+  "unity": null,
+  "unityRelease": null,
   "documentationUrl": "",
   "changelogUrl": "",
   "licensesUrl": "",
+  "dependencies": {},
   "keywords": [],
   "author": {
     "name": "Farl Lee",
@@ -14,7 +17,13 @@
   },
   "hideInEditor": false,
   "license": "",
-  "samples": [],
+  "samples": [
+    {
+      "displayName": "Procedural Mesh Example",
+      "description": "",
+      "path": "ProceduralMesh/Samples~/Procedural Mesh Example"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "",
