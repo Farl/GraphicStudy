@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace KawaseBlur
 {
+    #region Enums / Classes
     /// <summary>
     /// Settings
     /// </summary>
@@ -24,24 +25,21 @@ namespace KawaseBlur
             Gaussian2D
         }
 
-        public bool bypass = false;
-        public RenderPassEvent renderPassEvent = RenderPassEvent.AfterRenderingTransparents;
-        public Material blurMaterial = null;
-        public string blurPropertyName = "_offset";
-        public BlurMethod blurMethod = BlurMethod.Kawase;
-
-        [Range(1, 15)]
-        public float offsetScale = 1;
-
-        [Range(0, 15)]
-        public int blurPasses = 1;
-
-        [Range(1, 8)]
-        public int downsample = 1;
-
-        public RenderTarget renderTarget;
-        public string targetName = "_blurTexture";
+        #region Inspector
+        [SerializeField] public bool bypass = false;
+        [SerializeField] public RenderPassEvent renderPassEvent = RenderPassEvent.AfterRenderingTransparents;
+        [SerializeField] public Material blurMaterial = null;
+        [SerializeField] public string blurPropertyName = "_offset";
+        [SerializeField] public BlurMethod blurMethod = BlurMethod.Kawase;
+        [SerializeField, Range(1, 15)] public float offsetScale = 1;
+        [SerializeField, Range(1, 15)] public int blurPasses = 1;
+        [SerializeField, Range(1, 8)] public int downsample = 1;
+        [SerializeField] public RenderTarget renderTarget;
+        [SerializeField] public string targetName = "_blurTexture";
+        [SerializeField] public CameraType cameraType = CameraType.Game;
+        #endregion
     }
+    #endregion
 
     /// <summary>
     /// Kawase Blur render feature
@@ -64,12 +62,15 @@ namespace KawaseBlur
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
-            if (renderingData.cameraData.cameraType != CameraType.Game)
+            if (settings.bypass)
             {
-                //return;
+                return;
             }
-            scriptablePass.Setup(renderer);
-            renderer.EnqueuePass(scriptablePass);
+            if (settings.cameraType.HasFlag(renderingData.cameraData.cameraType))
+            {
+                scriptablePass.Setup(renderer);
+                renderer.EnqueuePass(scriptablePass);
+            }
         }
 
         protected override void Dispose(bool disposing)
