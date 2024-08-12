@@ -7,6 +7,7 @@ Shader "SS/Unlit Color (Code)"
 
         [HideInInspector][Enum(UnityEngine.Rendering.CompareFunction)] _ZTest("ZTest", Float) = 4
         //[ToggleUI] _ZWrite("ZWrite", Float) = 1
+        [HideInInspector] _ZWrite("ZWrite", Float) = 1
 
         [Enum(UnityEngine.Rendering.BlendMode)] _SrcBlend("SrcBlend", Float) = 5
         [Enum(UnityEngine.Rendering.BlendMode)] _DstBlend("DstBlend", Float) = 10
