@@ -245,6 +245,11 @@ namespace SS
                             }
                             importer.isReadable = true;
                             importer.wrapMode = TextureWrapMode.Clamp;
+                            // Check if texture has alpha channel
+                            if (gt.texture2D != null)
+                            {
+                                importer.alphaIsTransparency = gt.texture2D.alphaIsTransparency;
+                            }
                             var settings = importer.GetDefaultPlatformTextureSettings();
                             if (settings != null)
                             {
@@ -252,7 +257,7 @@ namespace SS
                                 switch (gt.textureType)
                                 {
                                     default:
-                                        settings.format = TextureImporterFormat.RGB16;
+                                        settings.format = TextureImporterFormat.RGBA32;
                                         break;
                                     case GradientTexture.TextureType.NormalMap:
                                         settings.format = TextureImporterFormat.RGBA32;
