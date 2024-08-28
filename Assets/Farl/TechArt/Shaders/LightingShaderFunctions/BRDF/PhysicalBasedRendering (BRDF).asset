@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: PhysicalBasedRendering (BRDF)
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity
+    Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=18935\n432;294;1129;626;2307.249;486.5666;1.47663;True;False\nNode;AmplifyShaderEditor.CommentaryNode;1;-975.2465,183.0168;Inherit;False;212;183;Radiance;1;19;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;23;-1104.857,-713.0666;Inherit;False;NdotL;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-1365.833,233.4683;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;31;-1728.192,-340.4073;Inherit;False;BRDF
+    Specular;3;6;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;26;-1717.163,-673.1722;Inherit;False;View
+    Dir;3;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;25;-1708.911,-755.6973;Inherit;False;Normal;3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;27;-1717.163,-579.6436;Inherit;False;Light
+    Dir;3;2;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;29;-1756.089,296.7166;Inherit;False;Light
+    Atternuation;1;4;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LightAttenuation;36;-1983.381,310.5689;Inherit;False;0;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;37;-1754.079,449.4995;Inherit;False;Lambert
+    Factor;1;10;False;1;0;FLOAT;-1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;35;-1766.731,110.2438;Inherit;False;Normalization
+    Term;1;9;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;24;-1107.91,-528.1077;Half;False;LoH;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;22;-1104.479,-620.4737;Inherit;False;NoH;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;15;-1505.28,372.0906;Inherit;False;23;NdotL;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;38;-1263.296,-37.71675;Inherit;False;BRDF
+    Direct Specular;-1;;160;5fff3f299f39b46239aa8220c3293108;0;5;18;FLOAT;0;False;17;FLOAT;0;False;14;FLOAT;0;False;16;FLOAT;0;False;15;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;28;-1733.257,201.4736;Inherit;False;Light
+    Color;3;3;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;3;-639.6807,-221.1943;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;6;-440.1111,-40.68935;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;19;-925.2465,233.0168;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.GetLocalVarNode;8;-1515.341,-128.1573;Inherit;False;24;LoH;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LightColorNode;14;-1953.111,191.6905;Inherit;False;0;3;COLOR;0;FLOAT3;1;FLOAT;2\nNode;AmplifyShaderEditor.FunctionInput;33;-1737.483,-60.91011;Inherit;False;Roughness2;1;7;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;34;-1776.48,28.99985;Inherit;False;Roughness2
+    Minus One;1;8;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.TFHCRemapNode;18;-1269.717,374.9034;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;-1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;30;-1725.109,-439.3283;Inherit;False;BRDF
+    Diffuse;3;5;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-806.111,-137.2369;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.GetLocalVarNode;2;-1518.08,-200.988;Inherit;False;22;NoH;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;40;-1446.348,-713.5003;Inherit;False;Prepare
+    Vector Dot;-1;;159;2f780be88ea50455a83dc8bc41b86762;0;3;26;FLOAT3;0,0,0;False;28;FLOAT3;0,0,0;False;27;FLOAT3;0,0,0;False;7;FLOAT;0;FLOAT3;4;FLOAT;29;FLOAT;3;FLOAT;30;FLOAT;1;FLOAT;2\nNode;AmplifyShaderEditor.FunctionOutput;0;-274.0519,-44.67917;Inherit;False;True;-1;Output;0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;41;-276.1429,102.6093;Inherit;False;False;-1;Debug;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;23;0;40;29\nWireConnection;13;0;28;0\nWireConnection;13;1;29;0\nWireConnection;29;0;36;0\nWireConnection;24;0;40;2\nWireConnection;22;0;40;30\nWireConnection;38;18;2;0\nWireConnection;38;17;8;0\nWireConnection;38;14;33;0\nWireConnection;38;16;34;0\nWireConnection;38;15;35;0\nWireConnection;28;0;14;1\nWireConnection;3;0;30;0\nWireConnection;3;1;4;0\nWireConnection;6;0;3;0\nWireConnection;6;1;19;0\nWireConnection;19;0;13;0\nWireConnection;19;1;18;0\nWireConnection;18;0;15;0\nWireConnection;18;3;37;0\nWireConnection;4;0;31;0\nWireConnection;4;1;38;0\nWireConnection;40;26;25;0\nWireConnection;40;28;26;0\nWireConnection;40;27;27;0\nWireConnection;0;0;6;0\nWireConnection;41;0;38;0\nASEEND*/\n//CHKSM=E47AB7C3442593A76C2DFE56AFAC8618F54A0E69"
+  m_functionName: 
+  m_description: 'PBR
+
+    by Farl'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 1
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives:
+    - {fileID: 0}
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems:
+    - LineType: 2
+      LineValue: multi_compile _ _ADDITIONAL_LIGHTS
+      GUIDToggle: 0
+      GUIDValue: 
+      Origin: 2
+  m_nodeCategory: 0
+  m_customNodeCategory: Farl
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: GetAdditionalLight
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity
+    Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=18935\n104;635;1368;732;2106.573;617.3475;2.32601;True;False\nNode;AmplifyShaderEditor.CustomExpressionNode;1;-400,-69;Inherit;False;LightColor
+    = float4(1, 1, 1, 1)@$LightDistanceAttenuation = 0@$LightShadowAttenuation =
+    0@$float3 LightDir = float3(0, 1, 0)@$$#ifdef _ADDITIONAL_LIGHTS$int numLights
+    = GetAdditionalLightsCount()@$if (idx < numLights)${$#if ASE_SRP_VERSION >= 100000$\tLight
+    light = GetAdditionalLight(idx, WorldPosition, ShadowMask)@$#else$\tLight light
+    = GetAdditionalLight(idx, WorldPosition)@$#endif$\tLightDir = light.direction@$\tLightColor
+    = light.color@$\tLightDistanceAttenuation = light.distanceAttenuation@$\tLightShadowAttenuation
+    = light.shadowAttenuation@\t$}$#endif$return LightDir@;3;Create;6;True;idx;INT;0;In;;Inherit;False;True;WorldPosition;FLOAT3;0,0,0;In;;Float;False;True;ShadowMask;FLOAT4;0,0,0,0;In;;Inherit;False;True;LightDistanceAttenuation;FLOAT;0;Out;;Inherit;False;True;LightShadowAttenuation;FLOAT;0;Out;;Inherit;False;True;LightColor;FLOAT3;1,1,1;Out;;Inherit;False;GetAdditionalLight;True;False;0;;False;6;0;INT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT4;0,0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT3;1,1,1;False;4;FLOAT3;0;FLOAT;4;FLOAT;5;FLOAT3;6\nNode;AmplifyShaderEditor.FunctionInput;5;-580,-141;Inherit;False;Input;0;0;False;1;0;INT;0;False;1;INT;0\nNode;AmplifyShaderEditor.FunctionInput;6;-607,-51;Inherit;False;Position
+    (WS);3;1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;7;-607,39;Inherit;False;Shadow
+    Mask;4;2;False;1;0;FLOAT4;0,0,0,0;False;1;FLOAT4;0\nNode;AmplifyShaderEditor.FunctionOutput;0;57,-146;Inherit;False;True;-1;Dir;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;2;53,-54;Inherit;False;False;-1;Distance
+    Attenuation;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;3;34,24;Inherit;False;False;-1;Shadow
+    Attenuation;2;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;4;55,110;Inherit;False;False;-1;Light
+    Color;3;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;1;0;5;0\nWireConnection;1;1;6;0\nWireConnection;1;2;7;0\nWireConnection;0;0;1;0\nWireConnection;2;0;1;4\nWireConnection;3;0;1;5\nWireConnection;4;0;1;6\nASEEND*/\n//CHKSM=8D62B4C0927DC78D3164C482E14720BF91F12F2A"
+  m_functionName: 
+  m_description: by Farl
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 1
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives:
+    - {fileID: 0}
+    - {fileID: 0}
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems:
+    - LineType: 2
+      LineValue: multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
+      GUIDToggle: 0
+      GUIDValue: 
+      Origin: 2
+    - LineType: 2
+      LineValue: multi_compile _ _ADDITIONAL_LIGHT_SHADOWS
+      GUIDToggle: 0
+      GUIDValue: 
+      Origin: 2
+  m_nodeCategory: 0
+  m_customNodeCategory: Farl
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

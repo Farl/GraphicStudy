@@ -1,0 +1,18 @@
+{
+    "name": "SS.Editor",
+    "rootNamespace": "SS",
+    "references": [
+        "GUID:69a08dd4e90b57a4fb354efb3870a38f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

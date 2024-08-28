@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: GTR1
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity
+    Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=18935\n0;0;1680;989;1255.624;754.4131;1.3;True;False\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;11;93,-185.5;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.ConditionalIfNode;4;897.9,-359.3;Inherit;False;False;5;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleAddOpNode;9;241,-169.5;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleSubtractOpNode;8;-282,-292.5;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;12;-131,-236.5;Inherit;False;a2Minus1;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;18;554,-82.5;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;14;523,-168.5;Inherit;False;12;a2Minus1;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;13;695,-129.5;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleDivideOpNode;5;652.2995,-292.6999;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;7;-490.0002,-179.2998;Inherit;False;sqr;-1;;1;a1851e764ae9d3740831fe9efb5a9582;0;1;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PiNode;6;433.2997,-266.7001;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CustomExpressionNode;1;1183.9,-343.2001;Inherit;False;if
+    (a >= 1) return 1/PI@$float a2 = a*a@$float t = 1 + (a2-1)*NdotH*NdotH@$return
+    (a2-1) / (PI*log(a2)*t)@;1;Create;2;True;NdotH;FLOAT;0;In;;Inherit;False;True;a;FLOAT;0;In;;Inherit;False;GTR1;False;False;0;;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;2;-569,19.5;Inherit;False;NdotH;1;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionNode;10;-407,19.5;Inherit;False;sqr;-1;;2;a1851e764ae9d3740831fe9efb5a9582;0;1;1;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.PiNode;15;300.5002,-55.59999;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.LogOpNode;16;90.0999,-62.89997;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;3;-753.4993,-364.4998;Inherit;False;a;1;1;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;1059.699,-357.8997;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;11;0;12;0\nWireConnection;11;1;10;0\nWireConnection;4;0;3;0\nWireConnection;4;2;5;0\nWireConnection;4;3;5;0\nWireConnection;4;4;13;0\nWireConnection;9;0;11;0\nWireConnection;8;0;7;0\nWireConnection;12;0;8;0\nWireConnection;18;0;9;0\nWireConnection;18;1;15;0\nWireConnection;13;0;14;0\nWireConnection;13;1;18;0\nWireConnection;5;1;6;0\nWireConnection;7;1;3;0\nWireConnection;10;1;2;0\nWireConnection;15;0;16;0\nWireConnection;16;0;7;0\nWireConnection;0;0;4;0\nASEEND*/\n//CHKSM=DC8F43745EFEA81D841DC400A88130E1162BA2DC"
+  m_functionName: 
+  m_description: 
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_customNodeCategory: Farl
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

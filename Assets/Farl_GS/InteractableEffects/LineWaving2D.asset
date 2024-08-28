@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: LineWaving2D
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor v1.9.0.2\n// Available at the
+    Unity Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=19002\n284;53;1573;1078;1279.981;59.72736;1;True;False\nNode;AmplifyShaderEditor.CommentaryNode;4;-102.334,-381.4553;Inherit;False;276;350.0135;Functions;2;2;3;;1,1,1,1;0;0\nNode;AmplifyShaderEditor.FunctionInput;8;-820.9316,762.1793;Inherit;False;Half
+    Width;1;15;False;1;0;FLOAT;0.05;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;14;-999.0983,271.029;Inherit;False;Speed
+    1;2;9;False;1;0;FLOAT2;3,5;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;10;-1000.984,124.2563;Inherit;False;Random
+    1;2;5;False;1;0;FLOAT2;1.3,1.4;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;16;-818.1043,524.1695;Inherit;False;Amplitude;1;12;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;18;-813.3844,603.2767;Inherit;False;Intensity;1;14;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CustomExpressionNode;37;-1144.842,-367.3813;Inherit;False;pos.x
+    += FourierRandom(pos.y * frequency + t * speed, randSeed) * amplitude@$pos.y
+    += FourierRandom(pos.x * frequency + t * speed, randSeed) * amplitude@$return
+    pos@;2;Create;6;True;pos;FLOAT2;0,0;In;;Inherit;False;True;amplitude;FLOAT;0.1;In;;Inherit;False;True;frequency;FLOAT;1;In;;Inherit;False;True;speed;FLOAT;0;In;;Inherit;False;True;randSeed;FLOAT2;1.3,1.4;In;;Inherit;False;True;t;FLOAT;0;In;;Inherit;False;Warp;True;False;0;;False;6;0;FLOAT2;0,0;False;1;FLOAT;0.1;False;2;FLOAT;1;False;3;FLOAT;0;False;4;FLOAT2;1.3,1.4;False;5;FLOAT;0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;23;-1481.867,-150.8935;Inherit;False;Warp
+    Amplitude;1;1;False;1;0;FLOAT;0.1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;11;-818.6377,194.4299;Inherit;False;Random
+    2;2;6;False;1;0;FLOAT2;1.5,1.6;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;15;-814.2484,338.1187;Inherit;False;Speed
+    2;2;10;False;1;0;FLOAT2;2,4;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.CustomExpressionNode;3;-52.33398,-190.4418;Inherit;False;//return
+    smoothstep(halfWidth, 0, abs(t - pos))@$float tmp = abs(t - pos)@$return 1 *
+    exp(-pow(tmp,0.5) / halfWidth)@;1;Create;3;True;t;FLOAT;0;In;;Inherit;False;True;pos;FLOAT;0;In;;Inherit;False;True;halfWidth;FLOAT;0;In;;Inherit;False;SmoothLine;False;True;0;;False;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CustomExpressionNode;2;-24.27698,-311.4553;Inherit;False;return 
+    (cos(t) + cos(t * v.x + v.x) + cos(t * v.y + v.y)) / 3@;1;Create;2;True;t;FLOAT;0;In;;Inherit;False;True;v;FLOAT2;0,0;In;;Inherit;False;FourierRandom;False;True;0;;False;2;0;FLOAT;0;False;1;FLOAT2;0,0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;38;-846.9807,862.2726;Inherit;False;Desity
+    Frequency;1;16;False;1;0;FLOAT;500;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;12;-1010.104,197.2835;Inherit;False;Frequency
+    1;2;7;False;1;0;FLOAT2;2,4;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;5;-467.5738,-86.1209;Inherit;False;Count;0;3;False;1;0;INT;10;False;1;INT;0\nNode;AmplifyShaderEditor.RegisterLocalVarNode;32;-761.1268,429.2949;Inherit;False;t;-1;True;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;7;-1465.22,-224.7213;Inherit;False;Position;2;4;False;1;0;FLOAT2;0,0;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.TextureCoordinatesNode;20;-1887.341,-215.7254;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4\nNode;AmplifyShaderEditor.TFHCRemapNode;21;-1666.505,-220.0479;Inherit;False;5;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;2;FLOAT2;1,1;False;3;FLOAT2;-1,-1;False;4;FLOAT2;1,1;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;22;-1476.071,-76.18048;Inherit;False;Warp
+    Frequency;1;0;False;1;0;FLOAT;1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.GetLocalVarNode;33;-1450.478,136.1931;Inherit;False;32;t;1;0;OBJECT;;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;17;-812.9245,679.2766;Inherit;False;Min
+    Alpha;1;13;False;1;0;FLOAT;0.5;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;13;-826.871,266.6967;Inherit;False;Frequency
+    2;2;8;False;1;0;FLOAT2;3,5;False;1;FLOAT2;0\nNode;AmplifyShaderEditor.FunctionInput;24;-1459.432,31.03574;Inherit;False;Warp
+    Speed;1;2;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.SimpleTimeNode;19;-1067.638,433.2766;Inherit;False;1;0;FLOAT;0.1;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionInput;6;-886.8627,434.6114;Inherit;False;Time;1;11;False;1;0;FLOAT;0;False;1;FLOAT;0\nNode;AmplifyShaderEditor.CustomExpressionNode;1;-298.2009,125.4195;Inherit;False;float
+    l = 0@$float f = 0@$float2 rand1@$float2 rand2@$float fade = 0@$float fade2 =
+    0@$for (int i = 0@ i < count@ i++)${$\tf = (float)i / (float)(count -1.0)@$\tf
+    = smoothstep(0.0, 1.0, f)@$\tfade = abs(f * 2.0 - 1.0)@$$\tfade2 = fade * (1
+    - minAlpha) + minAlpha@$\tfade2 *= 1 - (1 - fade) * (FourierRandom(f * densityFrequency,
+    randSeed1) * 0.5 + 0.5)@$$\trand1.x = FourierRandom(pos.x * frequency1.x + t
+    * speed1.x, randSeed1)@$\trand1.y = FourierRandom(pos.x * frequency1.y + t *
+    speed1.y, randSeed1)@$$\trand2.x = FourierRandom(pos.x * frequency2.x + t * speed2.x,
+    randSeed2)@$\trand2.y = FourierRandom(pos.x * frequency2.y + t * speed2.y, randSeed2)@$\t$\tfloat
+    v = lerp( rand1.x + rand1.y, rand2.x + rand2.y, f )@$\tv *= amplitude@$\tl +=
+    SmoothLine(pos.y, v, halfWidth) * Intensity * fade2@$}$return l / count@;1;Create;14;False;count;INT;30;In;;Inherit;False;False;pos;FLOAT2;0,0;In;;Inherit;False;False;randSeed1;FLOAT2;1.3,1.4;In;;Inherit;False;False;randSeed2;FLOAT2;0,0;In;;Inherit;False;False;frequency1;FLOAT2;2,3;In;;Inherit;False;False;frequency2;FLOAT2;3,2;In;;Inherit;False;False;speed1;FLOAT2;2,3;In;;Inherit;False;False;speed2;FLOAT2;4,5;In;;Inherit;False;False;t;FLOAT;0;In;;Inherit;False;False;amplitude;FLOAT;0;In;;Inherit;False;False;Intensity;FLOAT;1;In;;Inherit;False;False;minAlpha;FLOAT;0.5;In;;Inherit;False;False;halfWidth;FLOAT;0.01;In;;Inherit;False;True;densityFrequency;FLOAT;500;In;;Inherit;False;DrawLine;True;False;0;;False;14;0;INT;30;False;1;FLOAT2;0,0;False;2;FLOAT2;1.3,1.4;False;3;FLOAT2;0,0;False;4;FLOAT2;2,3;False;5;FLOAT2;3,2;False;6;FLOAT2;2,3;False;7;FLOAT2;4,5;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;1;False;11;FLOAT;0.5;False;12;FLOAT;0.01;False;13;FLOAT;500;False;1;FLOAT;0\nNode;AmplifyShaderEditor.FunctionOutput;0;38.25648,125.182;Inherit;False;True;-1;Output;0;False;1;0;FLOAT;0;False;1;FLOAT;0\nWireConnection;37;0;7;0\nWireConnection;37;1;23;0\nWireConnection;37;2;22;0\nWireConnection;37;3;24;0\nWireConnection;37;5;33;0\nWireConnection;32;0;6;0\nWireConnection;7;0;21;0\nWireConnection;21;0;20;0\nWireConnection;6;0;19;0\nWireConnection;1;0;5;0\nWireConnection;1;1;37;0\nWireConnection;1;2;10;0\nWireConnection;1;3;11;0\nWireConnection;1;4;12;0\nWireConnection;1;5;13;0\nWireConnection;1;6;14;0\nWireConnection;1;7;15;0\nWireConnection;1;8;32;0\nWireConnection;1;9;16;0\nWireConnection;1;10;18;0\nWireConnection;1;11;17;0\nWireConnection;1;12;8;0\nWireConnection;1;13;38;0\nWireConnection;0;0;1;0\nASEEND*/\n//CHKSM=B916C572535E78F1C0E536C35D53C65431CC68C0"
+  m_functionName: 
+  m_description: by Farl
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_customNodeCategory: Farl
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 

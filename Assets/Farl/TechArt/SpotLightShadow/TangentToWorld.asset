@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: TangentToWorld
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity
+    Asset Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=18935\n277;324;1008;690;705.0552;301.9516;1.320138;True;False\nNode;AmplifyShaderEditor.CustomExpressionNode;2;-214,-9;Inherit;False;float3
+    NormalWS = TransformTangentToWorld(NormalTS, TBN)@$NormalWS = NormalizeNormalPerPixel(NormalWS)@$return
+    NormalWS@;3;Create;2;True;NormalTS;FLOAT3;0,0,0;In;;Inherit;False;True;TBN;FLOAT3x3;1,0,0,1,1,1,1,0,1;In;;Inherit;False;TangentToWorld;False;False;0;;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3x3;1,0,0,1,1,1,1,0,1;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.NormalizeNode;5;8,151;Inherit;False;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;3;-476,-72;Inherit;False;Normal
+    (TS);3;0;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionInput;4;-481,29;Inherit;False;TBN;6;1;False;1;0;FLOAT3x3;0,0,0,0,1,0,0,0,1;False;1;FLOAT3x3;0\nNode;AmplifyShaderEditor.FunctionOutput;0;0,0;Inherit;False;True;-1;Normal
+    (WS);0;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nNode;AmplifyShaderEditor.FunctionOutput;6;175,153;Inherit;False;False;-1;Normalized
+    Normal (WS);1;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0\nWireConnection;2;0;3;0\nWireConnection;2;1;4;0\nWireConnection;5;0;2;0\nWireConnection;0;0;2;0\nWireConnection;6;0;5;0\nASEEND*/\n//CHKSM=115D95D007926BD122B7B7A9B050C059B2363ED6"
+  m_functionName: 
+  m_description: 'TBN = Tangent, BiNormal, Normal matrix3x3
+
+    by Farl'
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_additionalPragmas:
+    m_additionalPragmas: []
+    m_outsidePragmas: []
+  m_additionalDirectives:
+    m_validData: 0
+    m_isDirty: 0
+    m_moduleName: ' Additional Directives'
+    m_independentModule: 1
+    m_customEdited: 0
+    m_additionalDirectives: []
+    m_shaderFunctionDirectives: []
+    m_nativeDirectives: []
+    m_nativeDirectivesIndex: -1
+    m_nativeDirectivesFoldout: 0
+    m_directivesSaveItems: []
+  m_nodeCategory: 0
+  m_customNodeCategory: Farl
+  m_previewPosition: 0
+  m_hidden: 0
+  m_url: 
