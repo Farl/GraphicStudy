@@ -24,6 +24,7 @@ namespace SS
         [System.Serializable]
         public class Data
         {
+            public int materialIndex = -1;
             public UpdateMethod updateMethod;
             public string propertyName;
             public PropertyType propertyType;
@@ -89,7 +90,11 @@ namespace SS
                         materialBlock = new MaterialPropertyBlock();
                         materialBlocks.Add(renderer, materialBlock);
                     }
-                    renderer.GetPropertyBlock(materialBlock);
+                    if (data.materialIndex < 0)
+                        renderer.GetPropertyBlock(materialBlock);
+                    else
+                        renderer.GetPropertyBlock(materialBlock, data.materialIndex);
+
                     switch (data.propertyType)
                     {
                         case PropertyType.Vector:
@@ -105,7 +110,11 @@ namespace SS
                             materialBlock.SetVector(data.propertyName, data.targetTransform.position);
                             break;
                     }
-                    renderer.SetPropertyBlock(materialBlock);
+
+                    if (data.materialIndex < 0)
+                        renderer.SetPropertyBlock(materialBlock);
+                    else
+                        renderer.SetPropertyBlock(materialBlock, data.materialIndex);
                 }
             }
         }
@@ -117,16 +126,7 @@ namespace SS
 
         void OnDisable()
         {
-
-        }
-
-        void Update()
-        {
-            UpdateMaterialBlock(UpdateMethod.Update);
-        }
-
-        private void OnDestroy()
-        {
+            // Clear material bloack
             for (var i = 0; i < datas.Length; i++)
             {
                 var data = datas[i];
@@ -136,10 +136,27 @@ namespace SS
                 }
                 foreach (var kvp in materialBlocks)
                 {
-                    kvp.Value.Clear();
-                    kvp.Key.SetPropertyBlock(null);
+                    var renderer = kvp.Key;
+                    var materialBlock = kvp.Value;
+                    if (renderer != null && materialBlock != null)
+                    {
+                        materialBlock.Clear();
+                        if (data.materialIndex < 0)
+                            renderer.SetPropertyBlock(materialBlock);
+                        else
+                            renderer.SetPropertyBlock(materialBlock, data.materialIndex);
+                    }
                 }
             }
+        }
+
+        void Update()
+        {
+            UpdateMaterialBlock(UpdateMethod.Update);
+        }
+
+        private void OnDestroy()
+        {
         }
     }
 }

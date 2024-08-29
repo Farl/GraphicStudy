@@ -60,6 +60,8 @@ namespace SS
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUI.indentLevel++;
+                var propMaterialIndex = propData.FindPropertyRelative("materialIndex");
+                EditorGUILayout.PropertyField(propMaterialIndex);
                 var propUpdateMethod = propData.FindPropertyRelative("updateMethod");
                 EditorGUILayout.PropertyField(propUpdateMethod);
                 var propPropertyName = propData.FindPropertyRelative("propertyName");
