@@ -92,12 +92,13 @@
         },
         "preventRotation": false
     },
-    "m_Path": "SS/Noise",
+    "m_Path": "SS/Procedural",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": "780bfcb5381048188a4cfff2fb54fc0f"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 

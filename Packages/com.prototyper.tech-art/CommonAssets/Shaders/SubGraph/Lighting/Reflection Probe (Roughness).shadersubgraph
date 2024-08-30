@@ -239,7 +239,7 @@
         },
         "preventRotation": false
     },
-    "m_Path": "SS",
+    "m_Path": "SS/Lighting",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 2,
     "m_OutputNode": {

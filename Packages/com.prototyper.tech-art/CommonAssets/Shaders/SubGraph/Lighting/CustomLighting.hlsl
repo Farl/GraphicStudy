@@ -12,12 +12,12 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
     ShadowAtten = 1;
 #else
 #if SHADOWS_SCREEN
-        float4 clipPos = TransformWorldToHClip(WorldPos);
-        float4 shadowCoord = ComputeScreenPos(clipPos);
+    float4 clipPos = TransformWorldToHClip(WorldPos);
+    float4 shadowCoord = ComputeScreenPos(clipPos);
 #else
     float4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
 #endif
-    Light mainLight = GetMainLight(shadowCoord);
+    Light mainLight = GetMainLight(shadowCoord, WorldPos, 1);
     Direction = mainLight.direction;
     Color = mainLight.color;
     DistanceAtten = mainLight.distanceAttenuation;
@@ -34,8 +34,8 @@ void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out h
     ShadowAtten = 1;
 #else
 #if SHADOWS_SCREEN
-        half4 clipPos = TransformWorldToHClip(WorldPos);
-        half4 shadowCoord = ComputeScreenPos(clipPos);
+    half4 clipPos = TransformWorldToHClip(WorldPos);
+    half4 shadowCoord = ComputeScreenPos(clipPos);
 #else
     half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
 #endif

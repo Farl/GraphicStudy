@@ -138,12 +138,13 @@
         },
         "preventRotation": false
     },
-    "m_Path": "SS/Coordinate",
+    "m_Path": "SS/Coordinate Conversion",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": "c9309eea39704bb8ace9b2225e58a0fd"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 

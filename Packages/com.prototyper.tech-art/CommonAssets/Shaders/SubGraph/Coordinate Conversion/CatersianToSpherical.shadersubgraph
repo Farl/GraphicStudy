@@ -98,12 +98,13 @@
         },
         "preventRotation": false
     },
-    "m_Path": "Sub Graphs",
+    "m_Path": "SS/Coordinate Conversion",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": "429ae95a36d445f8a845d29a43a2be43"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 

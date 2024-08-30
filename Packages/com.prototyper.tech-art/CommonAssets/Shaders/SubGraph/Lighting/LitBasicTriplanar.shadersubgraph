@@ -842,12 +842,13 @@
         },
         "preventRotation": false
     },
-    "m_Path": "SS",
+    "m_Path": "SS/Lighting",
     "m_GraphPrecision": 1,
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": "acd1654620df471799bec65abf5d3618"
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": []
 }
 
@@ -5420,7 +5421,7 @@
         "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
-    "m_DefaultType": 0
+    "m_DefaultType": 3
 }
 
 {
