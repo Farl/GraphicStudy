@@ -76,8 +76,19 @@
             "m_Id": "56c35ab29a61481d9e4a0eb991eb0511"
         }
     ],
-    "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_GroupDatas": [
+        {
+            "m_Id": "a14c19af7ef243e3be5741e469cc1563"
+        }
+    ],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "15cb2669da154cc3a538d6e368881cdd"
+        },
+        {
+            "m_Id": "bc85d4a5722d4fb89034e797956758e6"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -550,6 +561,26 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "15cb2669da154cc3a538d6e368881cdd",
+    "m_Title": "",
+    "m_Content": "BRDF.hlsl\nDirectBRDFSpecular",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1389.0,
+        "y": -475.0,
+        "width": 253.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
@@ -1140,17 +1171,17 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "6fd1f0ae5d9d418e867e0f99b89124f6",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "a14c19af7ef243e3be5741e469cc1563"
     },
     "m_Name": "Property",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1246.5,
-            "y": -58.999996185302737,
+            "x": -1275.5,
+            "y": 29.49994659423828,
             "width": 154.5,
-            "height": 33.99999237060547
+            "height": 34.00004959106445
         }
     },
     "m_Slots": [
@@ -1820,20 +1851,31 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.GroupData",
+    "m_ObjectId": "a14c19af7ef243e3be5741e469cc1563",
+    "m_Title": "LdotH2",
+    "m_Position": {
+        "x": -1300.5950927734375,
+        "y": -76.89253234863281
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.MultiplyNode",
     "m_ObjectId": "a40f431f3e9045bc90180d4519f0ce9c",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "a14c19af7ef243e3be5741e469cc1563"
     },
     "m_Name": "Multiply",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1045.5001220703125,
-            "y": -107.00003814697266,
-            "width": 126.00006103515625,
-            "height": 118.0
+            "x": -1074.5,
+            "y": -18.5000057220459,
+            "width": 126.0,
+            "height": 117.99994659423828
         }
     },
     "m_Slots": [
@@ -1972,6 +2014,26 @@
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "bc85d4a5722d4fb89034e797956758e6",
+    "m_Title": "",
+    "m_Content": "// Final BRDFspec = roughness^2 / ( NoH^2 * (roughness^2 - 1) + 1 )^2 * (LoH^2 * (roughness + 0.5) * 4.0)\n// We further optimize a few light invariant terms\n// brdfData.normalizationTerm = (roughness + 0.5) * 4.0 rewritten as roughness * 4.0 + 2.0 to a fit a MAD.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1100.5,
+        "y": -475.5,
+        "width": 597.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
