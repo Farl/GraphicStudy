@@ -2606,10 +2606,10 @@
     "m_Guid": {
         "m_GuidSerialized": "641f5c18-9424-4619-8fd9-7a5996cdfafd"
     },
-    "m_Name": "Boolean",
+    "m_Name": "Light Cookies",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Boolean",
-    "m_DefaultReferenceName": "_BOOLEAN",
+    "m_RefNameGeneratedByDisplayName": "Light Cookies",
+    "m_DefaultReferenceName": "_LIGHT_COOKIES",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
