@@ -93,26 +93,27 @@ namespace SS
         }
 
         [Header("Gradient Settings")]
-        public Mode mode = Mode.HorizontalAndVertical;
+        [SerializeField] public Mode mode = Mode.HorizontalAndVertical;
 
         [FormerlySerializedAs("gradientHorizontal")]
-        public Gradient gradient1 = new Gradient();
+        [SerializeField] public Gradient gradient1 = new Gradient();
         [FormerlySerializedAs("gradientVertical")]
-        public Gradient gradient2 = new Gradient();
-        public ColorBlendMode blendMode = ColorBlendMode.Multiply;
+        [SerializeField] public Gradient gradient2 = new Gradient();
+        [SerializeField] public ColorBlendMode blendMode = ColorBlendMode.Multiply;
 
         [Header("Texture Settings")]
-        public int targetWidth = 128;
-        public int targetHeight = 1;
-        public SupportTextureFormat textureFormat = SupportTextureFormat.RGBA32;
-        public bool generateMipMaps = true;
-        public bool linear = true;
+        [SerializeField] public int targetWidth = 128;
+        [SerializeField] public int targetHeight = 1;
+        [SerializeField] public SupportTextureFormat textureFormat = SupportTextureFormat.RGBA32;
+        [SerializeField] public bool generateMipMaps = true;
+        [SerializeField] public bool linear = true;
 
         [Header("Output")]
-        public Texture2D texture2D;
-        public Sprite sprite;
-        public bool outputFile = false;
-        public TextureType textureType = TextureType.Default;
-        public string outputPath;
+        [SerializeField] public Texture2D texture2D;
+        [SerializeField] public Sprite sprite;
+        [SerializeField] public Vector4 border = new Vector4(0, 0, 0, 0);
+        [SerializeField] public bool outputFile = false;
+        [SerializeField] public TextureType textureType = TextureType.Default;
+        [SerializeField] public string outputPath;
     }
 }

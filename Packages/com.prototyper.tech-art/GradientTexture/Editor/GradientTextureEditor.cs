@@ -97,8 +97,15 @@ namespace SS
             Sprite sprite = null;
             if (gt.textureType == GradientTexture.TextureType.Sprite)
             {
-                sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.one * 0.5f);
+                sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height),
+                    pivot: Vector2.one * 0.5f,
+                    pixelsPerUnit: 100.0f,
+                    extrude: 0,
+                    meshType: SpriteMeshType.FullRect,
+                    border: gt.border
+                );
                 sprite.name = gt.name;
+                
             }
 
             if (gt.outputFile)
