@@ -27,14 +27,14 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - LOD0
-  - _DISABLE_SSR_TRANSPARENT
   - _MICRODETAIL
   - _MOSS
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2225
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -194,7 +194,6 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _MossColor: {r: 0.43377998, g: 0.45999992, b: 0.19779995, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &7130149484276017968
 MonoBehaviour:
   m_ObjectHideFlags: 11
