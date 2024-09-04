@@ -1,20 +1,19 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SS
 {
-	[Obsolete("Old trick")]
+	[Obsolete("For built-in rendering pipeline")]
 	[ExecuteAlways]
 	public class EnableCameraDepthBuffer : MonoBehaviour
 	{
+		[SerializeField] public DepthTextureMode mode = DepthTextureMode.Depth;
 		void Start()
 		{
 			Camera cam = GetComponent<Camera>();
 			if (cam)
 			{
-				cam.depthTextureMode = DepthTextureMode.DepthNormals;
+				cam.depthTextureMode = mode;
 			}
 		}
 	}

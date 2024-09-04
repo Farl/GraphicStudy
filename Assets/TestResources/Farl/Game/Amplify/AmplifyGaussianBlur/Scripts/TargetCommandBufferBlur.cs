@@ -6,10 +6,11 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class TargetCommandBufferBlur : CommandBufferSetup
 {
-	public Shader blurShader;
-	private Material blurMaterial;
-
-	public Material maskMaterial;
+	[SerializeField] public Shader blurShader;
+	[SerializeField] private Material blurMaterial;
+	[SerializeField] public Material maskMaterial;
+	[SerializeField] private string maskTextureProperty = "_MaskTex";
+	[SerializeField] private string grabBlurTextureProperty = "_GrabBlurTexture";
 
 	// Remove command buffers from all cameras we added into
 	public override void Cleanup()
@@ -69,7 +70,7 @@ public class TargetCommandBufferBlur : CommandBufferSetup
 		buf.SetGlobalVector("offsets", new Vector4(0,4,0,0));
 		buf.Blit (blurredID2, blurredID, blurMaterial);
 
-		buf.SetGlobalTexture("_GrabBlurTexture", blurredID);
+		buf.SetGlobalTexture(grabBlurTextureProperty, blurredID);
 
         buf.ReleaseTemporaryRT(blurredID2);
 
@@ -92,7 +93,7 @@ public class TargetCommandBufferBlur : CommandBufferSetup
 		buf.Blit (maskID, maskID2, blurMaterial);
 		buf.SetGlobalVector("offsets", new Vector4(0,4,0,0));
 		buf.Blit (maskID2, maskID, blurMaterial);
-		buf.SetGlobalTexture("_MaskTex", maskID);
+		buf.SetGlobalTexture(maskTextureProperty, maskID);
 
         buf.ReleaseTemporaryRT(maskID2);
 	}	

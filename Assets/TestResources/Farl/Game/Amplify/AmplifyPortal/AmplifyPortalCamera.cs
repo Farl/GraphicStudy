@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+//[ExecuteAlways]
 public class AmplifyPortalCamera : CommandBufferBehaviour {
     
     private AmplifyPortal[] _portals;
     private Transform _transform;
+    [SerializeField] private Shader maskShader;
     private Material _maskMaterial;
     public Material _postFXMaterial;
     protected AmplifyPortalPlayer _player;
@@ -32,7 +34,7 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
                 int screenCopyID = Shader.PropertyToID("_ScreenCopy");
                 _buffer.GetTemporaryRT(screenCopyID, -1, -1, 24, FilterMode.Bilinear, RenderTextureFormat.ARGBHalf);
                 _buffer.Blit(BuiltinRenderTextureType.CurrentActive, screenCopyID);
-                _buffer.SetGlobalTexture("ScreenCopy", screenCopyID);
+                _buffer.SetGlobalTexture("_ScreenCopy", screenCopyID);
             }
             else if (index == 1)
             {
@@ -51,7 +53,14 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
                         Renderer ren = p.GetComponent<Renderer>();
                         if (ren)
                         {
-                            _buffer.DrawRenderer(ren, _maskMaterial);
+                            if (_maskMaterial)
+                            {
+                                _buffer.DrawRenderer(ren, _maskMaterial);
+                            }
+                            else
+                            {
+                                _buffer.DrawRenderer(ren, ren.sharedMaterial);
+                            }
                         }
                     }
                 }
@@ -66,10 +75,9 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
     {
         _portals = FindObjectsOfType<AmplifyPortal>();
 
-        if (_maskMaterial == null)
+        if (_maskMaterial == null && maskShader != null)
         {
-            //_maskMaterial = new Material(Shader.Find("Unlit/Color"));
-            _maskMaterial = new Material(Shader.Find("Custom/AmplifyPortalMask"));
+            _maskMaterial = new Material(maskShader);
         }
 
         base.OnEnable();
@@ -84,6 +92,10 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
 
     private void Update()
     {
+        if (!Application.isPlaying)
+        {
+            return;
+        }
         Vector3 currPosition = transform.position;
         Ray ray = new Ray(lastPosition, currPosition - lastPosition);
         RaycastHit hitInfo;

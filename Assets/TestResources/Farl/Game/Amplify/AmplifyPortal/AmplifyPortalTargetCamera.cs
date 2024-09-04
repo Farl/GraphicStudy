@@ -7,7 +7,7 @@ public class AmplifyPortalTargetCamera : CommandBufferBehaviour {
 
     protected override void Awake()
     {
-        //commandBufferSet.Add(new CommandBufferSet(CameraEvent.AfterSkybox));
+        commandBufferSet.Add(new CommandBufferSet(CameraEvent.AfterSkybox));
         base.Awake();
     }
 

@@ -2,19 +2,24 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: AmplifyAtmosphericScattering
   m_Shader: {fileID: 4800000, guid: c20254507f542a2449d7cd1ebd15fcd7, type: 3}
-  m_ShaderKeywords: 
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -22,18 +27,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
-    - _DepthOfFieldBlurRadius: 11.62
+    - _DepthOfFieldBlurRadius: 15
     - _Distance: 1
     - _Exp: 1
-    - _FarDistance: 5.96
+    - _FarDistance: 3.5
     - _Float0: 0
     - _Float1: 31.28
-    - _NearDistance: 3.34
+    - _NearDistance: 1
     m_Colors:
     - _BlurRange: {r: 0, g: -0.1, b: 0, a: 0}
     - _Color0: {r: 0.49999994, g: 0.45004302, b: 0.1911763, a: 1}
     - _Color1: {r: 0.8308824, g: 0.92538935, b: 1, a: 1}
-    - _FarColor: {r: 0.669959, g: 0.7029999, b: 0.7000846, a: 1}
-    - _NearColor: {r: 0.6193793, g: 0.6140213, b: 0.5738367, a: 1}
+    - _FarColor: {r: 0.29178533, g: 0.6295336, b: 0.7830189, a: 1}
+    - _NearColor: {r: 1, g: 0, b: 0, a: 1}
     - _Vector2: {r: -0.91, g: -5.77, b: -16.64, a: -3.3}
+  m_BuildTextureStacks: []

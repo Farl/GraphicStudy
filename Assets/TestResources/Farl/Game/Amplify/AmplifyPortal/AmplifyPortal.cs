@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
+//[ExecuteAlways]
 public class AmplifyPortal : MonoBehaviour {
 
     private Transform _transform;
@@ -18,6 +19,22 @@ public class AmplifyPortal : MonoBehaviour {
     private Matrix4x4 _offsetMatrix;
 
     private int widthScale = 1;
+
+    private void OnDestroy()
+    {
+        if (_renderTexture)
+        {
+            DestroyImmediate(_renderTexture);
+        }
+        if (_camera)
+        {
+            DestroyImmediate(_camera.gameObject);
+        }
+        if (_cameraRootTrans)
+        {
+            DestroyImmediate(_cameraRootTrans.gameObject);
+        }
+    }
 
     private void LateUpdate()
     {
@@ -39,9 +56,11 @@ public class AmplifyPortal : MonoBehaviour {
         if (_camera == null)
         {
             GameObject camRootGO = new GameObject(name + "_CameraRoot");
+            camRootGO.hideFlags = HideFlags.DontSave;
             _cameraRootTrans = camRootGO.transform;
 
             GameObject camGO = new GameObject(name + "_Camera");
+            camGO.hideFlags = HideFlags.DontSave;
             _cameraTrans = camGO.transform;
             _cameraTrans.SetParent(_cameraRootTrans, false);
 
