@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+[ExecuteAlways]
 public class AmplifyPortalTargetCamera : CommandBufferBehaviour {
 
-    protected override void Awake()
+    private string _globalTextureName;
+    public void Setup(CameraEvent cameraEvent, string globalTextureName)
     {
-        commandBufferSet.Add(new CommandBufferSet(CameraEvent.AfterSkybox));
-        base.Awake();
+        _globalTextureName = globalTextureName;
+        commandBufferSet.Add(new CommandBufferSet(cameraEvent));
+        this.enabled = false;
+        this.enabled = true;
     }
 
     protected override void OnCreateCommandBuffer(CommandBufferSet cbs, int index)
@@ -21,11 +25,11 @@ public class AmplifyPortalTargetCamera : CommandBufferBehaviour {
             {
                 _buffer.name = "PortalCameraCopy";
 
-                // Screen copy
-                int screenCopyID = Shader.PropertyToID("_PortalCameraCopy");
-                _buffer.GetTemporaryRT(screenCopyID, -1, -1, 24, FilterMode.Bilinear, RenderTextureFormat.ARGBHalf);
-                _buffer.Blit(BuiltinRenderTextureType.CurrentActive, screenCopyID);
-                _buffer.SetGlobalTexture("_PortalCameraCopy", screenCopyID);
+                // Screen copy to global texture
+                int tempRTID = Shader.PropertyToID("_PortalCameraCopy");
+                _buffer.GetTemporaryRT(tempRTID, -1, -1, 0, FilterMode.Bilinear, RenderTextureFormat.ARGBHalf);
+                _buffer.Blit(BuiltinRenderTextureType.CurrentActive, tempRTID);
+                _buffer.SetGlobalTexture(_globalTextureName, tempRTID);
             }
         }
     }

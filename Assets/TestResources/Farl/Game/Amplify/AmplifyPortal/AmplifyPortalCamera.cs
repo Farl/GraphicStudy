@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-//[ExecuteAlways]
-public class AmplifyPortalCamera : CommandBufferBehaviour {
-    
+[ExecuteAlways]
+public class AmplifyPortalCamera : CommandBufferBehaviour
+{
+
+    [SerializeField] private Shader maskShader;
+    [SerializeField] public Material _postFXMaterial;
+    [SerializeField] private Transform teleportTransform;
+    [SerializeField] private string screenCopyPropertyName = "_ScreenCopy";
+    [SerializeField] private string portalMaskPropertyName = "_PortalMask";
+
     private AmplifyPortal[] _portals;
     private Transform _transform;
-    [SerializeField] private Shader maskShader;
     private Material _maskMaterial;
-    public Material _postFXMaterial;
     protected AmplifyPortalPlayer _player;
+    private Vector3 lastPosition;
 
     protected override void Awake()
     {
@@ -30,17 +36,17 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
             {
                 _buffer.name = "ScreenCopy";
 
-                // Screen copy
+                // Screen copy to global texture
                 int screenCopyID = Shader.PropertyToID("_ScreenCopy");
                 _buffer.GetTemporaryRT(screenCopyID, -1, -1, 24, FilterMode.Bilinear, RenderTextureFormat.ARGBHalf);
                 _buffer.Blit(BuiltinRenderTextureType.CurrentActive, screenCopyID);
-                _buffer.SetGlobalTexture("_ScreenCopy", screenCopyID);
+                _buffer.SetGlobalTexture(screenCopyPropertyName, screenCopyID);
             }
             else if (index == 1)
             {
                 _buffer.name = "Portal";
 
-                // Portal mask
+                // Render portal renderer into Portal mask
                 int portalMaskID = Shader.PropertyToID("_PortalMask");
                 _buffer.GetTemporaryRT(portalMaskID, -1, -1, 24, FilterMode.Bilinear, RenderTextureFormat.ARGBHalf);
                 _buffer.SetRenderTarget(portalMaskID);
@@ -64,9 +70,7 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
                         }
                     }
                 }
-                _buffer.SetGlobalTexture("PortalMask", portalMaskID);
-
-                _buffer.ReleaseTemporaryRT(portalMaskID);
+                _buffer.SetGlobalTexture(portalMaskPropertyName, portalMaskID);
             }
         }
     }
@@ -88,8 +92,6 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
         Graphics.Blit(source, destination, _postFXMaterial);
     }
 
-    private Vector3 lastPosition;
-
     private void Update()
     {
         if (!Application.isPlaying)
@@ -104,7 +106,7 @@ public class AmplifyPortalCamera : CommandBufferBehaviour {
             AmplifyPortal portal = hitInfo.collider.GetComponent<AmplifyPortal>();
             if (portal)
             {
-                portal.Teleport(_player.transform);
+                portal.Teleport(teleportTransform? teleportTransform: _player.transform);
             }
         }
         lastPosition = _transform.position;

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.Rendering;
 
-//[ExecuteAlways]
+[ExecuteAlways]
 public class AmplifyPortal : MonoBehaviour {
 
+    [SerializeField] public Transform _targetTransform;
     private Transform _transform;
-    public Transform _targetTransform;
     private Camera _camera;
     private Transform _cameraTrans;
     private Transform _cameraRootTrans;
     private RenderTexture _renderTexture;
-    public RenderTexture _portalCameraRT;
 
     private Camera _mainCam;
     private Transform _mainCamTrans;
@@ -22,37 +22,31 @@ public class AmplifyPortal : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if (_renderTexture)
-        {
-            DestroyImmediate(_renderTexture);
-        }
         if (_camera)
         {
+            _camera.targetTexture = null;
             DestroyImmediate(_camera.gameObject);
         }
         if (_cameraRootTrans)
         {
             DestroyImmediate(_cameraRootTrans.gameObject);
         }
+        if (_renderTexture)
+        {
+            DestroyImmediate(_renderTexture);
+        }
     }
 
     private void LateUpdate()
     {
-        widthScale = ((UnityEngine.XR.XRSettings.enabled) ? 2 : 1);
+        widthScale = XRSettings.enabled ? 2 : 1;
 
         if (_transform == null)
         {
             _transform = transform;
         }
-        if (_renderTexture == null)
-        {
-            _renderTexture = new RenderTexture(Screen.width * widthScale, Screen.height, 24, RenderTextureFormat.ARGBHalf);
-            _renderTexture.hideFlags = HideFlags.DontSave;
-            _renderTexture.wrapMode = TextureWrapMode.Repeat;
-            _renderTexture.name = name + "~" + ((_targetTransform)?_targetTransform.name: "");
-            _renderTexture.vrUsage = VRTextureUsage.TwoEyes;
-            _renderTexture.SetGlobalShaderProperty("Portal");
-        }
+
+        // Create portal camera
         if (_camera == null)
         {
             GameObject camRootGO = new GameObject(name + "_CameraRoot");
@@ -65,17 +59,25 @@ public class AmplifyPortal : MonoBehaviour {
             _cameraTrans.SetParent(_cameraRootTrans, false);
 
             _camera = camGO.AddComponent<Camera>();
-            if (_portalCameraRT)
+
+            // Create render texture as camera target
+            if (_renderTexture == null)
             {
-                _camera.targetTexture = _portalCameraRT;
+                _renderTexture = new RenderTexture(Screen.width * widthScale, Screen.height, 24, RenderTextureFormat.ARGBHalf);
+                _renderTexture.hideFlags = HideFlags.DontSave;
+                _renderTexture.wrapMode = TextureWrapMode.Repeat;
+                _renderTexture.name = name + "~" + (_targetTransform ? _targetTransform.name : "");
+                _renderTexture.vrUsage = VRTextureUsage.TwoEyes;
+                _renderTexture.SetGlobalShaderProperty("_Portal");
             }
-            else
-            {
-                _camera.targetTexture = _renderTexture;
-            }
+            _camera.targetTexture = _renderTexture;
 
             _camera.depth = -2;
-            camGO.AddComponent<AmplifyPortalTargetCamera>();
+            var comp = camGO.AddComponent<AmplifyPortalTargetCamera>();
+            if (comp)
+            {
+                comp.Setup(CameraEvent.AfterForwardOpaque, "_PortalCameraCopy");
+            }
         }
         if (_mainCam == null)
         {
@@ -83,6 +85,8 @@ public class AmplifyPortal : MonoBehaviour {
             _mainCam = apc.GetComponent<Camera>();
             _mainCamTrans = _mainCam.transform;
         }
+
+        // Calculate portal camera transform
         if (_camera)
         {
             if (_mainCam)

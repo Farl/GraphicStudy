@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class GPUParticle : MonoBehaviour {
 	public Mesh mesh;
 	public Vector3[] vertices;
@@ -147,6 +147,21 @@ public class GPUParticle : MonoBehaviour {
 				Object.DestroyImmediate (kernelMaterial);
 			} else {
 				Object.Destroy (kernelMaterial);
+			}
+		}
+		if (particleMaterial)
+		{
+			particleMaterial.SetTexture("_PositionBuffer", null);
+		}
+		if (debugRenderers != null)
+		{
+			if (debugRenderers.Length > 0 && debugRenderers[0] && debugRenderers[0].sharedMaterial)
+			{
+				debugRenderers[0].sharedMaterial.mainTexture = null;
+			}
+			if (debugRenderers.Length > 1 && debugRenderers[1] && debugRenderers[1].sharedMaterial)
+			{
+				debugRenderers[1].sharedMaterial.mainTexture = null;
 			}
 		}
 		ClearBuffer (positionBuffer1);

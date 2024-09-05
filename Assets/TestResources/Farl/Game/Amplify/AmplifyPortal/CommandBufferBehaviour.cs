@@ -23,12 +23,12 @@ public class CommandBufferBehaviour : MonoBehaviour {
             if (_camera == null)
             {
                 _camera = cam;
-                if (_camera)
-                {
-                    _buffer = new CommandBuffer();
-                    _camera.AddCommandBuffer(_cameraEvent, _buffer);
-                    _prevCameraEvent = _cameraEvent;
-                }
+            }
+            if (_camera)
+            {
+                _buffer = new CommandBuffer();
+                _camera.AddCommandBuffer(_cameraEvent, _buffer);
+                _prevCameraEvent = _cameraEvent;
             }
         }
 
