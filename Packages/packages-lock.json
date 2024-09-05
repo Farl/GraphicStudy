@@ -15,6 +15,13 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.prototyper.tools": {
+      "version": "git+ssh://git@github.com/Farl/SSCore2017.git?path=/Packages/com.prototyper.tools#tools-v0.0.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "57d20413d9236169d382d4fcefc9dc327d31e625"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
