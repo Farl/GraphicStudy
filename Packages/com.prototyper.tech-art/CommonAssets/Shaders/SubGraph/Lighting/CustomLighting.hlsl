@@ -1,6 +1,6 @@
 // CustomLighting.hlsl
 
-# ifndef CUSTOM_LIGHTING_INCLUDED
+#ifndef CUSTOM_LIGHTING_INCLUDED
 #define CUSTOM_LIGHTING_INCLUDED
 
 void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, out float DistanceAtten, out float ShadowAtten)
@@ -17,7 +17,18 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
 #else
     float4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
 #endif
+
+#ifdef BUILTIN_LIGHTING_INCLUDED
+    //Light mainLight = GetMainLight(shadowCoord, WorldPos, 1);
+    Light mainLight;
+    mainLight.direction = _WorldSpaceLightPos0;
+    mainLight.distanceAttenuation = 1; // unity_LightData.z is 1 when not culled by the culling mask, otherwise 0.
+    mainLight.shadowAttenuation = 1.0;
+    mainLight.color = _LightColor0.rgb;
+    //UNITY_INITIALIZE_OUTPUT(Light, mainLight);
+#else
     Light mainLight = GetMainLight(shadowCoord, WorldPos, 1);
+#endif
     Direction = mainLight.direction;
     Color = mainLight.color;
     DistanceAtten = mainLight.distanceAttenuation;
@@ -39,7 +50,16 @@ void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out h
 #else
     half4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
 #endif
+#ifdef BUILTIN_LIGHTING_INCLUDED
+    //Light mainLight = GetMainLight(shadowCoord, WorldPos, 1);
+    Light mainLight;
+    mainLight.direction = _WorldSpaceLightPos0;
+    mainLight.distanceAttenuation = 1; // unity_LightData.z is 1 when not culled by the culling mask, otherwise 0.
+    mainLight.shadowAttenuation = 1.0;
+    mainLight.color = _LightColor0.rgb;
+#else
     Light mainLight = GetMainLight(shadowCoord, WorldPos, 1);
+#endif
     Direction = mainLight.direction;
     Color = mainLight.color;
     DistanceAtten = mainLight.distanceAttenuation;

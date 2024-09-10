@@ -6,7 +6,12 @@ void URPReflectionProbe_float(float3 positionWS, float3 reflectVector, float3 sc
 #ifdef SHADERGRAPH_PREVIEW
     reflection = float3(0, 0, 0);
 #else
+    // TODO: Check BiRP / URP / HDRP
+    #ifdef UNIVERSAL_LIGHTING_INCLUDED
     reflection = GlossyEnvironmentReflection(reflectVector, positionWS, roughness, 1.0h, screenspaceUV);
+    #else
+    reflection = float3(0, 0, 0);
+    #endif
 #endif
 }
 
@@ -15,7 +20,12 @@ void URPReflectionProbe_half(float3 positionWS, half3 reflectVector, half3 scree
 #ifdef SHADERGRAPH_PREVIEW
     reflection = float3(0, 0, 0);
 #else
+    // TODO: Check BiRP / URP / HDRP
+    #ifdef UNIVERSAL_LIGHTING_INCLUDED
     reflection = GlossyEnvironmentReflection(reflectVector, positionWS, roughness, 1.0h, screenspaceUV);
+    #else
+    reflection = half3(0, 0, 0);
+    #endif
 #endif
 }
 

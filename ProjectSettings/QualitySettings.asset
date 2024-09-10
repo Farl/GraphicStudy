@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 7
+  m_CurrentQuality: 6
   m_QualitySettings:
   - serializedVersion: 3
     name: Very Low
@@ -373,8 +373,7 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms:
-    - iPhone
+    excludedTargetPlatforms: []
   - serializedVersion: 3
     name: BIRP
     pixelLightCount: 4
@@ -427,6 +426,7 @@ QualitySettings:
     - Standalone
     - Server
     - Android
+    - iPhone
   - serializedVersion: 3
     name: URP-KawaseBlur
     pixelLightCount: 4
@@ -476,8 +476,7 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms:
-    - iPhone
+    excludedTargetPlatforms: []
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 6
@@ -495,5 +494,5 @@ QualitySettings:
     WiiU: 5
     Windows Store Apps: 5
     XboxOne: 5
-    iPhone: 7
+    iPhone: 6
     tvOS: 2
