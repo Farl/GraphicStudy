@@ -1,14 +1,11 @@
 {
   "name": "com.prototyper.tech-art",
-  "version": "0.2.11",
+  "version": "0.2.10",
   "displayName": "SS Tech Art",
   "description": "Technical artist utility",
-  "unity": null,
-  "unityRelease": null,
   "documentationUrl": "",
   "changelogUrl": "",
   "licensesUrl": "",
-  "dependencies": {},
   "keywords": [],
   "author": {
     "name": "Farl Lee",
