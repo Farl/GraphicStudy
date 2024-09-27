@@ -20,6 +20,9 @@ namespace SS
         public override void OnPreviewGUI(Rect r, GUIStyle background)
         {
             ProceduralTexture pTex = target as ProceduralTexture;
+            // Separate rect to draw image and draw alpha channel
+            Rect r1 = new Rect(r.x, r.y, r.width / 2, r.height);
+            Rect r2 = new Rect(r.x + r.width / 2, r.y, r.width / 2, r.height);
             if (pTex != null)
             {
                 if (pTex.texture2D != null)
@@ -27,15 +30,27 @@ namespace SS
                     Texture2D tex = pTex.texture2D;
                     if (tex != null)
                     {
-                        EditorGUI.DrawPreviewTexture(r, tex, null, ScaleMode.ScaleToFit);
+                        EditorGUI.DrawPreviewTexture(r1, tex, null, ScaleMode.ScaleToFit);
+                        EditorGUI.DrawTextureAlpha(r2, tex, ScaleMode.ScaleToFit);
+                    }
+                    else
+                    {
+                        EditorGUI.LabelField(r, "No Texture2D");
                     }
                 }
                 else if (pTex.sprite != null)
                 {
                     Sprite sprite = pTex.sprite;
-                    if (sprite != null)
+                    if (sprite != null && sprite.texture != null)
                     {
-                        EditorGUI.DrawPreviewTexture(r, sprite.texture, null, ScaleMode.ScaleToFit);
+                        // Draw transparent sprite
+                        Texture2D tex = sprite.texture;
+                        EditorGUI.DrawPreviewTexture(r1, tex, null, ScaleMode.ScaleToFit);
+                        EditorGUI.DrawTextureAlpha(r2, tex, ScaleMode.ScaleToFit);
+                    }
+                    else
+                    {
+                        EditorGUI.LabelField(r, "No Sprite");
                     }
                 }
                 else

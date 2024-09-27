@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor.VersionControl;
+
 #if UNITY_EDITOR
 using UnityEditor;
 using System.IO;
@@ -101,31 +103,17 @@ namespace SS
             targetWidth = Mathf.Max(1, targetWidth);
             targetHeight = Mathf.Max(1, targetHeight);
 
-            Texture2D texture2D = new Texture2D(targetWidth, targetHeight, TextureFormat, this.generateMipMaps, this.linear)
+            Texture2D newTex2D = new Texture2D(targetWidth, targetHeight, TextureFormat, this.generateMipMaps, this.linear)
             {
                 name = this.name
             };
-            GenerateTexture(texture2D);
-            texture2D.Apply();
-
-            // Sprite
-            Sprite sprite = null;
-            if (this.textureType == TextureType.Sprite)
-            {
-                sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height),
-                    pivot: Vector2.one * 0.5f,
-                    pixelsPerUnit: 100.0f,
-                    extrude: 0,
-                    meshType: SpriteMeshType.FullRect,
-                    border: this.border
-                );
-                sprite.name = this.name;
-
-            }
+            GenerateTexture(newTex2D);
+            newTex2D.Apply();
 
             if (this.outputFile)
             {
-                byte[] bytes = texture2D.EncodeToPNG();
+                // Output a PNG file and setup import settings later
+                byte[] bytes = newTex2D.EncodeToPNG();
                 var gtPath = AssetDatabase.GetAssetPath(this);
                 gtPath = gtPath.Replace(Path.GetExtension(gtPath), string.Empty);
 
@@ -140,49 +128,72 @@ namespace SS
             }
             else
             {
-                // Try replace into GradientTexture object
-                bool replaced = false;
+                bool texReplaced = false, spriteReplaced = false;
                 var assets = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(this));
+
+                // Try to replace Texture2D object in GradientTexture object
                 foreach (var asset in assets)
                 {
-                    switch (this.textureType)
+                    if (!texReplaced && asset is Texture2D)
                     {
-                        case TextureType.Sprite:
-                            if (asset is Sprite)
-                            {
-                                EditorUtility.CopySerialized(sprite, asset);
-                                EditorUtility.SetDirty(asset);
-                                this.sprite = asset as Sprite;
-                                replaced = true;
-                            }
-                            break;
-                        default:
-                            if (asset is Texture2D)
-                            {
-                                EditorUtility.CopySerialized(texture2D, asset);
-                                EditorUtility.SetDirty(asset);
-                                this.texture2D = asset as Texture2D;
-                                replaced = true;
-                            }
-                            break;
+                        var assetTexture = asset as Texture2D;
+                        EditorUtility.CopySerialized(newTex2D, assetTexture);
+                        this.texture2D = asset as Texture2D;
+                        texReplaced = true;
                     }
-                    if (replaced)
+                    if (texReplaced)
+                    {
+                        EditorUtility.SetDirty(asset);
                         break;
+                    }
                 }
 
-                if (!replaced)
+                // If Texture2D doesn't exist, create new one and add to asset
+                if (!texReplaced)
                 {
-                    switch (this.textureType)
+                    this.texture2D = newTex2D;
+                    AssetDatabase.AddObjectToAsset(newTex2D, this);
+                }
+
+                // Create sprite by current texture2D
+                Sprite newSprite = null;
+                if (textureType == TextureType.Sprite)
+                {
+                    newSprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height),
+                        pivot: Vector2.one * 0.5f,
+                        pixelsPerUnit: 100.0f,
+                        extrude: 0,
+                        meshType: SpriteMeshType.FullRect,
+                        border: this.border
+                    );
+                    newSprite.name = this.name;
+                }
+
+                // Try to replace Sprite object in GradientTexture object
+                foreach (var asset in assets)
+                {
+                    if (!spriteReplaced && textureType == TextureType.Sprite)
                     {
-                        case TextureType.Sprite:
-                            this.sprite = sprite;
-                            AssetDatabase.AddObjectToAsset(this.sprite, this);
-                            break;
-                        default:
-                            this.texture2D = texture2D;
-                            AssetDatabase.AddObjectToAsset(texture2D, this);
-                            break;
+                        if (asset is Sprite)
+                        {
+                            var assetSprite = asset as Sprite;
+                            EditorUtility.CopySerialized(newSprite, assetSprite);
+                            this.sprite = assetSprite;
+                            spriteReplaced = true;
+                        }
                     }
+                    if (spriteReplaced)
+                    {
+                        EditorUtility.SetDirty(asset);
+                        break;
+                    }
+                }
+
+                // If Sprite doesn't exist, create new one and add to asset
+                if (!spriteReplaced && this.textureType == TextureType.Sprite)
+                {
+                    this.sprite = newSprite;
+                    AssetDatabase.AddObjectToAsset(newSprite, this);
                 }
 
                 this.outputPath = string.Empty;
@@ -211,6 +222,7 @@ namespace SS
                             break;
                         case TextureType.Sprite:
                             importer.textureType = TextureImporterType.Sprite;
+                            importer.spriteBorder = gt.border;
                             break;
                         default:
                             importer.textureType = TextureImporterType.Default;
@@ -240,6 +252,9 @@ namespace SS
                         //settings.maxTextureSize = 128;
                     }
                     importer.SetPlatformTextureSettings(settings);
+                    
+                    // Set dirty of path asset
+                    AssetDatabase.ImportAsset(path);
                 }
                 else
                 {
