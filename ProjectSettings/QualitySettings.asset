@@ -59,6 +59,7 @@ QualitySettings:
     - Android
     - Server
     - Standalone
+    - WebGL
   - serializedVersion: 3
     name: Low
     pixelLightCount: 0
@@ -112,6 +113,7 @@ QualitySettings:
     - Server
     - Android
     - iPhone
+    - WebGL
   - serializedVersion: 3
     name: Medium
     pixelLightCount: 1
@@ -165,6 +167,7 @@ QualitySettings:
     - Server
     - Android
     - Standalone
+    - WebGL
   - serializedVersion: 3
     name: High
     pixelLightCount: 2
@@ -218,6 +221,7 @@ QualitySettings:
     - Server
     - Android
     - iPhone
+    - WebGL
   - serializedVersion: 3
     name: Very High
     pixelLightCount: 3
@@ -271,6 +275,7 @@ QualitySettings:
     - Android
     - Server
     - Standalone
+    - WebGL
   - serializedVersion: 3
     name: Ultra
     pixelLightCount: 4
@@ -324,6 +329,7 @@ QualitySettings:
     - Server
     - Android
     - iPhone
+    - WebGL
   - serializedVersion: 3
     name: URP
     pixelLightCount: 4
@@ -427,6 +433,7 @@ QualitySettings:
     - Server
     - Android
     - iPhone
+    - WebGL
   - serializedVersion: 3
     name: URP-KawaseBlur
     pixelLightCount: 4
@@ -490,7 +497,7 @@ QualitySettings:
     Standalone: 6
     Tizen: 2
     Web: 5
-    WebGL: 3
+    WebGL: 6
     WiiU: 5
     Windows Store Apps: 5
     XboxOne: 5
