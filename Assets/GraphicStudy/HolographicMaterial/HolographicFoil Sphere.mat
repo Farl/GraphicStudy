@@ -46,6 +46,10 @@ Material:
           type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _LightTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -77,6 +81,7 @@ Material:
     - _BUILTIN_ZWriteControl: 0
     - _Band: 0.5
     - _BandFalloff: 3
+    - _Parallex: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RainbowParallex: -0.37
