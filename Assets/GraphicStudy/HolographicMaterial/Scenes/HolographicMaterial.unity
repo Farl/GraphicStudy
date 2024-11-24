@@ -355,7 +355,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 989022e5edb79487d80060285bec7843, type: 2}
+  - {fileID: 2100000, guid: 1b67ed45477c8490aa38539f7c547a7d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1310,7 +1310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631491274}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.018, y: 0.239, z: 0.051}
   m_LocalScale: {x: 1.1067774, y: 1.1067774, z: 1.1067774}
   m_ConstrainProportionsScale: 0
@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 800494204}
   - component: {fileID: 800494203}
   m_Layer: 0
-  m_Name: sherlock
+  m_Name: sherlock-bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1543,8 +1543,8 @@ Transform:
   m_GameObject: {fileID: 800494201}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.206, z: 0.061}
-  m_LocalScale: {x: 1.2259794, y: 1.2259794, z: 1.2259794}
+  m_LocalPosition: {x: 0, y: 0.206, z: 0.147}
+  m_LocalScale: {x: 1.4876736, y: 1.4876736, z: 1.4876736}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1580332789}
@@ -1569,7 +1569,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 6e7f9950385d142d6b322d18c1cfc111, type: 3}
+  - {fileID: 2100000, guid: d044dd18577624d68853e06872c5cf89, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
