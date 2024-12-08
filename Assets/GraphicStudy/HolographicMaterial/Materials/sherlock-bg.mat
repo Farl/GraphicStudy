@@ -36,7 +36,7 @@ Material:
     RenderType: Opaque
   disabledShaderPasses:
   - SHADOWCASTER
-  m_LockedProperties: 
+  m_LockedProperties: _LightDistortionScale
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -108,16 +108,16 @@ Material:
     - _CastShadows: 0
     - _Cull: 2
     - _DstBlend: 0
-    - _LightDistortionScale: 0.696
+    - _LightDistortionScale: 0.01
     - _LightNoiseStrength: 0.03
     - _Normal_Scale: 1
-    - _Parallex: -4.61
+    - _Parallex: -23.48
     - _Parallex2: -3.39
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RainbowParallex: -0.37
     - _ReceiveShadows: 0
-    - _Shininess: 0.07
+    - _Shininess: 0.09
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
@@ -128,10 +128,10 @@ Material:
     - _AngularOffset: {r: 0, g: 0, b: 0, a: 0}
     - _AngularTiling: {r: 12, g: 12, b: 0, a: 0}
     - _BaseColor: {r: 0.38514587, g: 0.3285422, b: 0.6509434, a: 1}
-    - _GradientTint: {r: 0.809, g: 0.809, b: 0.809, a: 1}
+    - _GradientTint: {r: 1, g: 1, b: 1, a: 1}
     - _RainbowOffset: {r: 0, g: 0, b: 0, a: 0}
     - _RainbowTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _Roughness: {r: 0.07, g: 0.51, b: 0, a: 0}
+    - _Roughness: {r: 0, g: 1, b: 0, a: 0}
     - _Roughness2: {r: 0.48, g: 0.55, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3885894179666280441

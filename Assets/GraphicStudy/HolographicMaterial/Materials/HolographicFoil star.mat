@@ -110,7 +110,7 @@ Material:
     - _CastShadows: 0
     - _Cull: 2
     - _DstBlend: 10
-    - _LightNoiseStrength: 0
+    - _LightNoiseStrength: 1
     - _Normal_Scale: 0
     - _Parallex: -5
     - _Parallex2: 0
