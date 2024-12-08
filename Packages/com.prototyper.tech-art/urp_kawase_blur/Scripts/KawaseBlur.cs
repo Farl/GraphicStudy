@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
+
 namespace KawaseBlur
 {
     #region Enums / Classes
@@ -128,6 +129,8 @@ namespace KawaseBlur
             this.profilerTag = profilerTag;
         }
 
+#if USE_URP_17
+#else
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
             var width = cameraTextureDescriptor.width / settings.downsample;
@@ -160,6 +163,7 @@ namespace KawaseBlur
                 }
             }
         }
+#endif
 
         public virtual void OnDispose()
         {

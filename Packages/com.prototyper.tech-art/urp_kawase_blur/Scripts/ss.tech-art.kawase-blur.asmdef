@@ -27,6 +27,11 @@
         },
         {
             "name": "com.unity.render-pipelines.universal",
+            "expression": "(1.4,1.7]",
+            "define": "USE_URP_17"
+        },
+        {
+            "name": "com.unity.render-pipelines.universal",
             "expression": "",
             "define": "USE_URP"
         }
