@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "com.prototyper.packagehelper": {
-      "version": "git+ssh://git@github.com/Farl/SSCore2017.git?path=/Packages/com.prototyper.packagehelper#packagehelper-v0.3.1",
+      "version": "0.3.1",
       "depth": 0,
-      "source": "git",
+      "source": "registry",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2"
       },
-      "hash": "5b7f51e8e84c8c9bbcb32dc67d761489eb3c6d5a"
+      "url": "https://registry.npmjs.com"
     },
     "com.prototyper.tech-art": {
       "version": "file:com.prototyper.tech-art",
@@ -16,11 +16,11 @@
       "dependencies": {}
     },
     "com.prototyper.tools": {
-      "version": "git+ssh://git@github.com/Farl/SSCore2017.git?path=/Packages/com.prototyper.tools#tools-v0.0.1",
+      "version": "0.0.1",
       "depth": 0,
-      "source": "git",
+      "source": "registry",
       "dependencies": {},
-      "hash": "57d20413d9236169d382d4fcefc9dc327d31e625"
+      "url": "https://registry.npmjs.com"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
